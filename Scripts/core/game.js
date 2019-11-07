@@ -1,4 +1,3 @@
-"use strict";
 // Immediate Invoked Anonymous Function
 (function () {
     // Global Game Variables
@@ -6,9 +5,20 @@
     var stage;
     var helloLabel;
     var newgameButton;
+    var assetManager;
+    var assetManifest;
+    assetManifest = [
+        { id: "NewGameButoon", src: "./Assets/NewGameButton.png" },
+        { id: "ExitGameButoon", src: "./Assets/ExitGameButton.png" },
+        { id: "OptionsButoon", src: "./Assets/OptionsButton.png" }
+    ];
     function Init() {
         console.log("Initialization Start");
-        Start();
+        //Start();
+        assetManager = new createjs.LoadQueue();
+        assetManager.installPlugin(createjs.Sound);
+        assetManager.loadManifest(assetManifest);
+        assetManager.on("complete", Start, this);
     }
     function Start() {
         console.log("Starting Application...");
@@ -33,7 +43,7 @@
         helloLabel = new objects.Label("Hello World", "40px", "Consolas", "#000000", 320, 240, true);
         stage.addChild(helloLabel); // Add the label to the stage
         // Button Initialization
-        newgameButton = new objects.Button("./Assets/NewGameButton.png", 320, 340);
+        newgameButton = new objects.Button(assetManager, "NewGameButton", 320, 340);
         newgameButton.regX = 95;
         newgameButton.regY = 24.5;
         newgameButton.on("click", clickableButtonMouseClick);

@@ -8,9 +8,23 @@
     let helloLabel:objects.Label; 
     let newgameButton:objects.Button;
 
+    let assetManager:createjs.LoadQueue;
+    let assetManifest: any[];
+
+    assetManifest =[
+        {id:"NewGameButoon", src:"./Assets/NewGameButton.png"},
+        {id:"ExitGameButoon", src:"./Assets/ExitGameButton.png"},
+        {id:"OptionsButoon", src:"./Assets/OptionsButton.png"}
+    ]
+
     function Init() {
         console.log("Initialization Start");
-        Start();
+        //Start();
+
+        assetManager = new createjs.LoadQueue();
+        assetManager.installPlugin(createjs.Sound);
+        assetManager.loadManifest(assetManifest);
+        assetManager.on("complete",Start,this);
     }
 
     function Start() {
@@ -43,7 +57,7 @@
         stage.addChild(helloLabel); // Add the label to the stage
 
         // Button Initialization
-        newgameButton = new objects.Button("./Assets/NewGameButton.png", 320, 340);
+        newgameButton = new objects.Button(assetManager,"NewGameButton", 320, 340);
 
         newgameButton.regX = 95;
         newgameButton.regY = 24.5;
