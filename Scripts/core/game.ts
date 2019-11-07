@@ -1,20 +1,22 @@
 // Immediate Invoked Anonymous Function
 
-(function() {
+(function () {
 
     // Global Game Variables
     let canvas = document.getElementById("canvas");
-    let stage:createjs.Stage;
-    let helloLabel:objects.Label; 
-    let newgameButton:objects.Button;
+    let stage: createjs.Stage;
 
-    let assetManager:createjs.LoadQueue;
+    let assetManager: createjs.LoadQueue;
     let assetManifest: any[];
 
-    assetManifest =[
-        {id:"NewGameButoon", src:"./Assets/NewGameButton.png"},
-        {id:"ExitGameButoon", src:"./Assets/ExitGameButton.png"},
-        {id:"OptionsButoon", src:"./Assets/OptionsButton.png"}
+    // Store current scene and state information
+    let currentScene: objects.Scene;
+    let currentState: number;
+
+    assetManifest = [
+        { id: "NewGameButton", src: "./Assets/NewGameButton.png" },
+        { id: "ExitGameButton", src: "./Assets/ExitGameButton.png" },
+        { id: "OptionsButton", src: "./Assets/OptionsButton.png" }
     ]
 
     function Init() {
@@ -24,7 +26,7 @@
         assetManager = new createjs.LoadQueue();
         assetManager.installPlugin(createjs.Sound);
         assetManager.loadManifest(assetManifest);
-        assetManager.on("complete",Start,this);
+        assetManager.on("complete", Start, this);
     }
 
     function Start() {
@@ -33,37 +35,47 @@
         // Initialize CreateJS
         stage = new createjs.Stage(canvas);
         // Freqeuncy of checks. Computationally expensive. Turn on in menus, Turn off in game
-        stage.enableMouseOver(20); 
+        stage.enableMouseOver(20);
         createjs.Ticker.framerate = 60; // 60 FPS
         createjs.Ticker.on("tick", Update);
+
+        // Set up default game state
+        objects.Game.currentScene = config.Scene.START;
+        currentState = config.Scene.START;
+
         Main();
     }
 
     function Update() {
+        if (currentState != objects.Game.currentScene) {
+            console.log("Changing scenes to" + objects.Game.currentScene);
+            Main();
+        }
+        currentScene.Update();
+
         stage.update();
-        helloLabel.rotation += 5;
     }
 
-    function clickableButtonMouseClick():void {
-        helloLabel.text = "Clicked";
+    function clickableButtonMouseClick(): void {
         console.log("AHHHHHHH");
     }
 
     function Main() {
         console.log("Game Start...");
-
-        helloLabel = new objects.Label("Hello World", "40px", "Consolas", "#000000", 320, 240, true);
-
-        stage.addChild(helloLabel); // Add the label to the stage
-
-        // Button Initialization
-        newgameButton = new objects.Button(assetManager,"NewGameButton", 320, 340);
-
-        newgameButton.regX = 95;
-        newgameButton.regY = 24.5;
-
-        newgameButton.on("click", clickableButtonMouseClick);
-        stage.addChild(newgameButton);
+        // Finite State Machine
+        switch (objects.Game.currentScene) {
+            case config.Scene.START:
+                stage.removeAllChildren();
+                currentScene = new scenes.StartScene(assetManager);
+                stage.addChild(currentScene);
+                break;
+            case config.Scene.GAME:
+                console.log("GAME state");
+                break;
+            case config.Scene.OVER:
+                console.log("OVER state");
+                break;
+        }
     }
 
     window.onload = Init;
