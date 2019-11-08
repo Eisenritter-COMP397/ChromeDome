@@ -18,7 +18,7 @@ module scenes{
         }
         public Update():void{}
         private backButtonClick(): void{
-            objects.Game.currentScene = config.Scene.GAME;
+            objects.Game.currentScene = config.Scene.START;
         }
         public Main():void{
             this.addChild(this.gameOverLabel);
