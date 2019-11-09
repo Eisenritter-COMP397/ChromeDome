@@ -11,7 +11,9 @@
     assetManifest = [
         { id: "NewGameButton", src: "./Assets/NewGameButton.png" },
         { id: "ExitGameButton", src: "./Assets/ExitGameButton.png" },
-        { id: "OptionsButton", src: "./Assets/OptionsButton.png" }
+        { id: "OptionsButton", src: "./Assets/OptionsButton.png" },
+        { id: "UIBackground", src: "./Assets/ChromeDomeStartBG.png" },
+        { id: "FlameEffect", src: "./Assets/FlameEffect.png" }
     ];
     function Init() {
         console.log("Initialization Start");

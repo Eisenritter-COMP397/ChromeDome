@@ -25,11 +25,15 @@ var scenes;
         //Start Override
         StartScene.prototype.Start = function () {
             //Initialize objects
-            this.welcomeLable = new objects.Label("Welcome to Chrome Dome!", "40px", "Fantasy", "#000000", this.sceneCenter, true);
+            this.background = new objects.Background(this.assetManager, "UIBackground");
+            this.flameEffect = new objects.AnimatedBackground(this.assetManager);
+            this.welcomeLable = new objects.Label("Welcome to Chrome Dome!", "60px", "Metal Mania", "#800000", this.sceneCenter, true);
             this.startButton = new objects.Button(this.assetManager, "NewGameButton", new math.Vector2(this.sceneCenter.x, this.sceneCenter.y + 200), true);
             this.Main();
         };
-        StartScene.prototype.Update = function () { };
+        StartScene.prototype.Update = function () {
+            this.flameEffect.Update();
+        };
         //When New Game Button is Clicked
         StartScene.prototype.startButoonClick = function () {
             //Change game state from Start to Game
@@ -38,6 +42,8 @@ var scenes;
         //Main Override
         StartScene.prototype.Main = function () {
             // Add Items to Scene
+            this.addChild(this.background);
+            this.addChild(this.flameEffect);
             this.addChild(this.welcomeLable);
             this.addChild(this.startButton);
             this.startButton.on("click", this.startButoonClick);
