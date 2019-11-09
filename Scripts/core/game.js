@@ -13,7 +13,8 @@
         { id: "ExitGameButton", src: "./Assets/ExitGameButton.png" },
         { id: "OptionsButton", src: "./Assets/OptionsButton.png" },
         { id: "UIBackground", src: "./Assets/ChromeDomeStartBG.png" },
-        { id: "FlameEffect", src: "./Assets/FlameEffect.png" }
+        { id: "FlameEffect", src: "./Assets/FlameEffect.png" },
+        { id: "Player", src: "./Assets/TankBlue.png" }
     ];
     function Init() {
         console.log("Initialization Start");
@@ -32,6 +33,7 @@
         createjs.Ticker.framerate = 60; // 60 FPS
         createjs.Ticker.on("tick", Update);
         // Set up default game state
+        objects.Game.stage = stage;
         objects.Game.currentScene = config.Scene.START;
         currentState = config.Scene.START;
         Main();

@@ -1,9 +1,10 @@
 module scenes {
     export class PlayScene extends objects.Scene {
         // Variables
-        private playLabel: objects.Label;
-        private nextButton: objects.Button;
-        private backButton: objects.Button;
+        //private playLabel: objects.Label;
+        //private nextButton: objects.Button;
+        //private backButton: objects.Button;
+        private player: objects.Player;
 
 
         // Constructor
@@ -16,16 +17,13 @@ module scenes {
         // Methods
         public Start(): void {
             // Initialize our variables
-            this.playLabel = new objects.Label(
-                "Game Playing", "40px", "Consolas", "#000000", this.sceneCenter, true);
-            this.nextButton = new objects.Button(this.assetManager, "NewGameButton", 
-            new math.Vector2(100,this.sceneSize.y-100),true);
-            this.backButton = new objects.Button(this.assetManager, "ExitGameButton", 
-            new math.Vector2(this.sceneSize.x-100,this.sceneSize.y-100),true);
+            this.player = new objects.Player(this.assetManager,this);
             this.Main();
         }
 
-        public Update(): void {}
+        public Update(): void {
+            this.player.Update();
+        }
 
         private nextButtonClick(): void {
             objects.Game.currentScene = config.Scene.OVER;
@@ -36,13 +34,7 @@ module scenes {
         }
 
         public Main(): void {
-            this.addChild(this.playLabel);
-            this.addChild(this.nextButton);
-            this.addChild(this.backButton);
-
-            // Define event handlers for the buttons
-            this.nextButton.on("click", this.nextButtonClick);
-            this.backButton.on("click", this.backButtonClick);
+            this.addChild(this.player);
         }
     }
 } 
