@@ -1,7 +1,7 @@
 module math{
     export class Vector2 extends createjs.Point{
         constructor(x:number=0, y: number=0){
-            super(0,0);
+            super(x,y);
         }
 
         public static Distance(p1:Vector2, p2:Vector2):number{

@@ -19,9 +19,8 @@ var objects;
         // Constructior
         function Scene(assetManager) {
             var _this = _super.call(this) || this;
-            // Variables
-            _this.sceneWidth = 800;
-            _this.sceneHeight = 640;
+            _this.sceneSize = new math.Vector2(800, 640);
+            _this.sceneCenter = new math.Vector2(400, 320);
             _this.assetManager = assetManager;
             return _this;
         }

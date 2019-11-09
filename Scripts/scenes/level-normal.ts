@@ -5,6 +5,7 @@ module scenes {
         private nextButton: objects.Button;
         private backButton: objects.Button;
 
+
         // Constructor
         constructor(assetManager:createjs.LoadQueue) {
             super(assetManager);
@@ -16,9 +17,11 @@ module scenes {
         public Start(): void {
             // Initialize our variables
             this.playLabel = new objects.Label(
-                "Game Playing", "40px", "Consolas", "#000000", 320, 240, true);
-            this.nextButton = new objects.Button(this.assetManager, "NewGameButton", 500, 340);
-            this.backButton = new objects.Button(this.assetManager, "ExitGameButton", 100, 340);
+                "Game Playing", "40px", "Consolas", "#000000", this.sceneCenter, true);
+            this.nextButton = new objects.Button(this.assetManager, "NewGameButton", 
+            new math.Vector2(100,this.sceneSize.y-100),true);
+            this.backButton = new objects.Button(this.assetManager, "ExitGameButton", 
+            new math.Vector2(this.sceneSize.x-100,this.sceneSize.y-100),true);
             this.Main();
         }
 

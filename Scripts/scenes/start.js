@@ -25,8 +25,8 @@ var scenes;
         //Start Override
         StartScene.prototype.Start = function () {
             //Initialize objects
-            this.welcomeLable = new objects.Label("Welcome to Chrome Dome!", "40px", "Fantasy", "#000000", this.sceneWidth / 2, this.sceneHeight / 2, true);
-            this.startButton = new objects.Button(this.assetManager, "NewGameButton", 320, 300);
+            this.welcomeLable = new objects.Label("Welcome to Chrome Dome!", "40px", "Fantasy", "#000000", this.sceneCenter, true);
+            this.startButton = new objects.Button(this.assetManager, "NewGameButton", new math.Vector2(this.sceneCenter.x, this.sceneCenter.y + 200), true);
             this.Main();
         };
         StartScene.prototype.Update = function () { };

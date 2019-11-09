@@ -18,13 +18,16 @@ var objects;
         __extends(Button, _super);
         // Variables
         // Constructor
-        function Button(assetManager, imageString, x, y) {
-            if (x === void 0) { x = 0; }
-            if (y === void 0) { y = 0; }
+        function Button(assetManager, imageString, location, isCentered) {
+            if (isCentered === void 0) { isCentered = false; }
             var _this = _super.call(this, assetManager.getResult(imageString)) || this;
+            if (isCentered) {
+                _this.regX = _this.getBounds().width * 0.5;
+                _this.regY = _this.getBounds().height * 0.5;
+            }
             // Set default position
-            _this.x = x;
-            _this.y = y;
+            _this.x = location.x;
+            _this.y = location.y;
             // Set event handlers
             _this.on("mouseover", _this.mouseOver);
             _this.on("mouseout", _this.mouseOut);
@@ -44,9 +47,7 @@ var objects;
     // Labels
     var Label = /** @class */ (function (_super) {
         __extends(Label, _super);
-        function Label(labelString, fontSize, fontFamily, fontColor, x, y, isCentered) {
-            if (x === void 0) { x = 0; }
-            if (y === void 0) { y = 0; }
+        function Label(labelString, fontSize, fontFamily, fontColor, location, isCentered) {
             if (isCentered === void 0) { isCentered = false; }
             var _this = _super.call(this, labelString, fontSize + " " + fontFamily, fontColor) || this;
             // Set the registration point if true to be in the middle
@@ -55,8 +56,8 @@ var objects;
                 _this.regY = _this.getMeasuredHeight() * 0.5;
             }
             // Set default position
-            _this.x = x;
-            _this.y = y;
+            _this.x = location.x;
+            _this.y = location.y;
             return _this;
         }
         return Label;

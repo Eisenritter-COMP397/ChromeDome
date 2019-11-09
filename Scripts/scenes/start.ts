@@ -2,6 +2,7 @@ module scenes{
         // Start Scene
         export class StartScene extends objects.Scene {
             // Variables
+
             private welcomeLable: objects.Label;
             private startButton: objects.Button;
             //Constructor
@@ -11,14 +12,16 @@ module scenes{
             }
             //Start Override
             public Start(): void {
+
                 //Initialize objects
 
                 this.welcomeLable = new objects.Label(
 
                     "Welcome to Chrome Dome!", "40px", "Fantasy", "#000000", 
-                    this.sceneWidth/2,this.sceneHeight/2, true);
+                    this.sceneCenter, true);
     
-                this.startButton = new objects.Button(this.assetManager, "NewGameButton", 320, 300);
+                this.startButton = new objects.Button(this.assetManager, "NewGameButton", 
+                new math.Vector2(this.sceneCenter.x, this.sceneCenter.y+200),true);
                 this.Main();
             }
             public Update():void{}

@@ -23,8 +23,8 @@ var scenes;
         }
         //Method
         GameOverScene.prototype.Start = function () {
-            this.gameOverLabel = new objects.Label("Game Over!", "40px", "Fantasy", "#000000", 320, 240, true);
-            this.backButton = new objects.Button(this.assetManager, "NewGameButton", 320, 340);
+            this.gameOverLabel = new objects.Label("Game Over!", "40px", "Fantasy", "#000000", this.sceneCenter, true);
+            this.backButton = new objects.Button(this.assetManager, "NewGameButton", new math.Vector2(this.sceneCenter.x, this.sceneCenter.y + 200), true);
             this.Main();
         };
         GameOverScene.prototype.Update = function () { };

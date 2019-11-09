@@ -18,7 +18,7 @@ var math;
         function Vector2(x, y) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
-            return _super.call(this, 0, 0) || this;
+            return _super.call(this, x, y) || this;
         }
         Vector2.Distance = function (p1, p2) {
             return Math.floor(Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2)));
