@@ -68,10 +68,10 @@ var objects;
                 this.x += 1.5;
             }
             if (objects.Game.keyboardManager.moveUp) {
-                this.x -= 1.5;
+                this.y -= 1.5;
             }
             if (objects.Game.keyboardManager.moveDown) {
-                this.x += 1.5;
+                this.y += 1.5;
             }
         };
         Player.prototype.CheckBound = function () {
