@@ -5,9 +5,10 @@
     // Global Game Variables
     let canvas = document.getElementById("canvas");
     let stage: createjs.Stage;
-
+    
     let assetManager: createjs.LoadQueue;
     let assetManifest: any[];
+    let keyboardManager: managers.Keyboard;
 
     // Store current scene and state information
     let currentScene: objects.Scene;
@@ -46,6 +47,11 @@
         objects.Game.stage = stage;
         objects.Game.currentScene = config.Scene.START;
         currentState = config.Scene.START;
+
+                // Create our keyboard object and set the global reference
+                keyboardManager = new managers.Keyboard;
+                objects.Game.keyboardManager = keyboardManager;
+        
 
         Main();
     }

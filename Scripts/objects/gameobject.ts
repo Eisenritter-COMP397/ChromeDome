@@ -57,11 +57,45 @@ module objects {
         }
         public Reset():void {}
         public Move():void {
-            // We reference the stage objects and get mouse position
-            // this.x = objects.Game.stage.mouseX;
-            // This is evetually replaced with keyboard input
-            // Maybe xbox controller...
+            if(objects.Game.keyboardManager.moveLeft)
+            {
+                this.x -= 1.5;
+            }
+            if(objects.Game.keyboardManager.moveRight)
+            {
+                this.x += 1.5;
+            }
+            if(objects.Game.keyboardManager.moveUp)
+            {
+                this.x -= 1.5;
+            }
+            if(objects.Game.keyboardManager.moveDown)
+            {
+                this.x += 1.5;
+            }
         }
-        public CheckBound():void {}
+        public CheckBound():void {
+            // Right boundary
+            if(this.x >= this._currentScene.sceneSize.x - this.halfW) {
+                this.x = this._currentScene.sceneSize.x - this.halfW;
+            }
+
+            // Left boundary
+            if(this.x <= this.halfW) {
+                this.x = this.halfW;
+            }
+
+            // Bottom boundary
+            if(this.y >= this._currentScene.sceneSize.y - this.halfH) {
+                this.y = this._currentScene.sceneSize.y - this.halfH;
+            }
+
+            // Top boundary
+            if(this.y <= this.halfH {
+                this.y = this.halfH;
+            }
+
+
+        }
     }
 } 
