@@ -19,11 +19,15 @@ var objects;
         // Constructior
         function Scene(assetManager) {
             var _this = _super.call(this) || this;
+            // Variables
+            _this.sceneWidth = 800;
+            _this.sceneHeight = 640;
             _this.assetManager = assetManager;
             return _this;
         }
         // Methods
-        Scene.prototype.Start = function () { };
+        Scene.prototype.Start = function () {
+        };
         Scene.prototype.Update = function () { };
         Scene.prototype.Main = function () { };
         return Scene;

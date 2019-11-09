@@ -12,8 +12,11 @@ module scenes{
             //Start Override
             public Start(): void {
                 //Initialize objects
+
                 this.welcomeLable = new objects.Label(
-                    "Welcome to Chrome Dome!", "60px", "Fantasy", "#000000", 320, 240, true);
+
+                    "Welcome to Chrome Dome!", "40px", "Fantasy", "#000000", 
+                    this.sceneWidth/2,this.sceneHeight/2, true);
     
                 this.startButton = new objects.Button(this.assetManager, "NewGameButton", 320, 300);
                 this.Main();
