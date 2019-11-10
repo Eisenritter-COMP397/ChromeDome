@@ -7,6 +7,7 @@ module scenes {
         private player: objects.Player;
         private enemies: objects.Enemy[];
         private enemyNum: number;
+        private scoreBoard: managers.Scoreboard;
 
         private bgm: createjs.AbstractSoundInstance;
 
@@ -27,6 +28,8 @@ module scenes {
             for(let i = 0; i < this.enemyNum; i++) {
                 this.enemies[i] = new objects.Enemy(this.assetManager,this);
             }
+
+            this.scoreBoard = new managers.Scoreboard;
 
 
             // Initialize Sound
@@ -59,6 +62,9 @@ module scenes {
             this.enemies.forEach(e => {
                 this.addChild(e);
             });
+
+            this.addChild(this.scoreBoard.scoreLabel);
+            this.addChild(this.scoreBoard.highScoreLabel);
         }
     }
 } 

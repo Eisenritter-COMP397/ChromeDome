@@ -4,7 +4,7 @@ module objects {
         // Variables
         protected speedX: number;
         protected speedY: number;
-        public isCollisding: boolean;   // collision check boolean
+        public isColliding: boolean;   // collision check boolean
 
         public width: number;
         public height: number;
@@ -32,7 +32,7 @@ module objects {
             this.regX = this.halfW;
             this.regY = this.halfH;
 
-            this.isCollisding =false;
+            this.isColliding =false;
         }
 
         public Start():void {}
@@ -106,10 +106,12 @@ module objects {
     export class Enemy extends objects.GameObject {
         // Variables
         public isDead: boolean = false;
+        public transform: components.Transform;
         // Constructor
         constructor(assetManager:createjs.LoadQueue,scene: Scene) {
             super(assetManager, "Enemy");
             this._currentScene=scene;
+            this.transform = new components.Transform(new math.Vector2(this.x,this.y));
             this.Start();
         }
         // Methods

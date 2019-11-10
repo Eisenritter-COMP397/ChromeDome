@@ -33,7 +33,7 @@ var objects;
             // Registration Points
             this.regX = this.halfW;
             this.regY = this.halfH;
-            this.isCollisding = false;
+            this.isColliding = false;
         };
         GameObject.prototype.Start = function () { };
         GameObject.prototype.Update = function () { };
@@ -108,6 +108,7 @@ var objects;
             // Variables
             _this.isDead = false;
             _this._currentScene = scene;
+            _this.transform = new components.Transform(new math.Vector2(_this.x, _this.y));
             _this.Start();
             return _this;
         }

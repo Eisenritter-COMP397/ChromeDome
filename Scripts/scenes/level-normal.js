@@ -30,6 +30,7 @@ var scenes;
             for (var i = 0; i < this.enemyNum; i++) {
                 this.enemies[i] = new objects.Enemy(this.assetManager, this);
             }
+            this.scoreBoard = new managers.Scoreboard;
             // Initialize Sound
             createjs.Sound.stop();
             this.bgm = createjs.Sound.play("level1bgm");
@@ -57,6 +58,8 @@ var scenes;
             this.enemies.forEach(function (e) {
                 _this.addChild(e);
             });
+            this.addChild(this.scoreBoard.scoreLabel);
+            this.addChild(this.scoreBoard.highScoreLabel);
         };
         return PlayScene;
     }(objects.Scene));

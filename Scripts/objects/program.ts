@@ -5,5 +5,6 @@ module objects{
         public static currentScene: number;
         public static keyboardManager: managers.Keyboard;
         public static canavas: HTMLCanvasElement;
+        public static currentSceneObject: objects.Scene;
     }
 }
