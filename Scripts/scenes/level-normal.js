@@ -25,7 +25,11 @@ var scenes;
         PlayScene.prototype.Start = function () {
             // Initialize our variables
             this.player = new objects.Player(this.assetManager, this);
-            this.enemy = new objects.Enemy(this.assetManager, this);
+            this.enemies = new Array();
+            this.enemyNum = 5;
+            for (var i = 0; i < this.enemyNum; i++) {
+                this.enemies[i] = new objects.Enemy(this.assetManager, this);
+            }
             // Initialize Sound
             createjs.Sound.stop();
             this.bgm = createjs.Sound.play("level1bgm");
@@ -35,7 +39,9 @@ var scenes;
         };
         PlayScene.prototype.Update = function () {
             this.player.Update();
-            this.enemy.Update();
+            this.enemies.forEach(function (e) {
+                e.Update();
+            });
         };
         PlayScene.prototype.nextButtonClick = function () {
             objects.Game.currentScene = config.Scene.OVER;
@@ -44,8 +50,11 @@ var scenes;
             objects.Game.currentScene = config.Scene.START;
         };
         PlayScene.prototype.Main = function () {
+            var _this = this;
             this.addChild(this.player);
-            this.addChild(this.enemy);
+            this.enemies.forEach(function (e) {
+                _this.addChild(e);
+            });
         };
         return PlayScene;
     }(objects.Scene));

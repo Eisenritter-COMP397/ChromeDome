@@ -111,8 +111,8 @@ module objects {
         }
         // Methods
         public Start():void {
-            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x) + 50;
-            this.y = Math.floor(Math.random() * - this._currentScene.sceneSize.y) - 50;
+            this.Reset();
+
         }
         public Update():void {
             this.Move();
@@ -120,15 +120,15 @@ module objects {
         }
         public Reset():void {
             this.isDead = true;
-            this.x = this._currentScene.sceneCenter.x-500;
-            this.y = this._currentScene.sceneCenter.y-500;
+            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
+            this.y = Math.floor(Math.random() * - this._currentScene.sceneSize.y);
         }
         public Move():void {
             this.y += 2.5;
         }
         public CheckBounds():void {
             if(this.y >= this._currentScene.sceneSize.y + this.halfH+5) {
-                this.y = -50;
+                this.Reset();
             }
         }
     }

@@ -112,8 +112,7 @@ var objects;
         }
         // Methods
         Enemy.prototype.Start = function () {
-            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x) + 50;
-            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y) - 50;
+            this.Reset();
         };
         Enemy.prototype.Update = function () {
             this.Move();
@@ -121,15 +120,15 @@ var objects;
         };
         Enemy.prototype.Reset = function () {
             this.isDead = true;
-            this.x = this._currentScene.sceneCenter.x - 500;
-            this.y = this._currentScene.sceneCenter.y - 500;
+            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
+            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
         };
         Enemy.prototype.Move = function () {
             this.y += 2.5;
         };
         Enemy.prototype.CheckBounds = function () {
             if (this.y >= this._currentScene.sceneSize.y + this.halfH + 5) {
-                this.y = -50;
+                this.Reset();
             }
         };
         return Enemy;
