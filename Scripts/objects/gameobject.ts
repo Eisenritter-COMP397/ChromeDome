@@ -44,7 +44,7 @@ module objects {
     // Player Game Objects
     export class Player extends objects.GameObject {
         // Variables
-
+        public isDead:boolean;
         // Constructor
         constructor(assetManager:createjs.LoadQueue,scene: Scene) {
             super(assetManager, "Player");
@@ -56,6 +56,7 @@ module objects {
         public Start():void {
             this.y = this._currentScene.sceneSize.y-this.halfH;
             this.x = this._currentScene.sceneCenter.x;
+            this.isDead = false;
         }
         public Update():void {
             this.Move();

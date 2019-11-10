@@ -46,7 +46,6 @@ var objects;
     // Player Game Objects
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
-        // Variables
         // Constructor
         function Player(assetManager, scene) {
             var _this = _super.call(this, assetManager, "Player") || this;
@@ -58,6 +57,7 @@ var objects;
         Player.prototype.Start = function () {
             this.y = this._currentScene.sceneSize.y - this.halfH;
             this.x = this._currentScene.sceneCenter.x;
+            this.isDead = false;
         };
         Player.prototype.Update = function () {
             this.Move();

@@ -10,11 +10,12 @@ var managers;
                 (object1.y + object1.halfH) > (object2.y - object2.halfH) &&
                 (object1.y - object1.halfH) < (object2.y + object2.halfH)) {
                 switch (object2.name) {
-                    case "enemy":
+                    case "Enemy":
                         // Change the score
                         // Create my explosion
                         break;
                 }
+                return true;
                 object2.isColliding = true;
             }
         };

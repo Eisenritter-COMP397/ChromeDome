@@ -12,7 +12,7 @@ module scenes {
         //Method
         public Start(): void {
             this.gameOverLabel = new objects.Label(
-                "Game Over!", "40px", "Fantasy", "#000000", this.sceneCenter, true);
+                "Game Over!", "40px", "Metal Mania", "#000000", this.sceneCenter, true);
 
             this.backButton = new objects.Button(this.assetManager, "NewGameButton",
                 new math.Vector2(this.sceneCenter.x, this.sceneCenter.y + 200), true);

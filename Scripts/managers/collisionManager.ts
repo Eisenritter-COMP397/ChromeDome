@@ -9,13 +9,14 @@ module managers {
 
                     switch(object2.name) 
                     {
-                        case "enemy":
+                        case "Enemy":
                             // Change the score
 
                             // Create my explosion
+
                         break;
                     }
-
+                    return true;
                     object2.isColliding = true;
                 }
             }

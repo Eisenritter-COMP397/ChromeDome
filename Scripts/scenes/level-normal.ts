@@ -45,7 +45,13 @@ module scenes {
             this.player.Update();
             this.enemies.forEach(e => {
                 e.Update();
-                managers.Collision.Check(this.player, e);
+                this.player.isDead=managers.Collision.CheckAABB(this.player, e);
+                if(this.player.isDead) {
+                    // Disable music
+                    this.bgm.stop();
+                    objects.Game.currentScene = config.Scene.OVER;
+                }
+
             });
         }
 
@@ -64,7 +70,7 @@ module scenes {
             });
 
             this.addChild(this.scoreBoard.scoreLabel);
-            this.addChild(this.scoreBoard.highScoreLabel);
+            this.addChild(this.scoreBoard.highScoreLabel)
         }
     }
 } 
