@@ -11,12 +11,13 @@ var managers;
                 (object1.y - object1.halfH) < (object2.y + object2.halfH)) {
                 switch (object2.name) {
                     case "Enemy":
-                        // Change the score
-                        // Create my explosion
+                        managers.Game.currentSceneObject.removeChild(object1);
+                        object1.Reset();
+                        object2.Reset();
                         break;
                 }
-                return true;
                 object2.isColliding = true;
+                return true;
             }
         };
         Collision.Check = function (object1, object2) {

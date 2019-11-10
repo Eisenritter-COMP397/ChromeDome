@@ -26,6 +26,7 @@ var scenes;
             // Initialize our variables
             this.player = new objects.Player(this.assetManager, this);
             this.laserManager = new managers.Laser();
+            managers.Game.laserManager = this.laserManager;
             this.enemies = new Array();
             this.enemyNum = 5;
             for (var i = 0; i < this.enemyNum; i++) {
@@ -44,17 +45,20 @@ var scenes;
             this.player.Update();
             this.laserManager.Update();
             this.enemies.forEach(function (e) {
-                e.Update();
-                _this.player.isDead = managers.Collision.CheckAABB(_this.player, e);
-                if (_this.player.isDead) {
-                    // Disable music
-                    _this.bgm.stop();
-                    managers.Game.currentScene = config.Scene.OVER;
+                if (!e.isDead) {
+                    e.Update();
+                    _this.player.isDead = managers.Collision.CheckAABB(_this.player, e);
+                    if (_this.player.isDead) {
+                        // Disable music
+                        _this.bgm.stop();
+                        managers.Game.currentScene = config.Scene.OVER;
+                    }
                 }
-                _this.laserManager.Lasers.forEach(function (laser) {
-                    _this.enemies.forEach(function (enemy) {
-                        managers.Collision.Check(laser, enemy);
-                    });
+            });
+            // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
+            this.laserManager.Lasers.forEach(function (laser) {
+                _this.enemies.forEach(function (enemy) {
+                    managers.Collision.CheckAABB(laser, enemy);
                 });
             });
         };

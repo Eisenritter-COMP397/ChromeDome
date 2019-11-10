@@ -25,6 +25,7 @@ module scenes {
             // Initialize our variables
             this.player = new objects.Player(this.assetManager, this);
             this.laserManager = new managers.Laser();
+            managers.Game.laserManager = this.laserManager;
 
 
             this.enemies = new Array<objects.Enemy>();
@@ -48,22 +49,26 @@ module scenes {
         public Update(): void {
             this.player.Update();
             this.laserManager.Update();
+
             this.enemies.forEach(e => {
-                e.Update();
+                if(!e.isDead) {
+                    e.Update();
 
-
-                this.player.isDead = managers.Collision.CheckAABB(this.player, e);
-                if (this.player.isDead) {
-                    // Disable music
-                    this.bgm.stop();
-                    managers.Game.currentScene = config.Scene.OVER;
+                    this.player.isDead= managers.Collision.CheckAABB(this.player, e);
+                    if (this.player.isDead) {
+                        // Disable music
+                        this.bgm.stop();
+                        managers.Game.currentScene = config.Scene.OVER;
+                    }
                 }
-                this.laserManager.Lasers.forEach(laser => {
-                    this.enemies.forEach(enemy => {
-                        managers.Collision.Check(laser, enemy);
-                    });
-                });
+            });
 
+            // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
+            this.laserManager.Lasers.forEach(laser => {
+                this.enemies.forEach(enemy => {
+                    managers.Collision.CheckAABB(laser, enemy)
+
+                });
             });
 
         }

@@ -139,7 +139,8 @@ module objects {
         }
         // Methods
         public Start():void {
-            this.Reset();
+            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
+            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
 
         }
         public Update():void {
@@ -147,9 +148,10 @@ module objects {
             this.CheckBounds();
         }
         public Reset():void {
-            this.isDead = true;
+            this.isDead = false;
             this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
-            this.y = Math.floor(Math.random() * - this._currentScene.sceneSize.y);
+            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
+
         }
         public Move():void {
             this.y += 2.5;
@@ -162,37 +164,36 @@ module objects {
     }
     // Laser Projectiles
     export class Laser extends objects.GameObject {
-        // Variables
-        // Constructor
-        constructor(assetManager:createjs.LoadQueue)
-        {
-            super(assetManager,"Enemy");
-
-            this.Start();
+            // Variables
+            // Constructor
+            constructor(assetManager:createjs.LoadQueue)
+            {
+                super(assetManager,"laser1");
+    
+                this.Start();
+            }
+            // Methods
+            public Start():void {
+                // We may have to scale the laser to an appropriate size
+    
+                this.speedX = 0;
+                this.speedY = -10;
+    
+                this.Reset();
+            }
+            public Update():void {
+                this.Move();
+            }
+            public Reset():void {
+                this.x = -5000;
+                this.y = -5000;
+            }
+            public Move():void {
+                this.y += this.speedY;
+            }
+    
+            public Main():void {}
+            public CheckBounds():void {}
         }
-        // Methods
-        public Start():void {
-            // We may have to scale the laser to an appropriate size
-
-            this.speedX = 0;
-            this.speedY = -10;
-
-            this.Reset();
-        }
-        public Update():void {
-            this.Move();
-        }
-        public Reset():void {
-            this.x = -5000;
-            this.y = -5000;
-        }
-        public Move():void {
-            this.y += this.speedY;
-        }
-
-        public Main():void {}
-        public CheckBounds():void {}
-    }
-
 } 
 

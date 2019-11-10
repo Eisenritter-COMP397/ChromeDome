@@ -133,14 +133,15 @@ var objects;
         }
         // Methods
         Enemy.prototype.Start = function () {
-            this.Reset();
+            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
+            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
         };
         Enemy.prototype.Update = function () {
             this.Move();
             this.CheckBounds();
         };
         Enemy.prototype.Reset = function () {
-            this.isDead = true;
+            this.isDead = false;
             this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
             this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
         };
@@ -161,7 +162,7 @@ var objects;
         // Variables
         // Constructor
         function Laser(assetManager) {
-            var _this = _super.call(this, assetManager, "Enemy") || this;
+            var _this = _super.call(this, assetManager, "laser1") || this;
             _this.Start();
             return _this;
         }

@@ -43,6 +43,7 @@
         // Set up default game state
         managers.Game.stage = stage;
         managers.Game.currentScene = config.Scene.START;
+        managers.Game.assetManager = assetManager;
         currentState = config.Scene.START;
         // Create our keyboard object and set the global reference
         keyboardManager = new managers.Keyboard;
