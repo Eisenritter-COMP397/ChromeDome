@@ -4,13 +4,14 @@ module objects {
         // Variables
         protected speedX: number;
         protected speedY: number;
+        public isCollisding: boolean;   // collision check boolean
 
         public width: number;
         public height: number;
         public halfW: number;   // Half-width; Useful for collision detection
         public halfH: number;   // Half-height
 
-        public _currentScene: Scene;
+        public _currentScene: Scene;    // this gets the current scene properties
         // Constructor
         constructor(assetManager:createjs.LoadQueue, imageString:string) {
             super(assetManager.getResult(imageString));
@@ -30,6 +31,8 @@ module objects {
             // Registration Points
             this.regX = this.halfW;
             this.regY = this.halfH;
+
+            this.isCollisding =false;
         }
 
         public Start():void {}

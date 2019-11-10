@@ -38,9 +38,11 @@ var scenes;
             this.Main();
         };
         PlayScene.prototype.Update = function () {
+            var _this = this;
             this.player.Update();
             this.enemies.forEach(function (e) {
                 e.Update();
+                managers.Collision.Check(_this.player, e);
             });
         };
         PlayScene.prototype.nextButtonClick = function () {
