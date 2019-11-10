@@ -17,10 +17,10 @@
         { id: "FlameEffect", src: "./Assets/FlameEffect.png" },
         { id: "Player", src: "./Assets/TankBlue.png" },
         { id: "startmusic", src: "./Assets/Music/opening.mp3" },
-        { id: "startmusic", src: "./Assets/Music/level1.mp3" },
-        { id: "startmusic", src: "./Assets/Music/level2.mp3" },
-        { id: "startmusic", src: "./Assets/Music/level3.mp3" },
-        { id: "startmusic", src: "./Assets/Music/gameover.mp3" },
+        { id: "level1bgm", src: "./Assets/Music/level1.mp3" },
+        { id: "level2bgm", src: "./Assets/Music/level2.mp3" },
+        { id: "level3bgm", src: "./Assets/Music/level3.mp3" },
+        { id: "gameoverbgm", src: "./Assets/Music/gameover.mp3" },
         { id: "Enemy", src: "./Assets/TankRed.png" }
     ];
     function Init() {

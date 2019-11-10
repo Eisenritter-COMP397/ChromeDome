@@ -105,7 +105,7 @@ module objects {
         public isDead: boolean = false;
         // Constructor
         constructor(assetManager:createjs.LoadQueue,scene: Scene) {
-            super(assetManager, "enemy");
+            super(assetManager, "Enemy");
             this._currentScene=scene;
             this.Start();
         }
@@ -124,7 +124,7 @@ module objects {
             this.y = this._currentScene.sceneCenter.y-500;
         }
         public Move():void {
-            this.y += 5;
+            this.y += 2.5;
         }
         public CheckBounds():void {
             if(this.y >= this._currentScene.sceneSize.y + this.halfH+5) {

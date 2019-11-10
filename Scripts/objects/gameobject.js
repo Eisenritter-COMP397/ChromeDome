@@ -103,7 +103,7 @@ var objects;
         __extends(Enemy, _super);
         // Constructor
         function Enemy(assetManager, scene) {
-            var _this = _super.call(this, assetManager, "enemy") || this;
+            var _this = _super.call(this, assetManager, "Enemy") || this;
             // Variables
             _this.isDead = false;
             _this._currentScene = scene;
@@ -125,7 +125,7 @@ var objects;
             this.y = this._currentScene.sceneCenter.y - 500;
         };
         Enemy.prototype.Move = function () {
-            this.y += 5;
+            this.y += 2.5;
         };
         Enemy.prototype.CheckBounds = function () {
             if (this.y >= this._currentScene.sceneSize.y + this.halfH + 5) {

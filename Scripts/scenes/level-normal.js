@@ -28,7 +28,7 @@ var scenes;
             this.enemy = new objects.Enemy(this.assetManager, this);
             // Initialize Sound
             createjs.Sound.stop();
-            this.bgm = createjs.Sound.play("level1");
+            this.bgm = createjs.Sound.play("level1bgm");
             this.bgm.loop = -1; // Loop forever
             this.bgm.volume = 1;
             this.Main();
