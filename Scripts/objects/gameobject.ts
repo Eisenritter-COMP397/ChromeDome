@@ -44,6 +44,7 @@ module objects {
     // Player Game Objects
     export class Player extends objects.GameObject {
         // Variables
+        private laserSpawn:math.Vector2;
         public isDead:boolean;
         // Constructor
         constructor(assetManager:createjs.LoadQueue,scene: Scene) {
@@ -61,22 +62,23 @@ module objects {
         public Update():void {
             this.Move();
             this.CheckBound();
+            this.LaserFire();
         }
         public Reset():void {}
         public Move():void {
-            if(objects.Game.keyboardManager.moveLeft)
+            if(managers.Game.keyboardManager.moveLeft)
             {
                 this.x -= 1.5;
             }
-            if(objects.Game.keyboardManager.moveRight)
+            if(managers.Game.keyboardManager.moveRight)
             {
                 this.x += 1.5;
             }
-            if(objects.Game.keyboardManager.moveUp)
+            if(managers.Game.keyboardManager.moveUp)
             {
                 this.y -= 1.5;
             }
-            if(objects.Game.keyboardManager.moveDown)
+            if(managers.Game.keyboardManager.moveDown)
             {
                 this.y += 1.5;
             }
@@ -100,6 +102,26 @@ module objects {
             // Top boundary
             if(this.y <= this.halfH) {
                 this.y = this.halfH;
+            }
+        }
+        public LaserFire():void {
+            if(!this.isDead) {
+                let ticker:number = createjs.Ticker.getTicks();
+
+                // Player is trying to shoot the laser
+                if((managers.Game.keyboardManager.shoot) && (ticker % 10 == 0)) {
+                    this.laserSpawn = new math.Vector2(this.x, this.y - this.halfH);
+                    let currentLaser = managers.Game.laserManager.CurrentLaser;
+                    let laser = managers.Game.laserManager.Lasers[currentLaser];
+                    laser.x = this.laserSpawn.x;
+                    laser.y = this.laserSpawn.y;
+                    managers.Game.laserManager.CurrentLaser++;
+                    if(managers.Game.laserManager.CurrentLaser > 49) {
+                        managers.Game.laserManager.CurrentLaser = 0;
+                    }
+
+                    // Play a laser sound
+                }
             }
         }
     }
@@ -138,6 +160,39 @@ module objects {
             }
         }
     }
+    // Laser Projectiles
+    export class Laser extends objects.GameObject {
+        // Variables
+        // Constructor
+        constructor(assetManager:createjs.LoadQueue)
+        {
+            super(assetManager,"Enemy");
 
+            this.Start();
+        }
+        // Methods
+        public Start():void {
+            // We may have to scale the laser to an appropriate size
+
+            this.speedX = 0;
+            this.speedY = -10;
+
+            this.Reset();
+        }
+        public Update():void {
+            this.Move();
+        }
+        public Reset():void {
+            this.x = -5000;
+            this.y = -5000;
+        }
+        public Move():void {
+            this.y += this.speedY;
+        }
+
+        public Main():void {}
+        public CheckBounds():void {}
+    }
 
 } 
+

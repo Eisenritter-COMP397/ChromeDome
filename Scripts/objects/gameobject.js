@@ -62,19 +62,20 @@ var objects;
         Player.prototype.Update = function () {
             this.Move();
             this.CheckBound();
+            this.LaserFire();
         };
         Player.prototype.Reset = function () { };
         Player.prototype.Move = function () {
-            if (objects.Game.keyboardManager.moveLeft) {
+            if (managers.Game.keyboardManager.moveLeft) {
                 this.x -= 1.5;
             }
-            if (objects.Game.keyboardManager.moveRight) {
+            if (managers.Game.keyboardManager.moveRight) {
                 this.x += 1.5;
             }
-            if (objects.Game.keyboardManager.moveUp) {
+            if (managers.Game.keyboardManager.moveUp) {
                 this.y -= 1.5;
             }
-            if (objects.Game.keyboardManager.moveDown) {
+            if (managers.Game.keyboardManager.moveDown) {
                 this.y += 1.5;
             }
         };
@@ -94,6 +95,24 @@ var objects;
             // Top boundary
             if (this.y <= this.halfH) {
                 this.y = this.halfH;
+            }
+        };
+        Player.prototype.LaserFire = function () {
+            if (!this.isDead) {
+                var ticker = createjs.Ticker.getTicks();
+                // Player is trying to shoot the laser
+                if ((managers.Game.keyboardManager.shoot) && (ticker % 10 == 0)) {
+                    this.laserSpawn = new math.Vector2(this.x, this.y - this.halfH);
+                    var currentLaser = managers.Game.laserManager.CurrentLaser;
+                    var laser = managers.Game.laserManager.Lasers[currentLaser];
+                    laser.x = this.laserSpawn.x;
+                    laser.y = this.laserSpawn.y;
+                    managers.Game.laserManager.CurrentLaser++;
+                    if (managers.Game.laserManager.CurrentLaser > 49) {
+                        managers.Game.laserManager.CurrentLaser = 0;
+                    }
+                    // Play a laser sound
+                }
             }
         };
         return Player;
@@ -136,5 +155,37 @@ var objects;
         return Enemy;
     }(objects.GameObject));
     objects.Enemy = Enemy;
+    // Laser Projectiles
+    var Laser = /** @class */ (function (_super) {
+        __extends(Laser, _super);
+        // Variables
+        // Constructor
+        function Laser(assetManager) {
+            var _this = _super.call(this, assetManager, "Enemy") || this;
+            _this.Start();
+            return _this;
+        }
+        // Methods
+        Laser.prototype.Start = function () {
+            // We may have to scale the laser to an appropriate size
+            this.speedX = 0;
+            this.speedY = -10;
+            this.Reset();
+        };
+        Laser.prototype.Update = function () {
+            this.Move();
+        };
+        Laser.prototype.Reset = function () {
+            this.x = -5000;
+            this.y = -5000;
+        };
+        Laser.prototype.Move = function () {
+            this.y += this.speedY;
+        };
+        Laser.prototype.Main = function () { };
+        Laser.prototype.CheckBounds = function () { };
+        return Laser;
+    }(objects.GameObject));
+    objects.Laser = Laser;
 })(objects || (objects = {}));
 //# sourceMappingURL=gameobject.js.map

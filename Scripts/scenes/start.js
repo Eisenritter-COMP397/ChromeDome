@@ -42,7 +42,7 @@ var scenes;
         //When New Game Button is Clicked
         StartScene.prototype.startButoonClick = function () {
             //Change game state from Start to Game
-            objects.Game.currentScene = config.Scene.GAME;
+            managers.Game.currentScene = config.Scene.GAME;
         };
         //Main Override
         StartScene.prototype.Main = function () {

@@ -3,7 +3,7 @@ var managers;
     var Scoreboard = /** @class */ (function () {
         // Constructor
         function Scoreboard() {
-            this.scene = objects.Game.currentSceneObject;
+            this.scene = managers.Game.currentSceneObject;
             this.Init();
         }
         Object.defineProperty(Scoreboard.prototype, "Score", {

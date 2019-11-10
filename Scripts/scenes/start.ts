@@ -41,7 +41,7 @@ module scenes{
             //When New Game Button is Clicked
             private startButoonClick():void{
                 //Change game state from Start to Game
-                objects.Game.currentScene = config.Scene.GAME;
+                managers.Game.currentScene = config.Scene.GAME;
             }
             //Main Override
             public Main():void{

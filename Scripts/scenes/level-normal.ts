@@ -8,6 +8,7 @@ module scenes {
         private enemies: objects.Enemy[];
         private enemyNum: number;
         private scoreBoard: managers.Scoreboard;
+        private laserManager: managers.Laser;
 
         private bgm: createjs.AbstractSoundInstance;
 
@@ -23,10 +24,13 @@ module scenes {
         public Start(): void {
             // Initialize our variables
             this.player = new objects.Player(this.assetManager, this);
+            this.laserManager = new managers.Laser();
+
+
             this.enemies = new Array<objects.Enemy>();
             this.enemyNum = 5;
-            for(let i = 0; i < this.enemyNum; i++) {
-                this.enemies[i] = new objects.Enemy(this.assetManager,this);
+            for (let i = 0; i < this.enemyNum; i++) {
+                this.enemies[i] = new objects.Enemy(this.assetManager, this);
             }
 
             this.scoreBoard = new managers.Scoreboard;
@@ -43,30 +47,42 @@ module scenes {
 
         public Update(): void {
             this.player.Update();
+            this.laserManager.Update();
             this.enemies.forEach(e => {
                 e.Update();
-                this.player.isDead=managers.Collision.CheckAABB(this.player, e);
-                if(this.player.isDead) {
+
+
+                this.player.isDead = managers.Collision.CheckAABB(this.player, e);
+                if (this.player.isDead) {
                     // Disable music
                     this.bgm.stop();
-                    objects.Game.currentScene = config.Scene.OVER;
+                    managers.Game.currentScene = config.Scene.OVER;
                 }
+                this.laserManager.Lasers.forEach(laser => {
+                    this.enemies.forEach(enemy => {
+                        managers.Collision.Check(laser, enemy);
+                    });
+                });
 
             });
+
         }
 
         private nextButtonClick(): void {
-            objects.Game.currentScene = config.Scene.OVER;
+            managers.Game.currentScene = config.Scene.OVER;
         }
 
         private backButtonClick(): void {
-            objects.Game.currentScene = config.Scene.START;
+            managers.Game.currentScene = config.Scene.START;
         }
 
         public Main(): void {
             this.addChild(this.player);
             this.enemies.forEach(e => {
                 this.addChild(e);
+            });
+            this.laserManager.Lasers.forEach(laser => {
+                this.addChild(laser);
             });
 
             this.addChild(this.scoreBoard.scoreLabel);

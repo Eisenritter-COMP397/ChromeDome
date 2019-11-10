@@ -25,6 +25,7 @@ var scenes;
         PlayScene.prototype.Start = function () {
             // Initialize our variables
             this.player = new objects.Player(this.assetManager, this);
+            this.laserManager = new managers.Laser();
             this.enemies = new Array();
             this.enemyNum = 5;
             for (var i = 0; i < this.enemyNum; i++) {
@@ -41,27 +42,36 @@ var scenes;
         PlayScene.prototype.Update = function () {
             var _this = this;
             this.player.Update();
+            this.laserManager.Update();
             this.enemies.forEach(function (e) {
                 e.Update();
                 _this.player.isDead = managers.Collision.CheckAABB(_this.player, e);
                 if (_this.player.isDead) {
                     // Disable music
                     _this.bgm.stop();
-                    objects.Game.currentScene = config.Scene.OVER;
+                    managers.Game.currentScene = config.Scene.OVER;
                 }
+                _this.laserManager.Lasers.forEach(function (laser) {
+                    _this.enemies.forEach(function (enemy) {
+                        managers.Collision.Check(laser, enemy);
+                    });
+                });
             });
         };
         PlayScene.prototype.nextButtonClick = function () {
-            objects.Game.currentScene = config.Scene.OVER;
+            managers.Game.currentScene = config.Scene.OVER;
         };
         PlayScene.prototype.backButtonClick = function () {
-            objects.Game.currentScene = config.Scene.START;
+            managers.Game.currentScene = config.Scene.START;
         };
         PlayScene.prototype.Main = function () {
             var _this = this;
             this.addChild(this.player);
             this.enemies.forEach(function (e) {
                 _this.addChild(e);
+            });
+            this.laserManager.Lasers.forEach(function (laser) {
+                _this.addChild(laser);
             });
             this.addChild(this.scoreBoard.scoreLabel);
             this.addChild(this.scoreBoard.highScoreLabel);

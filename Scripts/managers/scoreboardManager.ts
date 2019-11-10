@@ -7,7 +7,7 @@ module managers {
         private score: number;
         private highScore: number;
 
-        public scene: objects.Scene= objects.Game.currentSceneObject;
+        public scene: objects.Scene= managers.Game.currentSceneObject;
 
         get Score():number {
             return this.score;
