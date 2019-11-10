@@ -25,6 +25,11 @@ var scenes;
         PlayScene.prototype.Start = function () {
             // Initialize our variables
             this.player = new objects.Player(this.assetManager, this);
+            // Initialize Sound
+            createjs.Sound.stop();
+            this.bgm = createjs.Sound.play("level1");
+            this.bgm.loop = -1; // Loop forever
+            this.bgm.volume = 1;
             this.Main();
         };
         PlayScene.prototype.Update = function () {

@@ -7,6 +7,7 @@ module scenes{
             private startButton: objects.Button;
             private background: objects.Background;
             private flameEffect: objects.AnimatedBackground;
+            private bgm: createjs.AbstractSoundInstance;
             //Constructor
             constructor(assetManager: createjs.LoadQueue) {
                 super(assetManager);
@@ -25,6 +26,12 @@ module scenes{
     
                 this.startButton = new objects.Button(this.assetManager, "NewGameButton", 
                 new math.Vector2(this.sceneCenter.x, this.sceneCenter.y+200),true);
+
+                // Initialize Sound
+                createjs.Sound.stop();
+                this.bgm = createjs.Sound.play("startmusic");
+                this.bgm.loop = -1; // Loop forever
+                this.bgm.volume = 1;
 
                 this.Main();
             }

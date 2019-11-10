@@ -20,7 +20,12 @@
         { id: "OptionsButton", src: "./Assets/OptionsButton.png" },
         { id: "UIBackground", src: "./Assets/ChromeDomeStartBG.png"},
         { id: "FlameEffect", src: "./Assets/FlameEffect.png"},
-        { id: "Player", src: "./Assets/TankBlue.png"}
+        { id: "Player", src: "./Assets/TankBlue.png"},
+        { id: "startmusic", src: "./Assets/Music/opening.mp3"},
+        { id: "startmusic", src: "./Assets/Music/level1.mp3"},
+        { id: "startmusic", src: "./Assets/Music/level2.mp3"},
+        { id: "startmusic", src: "./Assets/Music/level3.mp3"},
+        { id: "startmusic", src: "./Assets/Music/gameover.mp3"}
     ]
 
     function Init() {

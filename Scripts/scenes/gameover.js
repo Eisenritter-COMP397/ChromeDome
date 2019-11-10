@@ -25,6 +25,11 @@ var scenes;
         GameOverScene.prototype.Start = function () {
             this.gameOverLabel = new objects.Label("Game Over!", "40px", "Fantasy", "#000000", this.sceneCenter, true);
             this.backButton = new objects.Button(this.assetManager, "NewGameButton", new math.Vector2(this.sceneCenter.x, this.sceneCenter.y + 200), true);
+            // Initialize Sound
+            createjs.Sound.stop();
+            this.bgm = createjs.Sound.play("startmusic");
+            this.bgm.loop = -1; // Loop forever
+            this.bgm.volume = 1;
             this.Main();
         };
         GameOverScene.prototype.Update = function () { };

@@ -5,10 +5,11 @@ module scenes {
         //private nextButton: objects.Button;
         //private backButton: objects.Button;
         private player: objects.Player;
+        private bgm: createjs.AbstractSoundInstance;
 
 
         // Constructor
-        constructor(assetManager:createjs.LoadQueue) {
+        constructor(assetManager: createjs.LoadQueue) {
             super(assetManager);
 
             this.Start();
@@ -17,8 +18,15 @@ module scenes {
         // Methods
         public Start(): void {
             // Initialize our variables
-            this.player = new objects.Player(this.assetManager,this);
+            this.player = new objects.Player(this.assetManager, this);
+
+            // Initialize Sound
+            createjs.Sound.stop();
+            this.bgm = createjs.Sound.play("level1");
+            this.bgm.loop = -1; // Loop forever
+            this.bgm.volume = 1;
             this.Main();
+
         }
 
         public Update(): void {
