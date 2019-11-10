@@ -20,7 +20,8 @@
         { id: "startmusic", src: "./Assets/Music/level1.mp3" },
         { id: "startmusic", src: "./Assets/Music/level2.mp3" },
         { id: "startmusic", src: "./Assets/Music/level3.mp3" },
-        { id: "startmusic", src: "./Assets/Music/gameover.mp3" }
+        { id: "startmusic", src: "./Assets/Music/gameover.mp3" },
+        { id: "Enemy", src: "./Assets/TankRed.png" }
     ];
     function Init() {
         console.log("Initialization Start");

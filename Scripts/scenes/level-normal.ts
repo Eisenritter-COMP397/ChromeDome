@@ -5,6 +5,7 @@ module scenes {
         //private nextButton: objects.Button;
         //private backButton: objects.Button;
         private player: objects.Player;
+        private enemy: objects.Enemy;
         private bgm: createjs.AbstractSoundInstance;
 
 
@@ -19,6 +20,7 @@ module scenes {
         public Start(): void {
             // Initialize our variables
             this.player = new objects.Player(this.assetManager, this);
+            this.enemy = new objects.Enemy(this.assetManager,this);
 
             // Initialize Sound
             createjs.Sound.stop();
@@ -31,6 +33,7 @@ module scenes {
 
         public Update(): void {
             this.player.Update();
+            this.enemy.Update();
         }
 
         private nextButtonClick(): void {
@@ -43,6 +46,7 @@ module scenes {
 
         public Main(): void {
             this.addChild(this.player);
+            this.addChild(this.enemy);
         }
     }
 } 

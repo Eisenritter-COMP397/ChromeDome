@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
+    // Game Object Super Class
     var GameObject = /** @class */ (function (_super) {
         __extends(GameObject, _super);
         // Constructor
@@ -41,8 +42,10 @@ var objects;
         return GameObject;
     }(createjs.Bitmap));
     objects.GameObject = GameObject;
+    // Player Game Objects
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
+        // Variables
         // Constructor
         function Player(assetManager, scene) {
             var _this = _super.call(this, assetManager, "Player") || this;
@@ -95,5 +98,42 @@ var objects;
         return Player;
     }(objects.GameObject));
     objects.Player = Player;
+    // Enemy Game Object
+    var Enemy = /** @class */ (function (_super) {
+        __extends(Enemy, _super);
+        // Constructor
+        function Enemy(assetManager, scene) {
+            var _this = _super.call(this, assetManager, "enemy") || this;
+            // Variables
+            _this.isDead = false;
+            _this._currentScene = scene;
+            _this.Start();
+            return _this;
+        }
+        // Methods
+        Enemy.prototype.Start = function () {
+            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x) + 50;
+            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y) - 50;
+        };
+        Enemy.prototype.Update = function () {
+            this.Move();
+            this.CheckBounds();
+        };
+        Enemy.prototype.Reset = function () {
+            this.isDead = true;
+            this.x = this._currentScene.sceneCenter.x - 500;
+            this.y = this._currentScene.sceneCenter.y - 500;
+        };
+        Enemy.prototype.Move = function () {
+            this.y += 5;
+        };
+        Enemy.prototype.CheckBounds = function () {
+            if (this.y >= this._currentScene.sceneSize.y + this.halfH + 5) {
+                this.y = -50;
+            }
+        };
+        return Enemy;
+    }(objects.GameObject));
+    objects.Enemy = Enemy;
 })(objects || (objects = {}));
 //# sourceMappingURL=gameobject.js.map
