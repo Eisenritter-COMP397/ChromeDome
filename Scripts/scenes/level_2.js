@@ -13,16 +13,16 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var scenes;
 (function (scenes) {
-    var PlayScene = /** @class */ (function (_super) {
-        __extends(PlayScene, _super);
+    var PlayScene2 = /** @class */ (function (_super) {
+        __extends(PlayScene2, _super);
         // Constructor
-        function PlayScene(assetManager) {
+        function PlayScene2(assetManager) {
             var _this = _super.call(this, assetManager) || this;
             _this.Start();
             return _this;
         }
         // Methods
-        PlayScene.prototype.Start = function () {
+        PlayScene2.prototype.Start = function () {
             // Initialize our variables
             this.player = new objects.Player(this.assetManager, this);
             this.laserManager = new managers.Laser();
@@ -40,7 +40,7 @@ var scenes;
             this.bgm.volume = 1;
             this.Main();
         };
-        PlayScene.prototype.Update = function () {
+        PlayScene2.prototype.Update = function () {
             var _this = this;
             this.player.Update();
             this.laserManager.Update();
@@ -68,7 +68,7 @@ var scenes;
         // private backButtonClick(): void {
         //     managers.Game.currentScene = config.Scene.START;
         // }
-        PlayScene.prototype.Main = function () {
+        PlayScene2.prototype.Main = function () {
             var _this = this;
             this.addChild(this.player);
             this.enemies.forEach(function (e) {
@@ -80,8 +80,8 @@ var scenes;
             this.addChild(this.scoreBoard.scoreLabel);
             this.addChild(this.scoreBoard.highScoreLabel);
         };
-        return PlayScene;
+        return PlayScene2;
     }(objects.Scene));
-    scenes.PlayScene = PlayScene;
+    scenes.PlayScene2 = PlayScene2;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=level-normal.js.map
+//# sourceMappingURL=level_2.js.map

@@ -23,8 +23,8 @@ var scenes;
         }
         //Method
         GameOverScene.prototype.Start = function () {
-            this.gameOverLabel = new objects.Label("Game Over!", "40px", "Metal Mania", "#000000", this.sceneCenter, true);
-            this.backButton = new objects.Button(this.assetManager, "NewGameButton", new math.Vector2(this.sceneCenter.x, this.sceneCenter.y + 200), true);
+            this.gameOverLabel = new objects.Label("Game Over!", "40px", "Metal Mania", "#000000", 350, 320, true);
+            this.backButton = new objects.Button(this.assetManager, "NewGameButton", 380, 320);
             // Initialize Sound
             createjs.Sound.stop();
             this.bgm = createjs.Sound.play("startmusic");

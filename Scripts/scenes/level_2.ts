@@ -1,5 +1,5 @@
 module scenes {
-    export class PlayScene extends objects.Scene {
+    export class PlayScene2 extends objects.Scene {
         // Variables
         //private playLabel: objects.Label;
         //private nextButton: objects.Button;
