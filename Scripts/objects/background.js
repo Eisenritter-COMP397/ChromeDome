@@ -48,7 +48,7 @@ var objects;
         // Resets the position of the object
         AnimatedBackground.prototype.Reset = function () {
             this.y = 400;
-            this.alpha = 0.5;
+            this.alpha = 0.75;
         };
         // Move the object
         AnimatedBackground.prototype.Move = function () {

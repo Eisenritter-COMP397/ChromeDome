@@ -23,8 +23,12 @@ var scenes;
         }
         //Method
         GameOverScene.prototype.Start = function () {
-            this.gameOverLabel = new objects.Label("Game Over!", "40px", "Metal Mania", "#000000", 350, 320, true);
-            this.backButton = new objects.Button(this.assetManager, "NewGameButton", 380, 320);
+            this.background = new objects.Background(this.assetManager, "UIBackground");
+            this.flameEffect = new objects.AnimatedBackground(this.assetManager);
+            this.gameOverLabel = new objects.Label("Game Over!", "60px", "Metal Mania", "#000000", 400, 320, true);
+            this.backButton = new objects.Button(this.assetManager, "NewGameButton", 320, 400);
+            this.backButton.scaleX = 2;
+            this.backButton.scaleY = 2;
             // Initialize Sound
             createjs.Sound.stop();
             this.bgm = createjs.Sound.play("startmusic");
@@ -32,11 +36,15 @@ var scenes;
             this.bgm.volume = 1;
             this.Main();
         };
-        GameOverScene.prototype.Update = function () { };
+        GameOverScene.prototype.Update = function () {
+            this.flameEffect.Update();
+        };
         GameOverScene.prototype.backButtonClick = function () {
             managers.Game.currentScene = config.Scene.START;
         };
         GameOverScene.prototype.Main = function () {
+            this.addChild(this.background);
+            this.addChild(this.flameEffect);
             this.addChild(this.gameOverLabel);
             this.addChild(this.backButton);
             this.backButton.on("click", this.backButtonClick);

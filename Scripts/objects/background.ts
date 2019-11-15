@@ -32,7 +32,7 @@ module objects{
         // Resets the position of the object
         public Reset():void {
             this.y = 400;
-            this.alpha=0.5;
+            this.alpha=0.75;
         }
         // Move the object
         public Move():void {

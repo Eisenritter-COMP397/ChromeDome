@@ -1,6 +1,8 @@
 module scenes {
     export class GameOverScene extends objects.Scene {
         // Variables
+        private background: objects.Background;
+        private flameEffect: objects.AnimatedBackground;
         private gameOverLabel: objects.Label;
         private backButton: objects.Button;
         private bgm: createjs.AbstractSoundInstance;
@@ -11,11 +13,18 @@ module scenes {
         }
         //Method
         public Start(): void {
+
+            this.background = new objects.Background(this.assetManager, "UIBackground");
+            this.flameEffect = new objects.AnimatedBackground(this.assetManager);
+
             this.gameOverLabel = new objects.Label(
-                "Game Over!", "40px", "Metal Mania", "#000000", 350, 320, true);
+                "Game Over!", "60px", "Metal Mania", "#000000", 400, 320, true);
 
             this.backButton = new objects.Button(this.assetManager, "NewGameButton",
-                380, 320);
+                320, 400);
+            
+            this.backButton.scaleX = 2;
+            this.backButton.scaleY = 2;
 
             // Initialize Sound
             createjs.Sound.stop();
@@ -26,11 +35,15 @@ module scenes {
 
             this.Main();
         }
-        public Update(): void { }
+        public Update(): void {
+            this.flameEffect.Update();
+         }
         private backButtonClick(): void {
             managers.Game.currentScene = config.Scene.START;
         }
         public Main(): void {
+            this.addChild(this.background);
+            this.addChild(this.flameEffect);
             this.addChild(this.gameOverLabel);
             this.addChild(this.backButton);
             this.backButton.on("click", this.backButtonClick);
