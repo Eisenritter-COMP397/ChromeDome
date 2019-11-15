@@ -17,6 +17,7 @@
     assetManifest = [
         { id: "NewGameButton", src: "./Assets/newgame.png" },
         { id: "ExitGameButton", src: "./Assets/ExitGameButton.png" },
+        { id: "level1", src: "./Assets/chromedome_background.png" },
         { id: "Logo", src: "./Assets/logo.png" },
         { id: "UIBackground", src: "./Assets/ChromeDomeStartBG.png"},
         { id: "FlameEffect", src: "./Assets/FlameEffect.png"},

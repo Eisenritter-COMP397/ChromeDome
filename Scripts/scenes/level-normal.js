@@ -24,6 +24,7 @@ var scenes;
         // Methods
         PlayScene.prototype.Start = function () {
             // Initialize our variables
+            this.levelbackground = new objects.Background(this.assetManager, "level1");
             this.player = new objects.Player(this.assetManager, this);
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
@@ -70,6 +71,7 @@ var scenes;
         // }
         PlayScene.prototype.Main = function () {
             var _this = this;
+            this.addChild(this.levelbackground);
             this.addChild(this.player);
             this.enemies.forEach(function (e) {
                 _this.addChild(e);

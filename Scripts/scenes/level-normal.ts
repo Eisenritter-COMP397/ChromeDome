@@ -4,6 +4,7 @@ module scenes {
         //private playLabel: objects.Label;
         //private nextButton: objects.Button;
         //private backButton: objects.Button;
+        private levelbackground: objects.Background;
         private player: objects.Player;
         private enemies: objects.Enemy[];
         private enemyNum: number;
@@ -23,6 +24,8 @@ module scenes {
         // Methods
         public Start(): void {
             // Initialize our variables
+            this.levelbackground = new objects.Background(this.assetManager, "level1");
+
             this.player = new objects.Player(this.assetManager, this);
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
@@ -82,6 +85,8 @@ module scenes {
         // }
 
         public Main(): void {
+
+            this.addChild(this.levelbackground);
             this.addChild(this.player);
             this.enemies.forEach(e => {
                 this.addChild(e);
