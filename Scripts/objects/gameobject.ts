@@ -68,19 +68,19 @@ module objects {
         public Move():void {
             if(managers.Game.keyboardManager.moveLeft)
             {
-                this.x -= 1.5;
+                this.x -= 2;
             }
             if(managers.Game.keyboardManager.moveRight)
             {
-                this.x += 1.5;
+                this.x += 2;
             }
             if(managers.Game.keyboardManager.moveUp)
             {
-                this.y -= 1.5;
+                this.y -= 2;
             }
             if(managers.Game.keyboardManager.moveDown)
             {
-                this.y += 1.5;
+                this.y += 2;
             }
         }
         public CheckBound():void {
@@ -196,4 +196,5 @@ module objects {
             public CheckBounds():void {}
         }
 } 
+
 

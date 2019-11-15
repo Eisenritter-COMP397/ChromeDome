@@ -48,7 +48,7 @@ var objects;
         // Resets the position of the object
         AnimatedBackground.prototype.Reset = function () {
             this.y = 400;
-            this.alpha = 0.5;
+            this.alpha = 0.75;
         };
         // Move the object
         AnimatedBackground.prototype.Move = function () {
@@ -63,5 +63,20 @@ var objects;
         return AnimatedBackground;
     }(createjs.Bitmap));
     objects.AnimatedBackground = AnimatedBackground;
+    var Image = /** @class */ (function (_super) {
+        __extends(Image, _super);
+        // Variables
+        // Constructor
+        function Image(assetManager, imageString, x, y) {
+            if (x === void 0) { x = 0; }
+            if (y === void 0) { y = 0; }
+            return _super.call(this, assetManager.getResult(imageString)) || this;
+        }
+        // Methods
+        Image.prototype.Start = function () { };
+        Image.prototype.Update = function () { };
+        return Image;
+    }(createjs.Bitmap));
+    objects.Image = Image;
 })(objects || (objects = {}));
 //# sourceMappingURL=background.js.map

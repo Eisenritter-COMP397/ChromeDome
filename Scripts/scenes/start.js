@@ -27,8 +27,16 @@ var scenes;
             //Initialize objects
             this.background = new objects.Background(this.assetManager, "UIBackground");
             this.flameEffect = new objects.AnimatedBackground(this.assetManager);
-            this.welcomeLable = new objects.Label("Welcome to Chrome Dome!", "60px", "Metal Mania", "#800000", this.sceneCenter, true);
-            this.startButton = new objects.Button(this.assetManager, "NewGameButton", new math.Vector2(this.sceneCenter.x, this.sceneCenter.y + 200), true);
+            this.logo = new objects.Image(this.assetManager, "Logo", 500, 320);
+            this.logo.scaleX = 0.5;
+            this.logo.scaleY = 0.5;
+            this.welcomeLabel = new objects.Label("Welcome to Chrome Dome!", "60px", "Metal Mania", "#800000", 425, 320, true);
+            this.startButton = new objects.Button(this.assetManager, "NewGameButton", 300, 400);
+            this.startButton.scaleX = 2;
+            this.startButton.scaleY = 2;
+            this.instructionButton = new objects.Button(this.assetManager, "InstructionsButton", 280, 450);
+            this.instructionButton.scaleX = 2;
+            this.instructionButton.scaleY = 2;
             // Initialize Sound
             createjs.Sound.stop();
             this.bgm = createjs.Sound.play("startmusic");
@@ -40,18 +48,25 @@ var scenes;
             this.flameEffect.Update();
         };
         //When New Game Button is Clicked
-        StartScene.prototype.startButoonClick = function () {
+        StartScene.prototype.startButtonClick = function () {
             //Change game state from Start to Game
             managers.Game.currentScene = config.Scene.GAME;
+        };
+        StartScene.prototype.instructionClick = function () {
+            //Change game state from Start to Game
+            managers.Game.currentScene = config.Scene.INSTRUCTIONS;
         };
         //Main Override
         StartScene.prototype.Main = function () {
             // Add Items to Scene
             this.addChild(this.background);
             this.addChild(this.flameEffect);
-            this.addChild(this.welcomeLable);
+            this.addChild(this.logo);
+            this.addChild(this.welcomeLabel);
             this.addChild(this.startButton);
-            this.startButton.on("click", this.startButoonClick);
+            this.addChild(this.instructionButton);
+            this.startButton.on("click", this.startButtonClick);
+            this.instructionButton.on("click", this.instructionClick);
         };
         return StartScene;
     }(objects.Scene));

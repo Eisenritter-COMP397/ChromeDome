@@ -15,9 +15,10 @@
     let currentState: number;
 
     assetManifest = [
-        { id: "NewGameButton", src: "./Assets/NewGameButton.png" },
+        { id: "NewGameButton", src: "./Assets/newgame.png" },
         { id: "ExitGameButton", src: "./Assets/ExitGameButton.png" },
-        { id: "OptionsButton", src: "./Assets/OptionsButton.png" },
+        { id: "level1", src: "./Assets/chromedome_background.png" },
+        { id: "Logo", src: "./Assets/logo.png" },
         { id: "UIBackground", src: "./Assets/ChromeDomeStartBG.png"},
         { id: "FlameEffect", src: "./Assets/FlameEffect.png"},
         { id: "Player", src: "./Assets/TankBlue.png"},
@@ -27,7 +28,11 @@
         { id: "level3bgm", src: "./Assets/Music/level3.mp3"},
         { id: "gameoverbgm", src: "./Assets/Music/gameover.mp3"},
         { id: "Enemy", src: "./Assets/TankRed.png"},
-        { id: "laser1",src: "./Assets/bullet.png"}
+        { id: "laser1", src: "./Assets/bullet.png"},
+        { id: "laser2", src: "./Assets/icebullet.png"},
+        { id: "laser3", src: "./Assets/greenbullet.png"},
+        { id: "InstructionsButton", src: "./Assets/instructions_chromedome.png"},
+        { id: "BackButton", src: "./Assets/back_button.png"}
     ]
 
     function Init() {
@@ -74,9 +79,6 @@
         stage.update();
     }
 
-    function clickableButtonMouseClick(): void {
-        console.log("AHHHHHHH");
-    }
 
     function Main() {
         console.log("Game Start...");
@@ -87,11 +89,26 @@
                 currentScene = new scenes.StartScene(assetManager);
                 stage.addChild(currentScene);
                 break;
+            case config.Scene.INSTRUCTIONS:
+                stage.removeAllChildren();
+                currentScene = new scenes.InstructionsScene(assetManager);
+                stage.addChild(currentScene);
+                break;
             case config.Scene.GAME:
                 stage.removeAllChildren();
                 currentScene = new scenes.PlayScene(assetManager);
                 stage.addChild(currentScene);
                 break;
+            case config.Scene.GAME2:
+                stage.removeAllChildren();
+                currentScene = new scenes.PlayScene2(assetManager);
+                stage.addChild(currentScene);
+                break;    
+            case config.Scene.GAME3:
+                stage.removeAllChildren();
+                currentScene = new scenes.PlayScene3(assetManager);
+                stage.addChild(currentScene);
+                break;        
             case config.Scene.OVER:
                     stage.removeAllChildren();
                     currentScene = new scenes.GameOverScene(assetManager);

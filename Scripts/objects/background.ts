@@ -32,7 +32,7 @@ module objects{
         // Resets the position of the object
         public Reset():void {
             this.y = 400;
-            this.alpha=0.5;
+            this.alpha=0.75;
         }
         // Move the object
         public Move():void {
@@ -44,5 +44,17 @@ module objects{
                 this.Reset();
             }
         }
+    }
+
+    export class Image extends createjs.Bitmap{
+        // Variables
+        // Constructor
+        constructor(assetManager:createjs.LoadQueue, imageString: string, 
+            x:number = 0, y:number = 0){
+            super(assetManager.getResult(imageString));
+        }
+        // Methods
+        public Start():void{}
+        public Update():void{}
     }
 }

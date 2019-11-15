@@ -67,16 +67,16 @@ var objects;
         Player.prototype.Reset = function () { };
         Player.prototype.Move = function () {
             if (managers.Game.keyboardManager.moveLeft) {
-                this.x -= 1.5;
+                this.x -= 2;
             }
             if (managers.Game.keyboardManager.moveRight) {
-                this.x += 1.5;
+                this.x += 2;
             }
             if (managers.Game.keyboardManager.moveUp) {
-                this.y -= 1.5;
+                this.y -= 2;
             }
             if (managers.Game.keyboardManager.moveDown) {
-                this.y += 1.5;
+                this.y += 2;
             }
         };
         Player.prototype.CheckBound = function () {
