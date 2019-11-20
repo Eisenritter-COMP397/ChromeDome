@@ -74,8 +74,8 @@ module scenes {
                 });
             });
 
-            if(this.scoreBoard.Score>=500){
-                managers.Game.currentScene = config.Scene.GAME2;
+            if(this.scoreBoard.Score>=100){
+                managers.Game.currentScene = config.Scene.GAME3;
             }
 
         }
@@ -100,7 +100,7 @@ module scenes {
             });
 
             this.addChild(this.scoreBoard.scoreLabel);
-            this.addChild(this.scoreBoard.highScoreLabel)
+            this.addChild(this.scoreBoard.highScoreLabel);
         }
     }
 } 

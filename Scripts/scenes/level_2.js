@@ -28,9 +28,9 @@ var scenes;
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
             this.enemies = new Array();
-            this.enemyNum = 5;
+            this.enemyNum = 10;
             for (var i = 0; i < this.enemyNum; i++) {
-                this.enemies[i] = new objects.Enemy(this.assetManager, this);
+                this.enemies[i] = new objects.Enemy2(this.assetManager, this);
             }
             this.scoreBoard = new managers.Scoreboard;
             // Initialize Sound
@@ -61,7 +61,7 @@ var scenes;
                     managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
-            if (this.scoreBoard.HighScore = 1000) {
+            if (this.scoreBoard.HighScore = 100) {
                 managers.Game.currentScene = config.Scene.GAME3;
             }
         };

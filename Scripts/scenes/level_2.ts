@@ -5,18 +5,15 @@ module scenes {
         //private nextButton: objects.Button;
         //private backButton: objects.Button;
         private player: objects.Player;
-        private enemies: objects.Enemy[];
+        private enemies: objects.Enemy2[];
         private enemyNum: number;
         private scoreBoard: managers.Scoreboard;
         private laserManager: managers.Laser;
-
         private bgm: createjs.AbstractSoundInstance;
-
 
         // Constructor
         constructor(assetManager: createjs.LoadQueue) {
             super(assetManager);
-
             this.Start();
         }
 
@@ -28,10 +25,10 @@ module scenes {
             managers.Game.laserManager = this.laserManager;
 
 
-            this.enemies = new Array<objects.Enemy>();
-            this.enemyNum = 5;
+            this.enemies = new Array<objects.Enemy2>();
+            this.enemyNum = 10;
             for (let i = 0; i < this.enemyNum; i++) {
-                this.enemies[i] = new objects.Enemy(this.assetManager, this);
+                this.enemies[i] = new objects.Enemy2(this.assetManager, this);
             }
 
             this.scoreBoard = new managers.Scoreboard;
@@ -71,7 +68,7 @@ module scenes {
                 });
             });
             
-            if(this.scoreBoard.HighScore=1000){
+            if(this.scoreBoard.HighScore=100){
                 managers.Game.currentScene = config.Scene.GAME3;
             }
         }
@@ -91,8 +88,7 @@ module scenes {
             });
             this.laserManager.Lasers.forEach(laser => {
                 this.addChild(laser);
-            });
-
+            });            
             this.addChild(this.scoreBoard.scoreLabel);
             this.addChild(this.scoreBoard.highScoreLabel)
         }
