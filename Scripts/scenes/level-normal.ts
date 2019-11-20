@@ -57,7 +57,7 @@ module scenes {
                 if(!e.isDead) {
                     e.Update();
 
-                    this.player.isDead= managers.Collision.CheckAABB(this.player, e);
+                    this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
                     if (this.player.isDead) {
                         // Disable music
                         this.bgm.stop();
@@ -69,7 +69,7 @@ module scenes {
             // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
             this.laserManager.Lasers.forEach(laser => {
                 this.enemies.forEach(enemy => {
-                    managers.Collision.CheckAABB(laser, enemy)
+                    managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
 
                 });
             });

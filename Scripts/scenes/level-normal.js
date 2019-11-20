@@ -48,7 +48,7 @@ var scenes;
             this.enemies.forEach(function (e) {
                 if (!e.isDead) {
                     e.Update();
-                    _this.player.isDead = managers.Collision.CheckAABB(_this.player, e);
+                    _this.player.isDead = managers.Collision.CheckAABB(_this.player, e, _this.scoreBoard);
                     if (_this.player.isDead) {
                         // Disable music
                         _this.bgm.stop();
@@ -59,7 +59,7 @@ var scenes;
             // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
             this.laserManager.Lasers.forEach(function (laser) {
                 _this.enemies.forEach(function (enemy) {
-                    managers.Collision.CheckAABB(laser, enemy);
+                    managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
         };

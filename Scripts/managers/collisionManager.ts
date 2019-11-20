@@ -1,6 +1,6 @@
 module managers {
     export class Collision {
-        public static CheckAABB(object1: objects.GameObject, object2: objects.GameObject) {
+        public static CheckAABB(object1: objects.GameObject, object2: objects.GameObject, scoreboard: managers.Scoreboard) {
             // Check all bounds
             if((object1.x + object1.halfW) > (object2.x - object2.halfW) &&
                 (object1.x - object1.halfW) < (object2.x + object2.halfW) &&
@@ -13,6 +13,7 @@ module managers {
                             managers.Game.currentSceneObject.removeChild(object1);
                             object1.Reset();
                             object2.Reset();
+                            scoreboard.Score+=50;
                         break;
                     }
                     object2.isColliding = true;
