@@ -5,7 +5,9 @@ module managers {
         public moveDown: boolean;
         public moveLeft: boolean;
         public moveRight: boolean;
-        public shoot: boolean;
+        public shoot1: boolean;
+        public shoot2: boolean;
+        public shoot3: boolean;
         public enabled: boolean;    // Enable / disable my whole keyboard
         public pause: boolean;
         // Constructor
@@ -36,8 +38,15 @@ module managers {
                 break;
                 case config.Keys.SPACE:
                     console.log("pew pew");
-                    this.shoot=true;
+                    this.shoot1=true;
                 break;
+                case config.Keys.Q:
+                    console.log("new laser pew");
+                    this.shoot2=true;
+                break;
+                case config.Keys.E:
+                    console.log("3rd laser pew");
+                    this.shoot3=true;
             }
         }
         public onKeyUp(event:KeyboardEvent):void {
@@ -60,8 +69,15 @@ module managers {
                 break;
                 case config.Keys.SPACE:
                     console.log("pew pew off");
-                    this.shoot =false;
+                    this.shoot1 =false;
                 break;
+                case config.Keys.Q:
+                    console.log("new laser pew");
+                    this.shoot2=false;
+                break;
+                case config.Keys.E:
+                    console.log("3rd laser pew");
+                    this.shoot3=false;
             }
         }
     }

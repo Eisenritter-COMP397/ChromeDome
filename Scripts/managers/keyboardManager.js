@@ -29,8 +29,15 @@ var managers;
                     break;
                 case config.Keys.SPACE:
                     console.log("pew pew");
-                    this.shoot = true;
+                    this.shoot1 = true;
                     break;
+                case config.Keys.Q:
+                    console.log("new laser pew");
+                    this.shoot2 = true;
+                    break;
+                case config.Keys.E:
+                    console.log("3rd laser pew");
+                    this.shoot3 = true;
             }
         };
         Keyboard.prototype.onKeyUp = function (event) {
@@ -53,8 +60,15 @@ var managers;
                     break;
                 case config.Keys.SPACE:
                     console.log("pew pew off");
-                    this.shoot = false;
+                    this.shoot1 = false;
                     break;
+                case config.Keys.Q:
+                    console.log("new laser pew");
+                    this.shoot2 = false;
+                    break;
+                case config.Keys.E:
+                    console.log("3rd laser pew");
+                    this.shoot3 = false;
             }
         };
         return Keyboard;

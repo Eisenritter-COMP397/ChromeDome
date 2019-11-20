@@ -24,9 +24,10 @@ module scenes {
         public Start(): void {
             // Initialize our variables
             this.player = new objects.Player(this.assetManager, this);
+
+
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
-
 
             this.enemies = new Array<objects.Enemy>();
             this.enemyNum = 5;
@@ -68,18 +69,12 @@ module scenes {
                 this.enemies.forEach(enemy => {
                     managers.Collision.CheckAABB(laser, enemy)
 
-                });
+                }
+                
+                );
             });
 
         }
-
-        //private nextButtonClick(): void {
-        //    managers.Game.currentScene = config.Scene.OVER;
-        // }
-
-        // private backButtonClick(): void {
-        //     managers.Game.currentScene = config.Scene.START;
-        // }
 
         public Main(): void {
             this.addChild(this.player);
@@ -89,6 +84,7 @@ module scenes {
             this.laserManager.Lasers.forEach(laser => {
                 this.addChild(laser);
             });
+            
 
             this.addChild(this.scoreBoard.scoreLabel);
             this.addChild(this.scoreBoard.highScoreLabel)
