@@ -61,6 +61,9 @@ var scenes;
                     managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
+            if (this.scoreBoard.HighScore = 1000) {
+                managers.Game.currentScene = config.Scene.GAME3;
+            }
         };
         //private nextButtonClick(): void {
         //    managers.Game.currentScene = config.Scene.OVER;
