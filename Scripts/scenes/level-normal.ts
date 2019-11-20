@@ -74,6 +74,10 @@ module scenes {
                 });
             });
 
+            if(this.scoreBoard.Score>=500){
+                managers.Game.currentScene = config.Scene.GAME2;
+            }
+
         }
 
         //private nextButtonClick(): void {

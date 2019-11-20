@@ -35,7 +35,7 @@ var scenes;
             this.scoreBoard = new managers.Scoreboard;
             // Initialize Sound
             createjs.Sound.stop();
-            this.bgm = createjs.Sound.play("level1bgm");
+            this.bgm = createjs.Sound.play("level2bgm");
             this.bgm.loop = -1; // Loop forever
             this.bgm.volume = 1;
             this.Main();
