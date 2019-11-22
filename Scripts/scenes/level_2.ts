@@ -7,6 +7,7 @@ module scenes {
         private enemyNum: number;
         private scoreBoard: managers.Scoreboard;
         private laserManager: managers.Laser;
+        private laserManager2: managers.Laser2;
         private bgm: createjs.AbstractSoundInstance;
 
         // Constructor
@@ -21,8 +22,12 @@ module scenes {
             this.levelbackground = new objects.Background(this.assetManager, "level2");
 
             this.player = new objects.Player(this.assetManager, this);
+
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
+
+            this.laserManager2 = new managers.Laser2();
+            managers.Game.laserManager2 = this.laserManager2;
 
 
             this.enemies = new Array<objects.Enemy2>();
@@ -67,6 +72,14 @@ module scenes {
 
                 });
             });
+
+            
+            this.laserManager2.Lasers.forEach(laser => {
+                this.enemies.forEach(enemy => {
+                    managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
+
+                });
+            });
             
             if(this.scoreBoard.Score>=100){
                 managers.Game.currentScene = config.Scene.TRANSITION2;
@@ -91,6 +104,11 @@ module scenes {
             this.laserManager.Lasers.forEach(laser => {
                 this.addChild(laser);
             });            
+
+            this.laserManager2.Lasers.forEach(laser => {
+                this.addChild(laser);
+            });
+
             this.addChild(this.scoreBoard.scoreLabel);
             this.addChild(this.scoreBoard.highScoreLabel)
         }

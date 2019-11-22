@@ -10,6 +10,8 @@ module scenes {
         private enemyNum: number;
         private scoreBoard: managers.Scoreboard;
         private laserManager: managers.Laser;
+        private laserManager2: managers.Laser2;
+        private laserManager3: managers.Laser3;
 
         private bgm: createjs.AbstractSoundInstance;
 
@@ -29,6 +31,12 @@ module scenes {
             this.player = new objects.Player(this.assetManager, this);
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
+
+            this.laserManager2 = new managers.Laser2();
+            managers.Game.laserManager2 = this.laserManager2;
+
+            this.laserManager3 = new managers.Laser3();
+            managers.Game.laserManager3 = this.laserManager3;
 
 
             this.enemies = new Array<objects.Enemy>();
@@ -74,6 +82,20 @@ module scenes {
                 });
             });
 
+            this.laserManager2.Lasers.forEach(laser => {
+                this.enemies.forEach(enemy => {
+                    managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
+
+                });
+            });
+
+            this.laserManager3.Lasers.forEach(laser => {
+                this.enemies.forEach(enemy => {
+                    managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
+
+                });
+            });
+
             if(this.scoreBoard.Score>=100){
                 managers.Game.currentScene = config.Scene.WIN;
             }
@@ -87,6 +109,13 @@ module scenes {
                 this.addChild(e);
             });
             this.laserManager.Lasers.forEach(laser => {
+                this.addChild(laser);
+            });
+
+            this.laserManager2.Lasers.forEach(laser => {
+                this.addChild(laser);
+            });
+            this.laserManager3.Lasers.forEach(laser => {
                 this.addChild(laser);
             });
 
