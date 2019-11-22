@@ -10,6 +10,8 @@ module scenes {
         private enemyNum: number;
         private scoreBoard: managers.Scoreboard;
         private laserManager: managers.Laser;
+        private laserManager2: managers.Laser2;
+        private laserManager3: managers.Laser3;
 
         private bgm: createjs.AbstractSoundInstance;
 
@@ -29,6 +31,15 @@ module scenes {
             this.player = new objects.Player(this.assetManager, this);
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
+
+
+            this.laserManager2 = new managers.Laser2();
+            managers.Game.laserManager2 = this.laserManager2;
+
+            this.laserManager3 = new managers.Laser3();
+            managers.Game.laserManager3 = this.laserManager3;
+
+
 
             this.enemies = new Array<objects.Enemy>();
             this.enemyNum = 5;
@@ -51,6 +62,8 @@ module scenes {
         public Update(): void {
             this.player.Update();
             this.laserManager.Update();
+            this.laserManager2.Update();
+            this.laserManager3.Update();
 
             this.enemies.forEach(e => {
                 if(!e.isDead) {
@@ -73,13 +86,23 @@ module scenes {
                 });
             });
 
-            
+            this.laserManager2.Lasers.forEach(laser => {
+                this.enemies.forEach(enemy => {
+                    managers.Collision.CheckAABB(laser, enemy)
 
-            if(this.scoreBoard.Score>=100){
-                managers.Game.currentScene = config.Scene.TRANSITION;
-            }
+                });
+            });
+
+            this.laserManager3.Lasers.forEach(laser => {
+                this.enemies.forEach(enemy => {
+                    managers.Collision.CheckAABB(laser, enemy)
+
+                });
+            });
 
         }
+
+
 
         public Main(): void {
 
@@ -89,6 +112,13 @@ module scenes {
                 this.addChild(e);
             });
             this.laserManager.Lasers.forEach(laser => {
+                this.addChild(laser);
+            });
+
+            this.laserManager2.Lasers.forEach(laser => {
+                this.addChild(laser);
+            });
+            this.laserManager3.Lasers.forEach(laser => {
                 this.addChild(laser);
             });
 

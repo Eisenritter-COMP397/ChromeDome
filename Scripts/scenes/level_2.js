@@ -73,12 +73,6 @@ var scenes;
                 managers.Game.currentScene = config.Scene.TRANSITION2;
             }
         };
-        //private nextButtonClick(): void {
-        //    managers.Game.currentScene = config.Scene.OVER;
-        // }
-        // private backButtonClick(): void {
-        //     managers.Game.currentScene = config.Scene.START;
-        // }
         PlayScene2.prototype.Main = function () {
             var _this = this;
             this.addChild(this.levelbackground);

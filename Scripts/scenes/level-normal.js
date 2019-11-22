@@ -28,6 +28,10 @@ var scenes;
             this.player = new objects.Player(this.assetManager, this);
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
+            this.laserManager2 = new managers.Laser2();
+            managers.Game.laserManager2 = this.laserManager2;
+            this.laserManager3 = new managers.Laser3();
+            managers.Game.laserManager3 = this.laserManager3;
             this.enemies = new Array();
             this.enemyNum = 5;
             for (var i = 0; i < this.enemyNum; i++) {
@@ -45,6 +49,8 @@ var scenes;
             var _this = this;
             this.player.Update();
             this.laserManager.Update();
+            this.laserManager2.Update();
+            this.laserManager3.Update();
             this.enemies.forEach(function (e) {
                 if (!e.isDead) {
                     e.Update();
@@ -62,9 +68,18 @@ var scenes;
                     managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
-            if (this.scoreBoard.Score >= 100) {
-                managers.Game.currentScene = config.Scene.TRANSITION;
-            }
+
+            this.laserManager2.Lasers.forEach(function (laser) {
+                _this.enemies.forEach(function (enemy) {
+                    managers.Collision.CheckAABB(laser, enemy);
+                });
+            });
+            this.laserManager3.Lasers.forEach(function (laser) {
+                _this.enemies.forEach(function (enemy) {
+                    managers.Collision.CheckAABB(laser, enemy);
+                });
+            });
+
         };
         PlayScene.prototype.Main = function () {
             var _this = this;
@@ -74,6 +89,12 @@ var scenes;
                 _this.addChild(e);
             });
             this.laserManager.Lasers.forEach(function (laser) {
+                _this.addChild(laser);
+            });
+            this.laserManager2.Lasers.forEach(function (laser) {
+                _this.addChild(laser);
+            });
+            this.laserManager3.Lasers.forEach(function (laser) {
                 _this.addChild(laser);
             });
             this.addChild(this.scoreBoard.scoreLabel);
