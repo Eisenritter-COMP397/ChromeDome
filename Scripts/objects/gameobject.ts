@@ -41,6 +41,7 @@ module objects {
         public Move():void {}
         public CheckBound():void {}
     }
+
     // Player Game Objects
     export class Player extends objects.GameObject {
         // Variables
@@ -59,12 +60,17 @@ module objects {
             this.x = this._currentScene.sceneCenter.x;
             this.isDead = false;
         }
+
         public Update():void {
             this.Move();
             this.CheckBound();
-            this.LaserFire();
+            this.LaserFire1();
+            this.LaserFire2();
+            this.LaserFire3();
         }
+
         public Reset():void {}
+
         public Move():void {
             if(managers.Game.keyboardManager.moveLeft)
             {
@@ -83,6 +89,8 @@ module objects {
                 this.y += 2;
             }
         }
+
+
         public CheckBound():void {
             // Right boundary
             if(this.x >= this._currentScene.sceneSize.x - this.halfW) {
@@ -104,12 +112,47 @@ module objects {
                 this.y = this.halfH;
             }
         }
-        public LaserFire():void {
+
+        public LaserFire2():void {
+            if(!this.isDead) {
+                let ticker:number = createjs.Ticker.getTicks();
+
+                if((managers.Game.keyboardManager.shoot2) && (ticker % 10 == 0)) {
+                    this.laserSpawn = new math.Vector2(this.x, this.y - this.halfH);
+                    let currentLaser2 = managers.Game.laserManager2.CurrentLaser2;
+                    let laser = managers.Game.laserManager.Lasers[currentLaser2];
+                    laser.x = this.laserSpawn.x;
+                    laser.y = this.laserSpawn.y;
+                    managers.Game.laserManager2.CurrentLaser2++;
+                    if(managers.Game.laserManager2.CurrentLaser2 > 49) {
+                        managers.Game.laserManager2.CurrentLaser2 = 0;
+                    }
+            }
+        }
+    }
+    public LaserFire3():void {
+        if(!this.isDead) {
+            let ticker:number = createjs.Ticker.getTicks();
+
+            if((managers.Game.keyboardManager.shoot3) && (ticker % 10 == 0)) {
+                this.laserSpawn = new math.Vector2(this.x, this.y - this.halfH);
+                let currentLaser3 = managers.Game.laserManager3.CurrentLaser3;
+                let laser = managers.Game.laserManager3.Lasers[currentLaser3];
+                laser.x = this.laserSpawn.x;
+                laser.y = this.laserSpawn.y;
+                managers.Game.laserManager3.CurrentLaser3++;
+                if(managers.Game.laserManager3.CurrentLaser3 > 49) {
+                    managers.Game.laserManager3.CurrentLaser3 = 0;
+                }
+        }
+    }
+}
+        public LaserFire1():void {
             if(!this.isDead) {
                 let ticker:number = createjs.Ticker.getTicks();
 
                 // Player is trying to shoot the laser
-                if((managers.Game.keyboardManager.shoot) && (ticker % 10 == 0)) {
+                if((managers.Game.keyboardManager.shoot1) && (ticker % 10 == 0)) {
                     this.laserSpawn = new math.Vector2(this.x, this.y - this.halfH);
                     let currentLaser = managers.Game.laserManager.CurrentLaser;
                     let laser = managers.Game.laserManager.Lasers[currentLaser];
@@ -125,6 +168,7 @@ module objects {
             }
         }
     }
+
 
 } 
 

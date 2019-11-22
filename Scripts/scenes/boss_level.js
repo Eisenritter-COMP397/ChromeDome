@@ -24,6 +24,7 @@ var scenes;
         // Methods
         PlayScene3.prototype.Start = function () {
             // Initialize our variables
+            this.levelbackground = new objects.Background(this.assetManager, "level3");
             this.player = new objects.Player(this.assetManager, this);
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
@@ -61,15 +62,13 @@ var scenes;
                     managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
+            if (this.scoreBoard.Score >= 100) {
+                managers.Game.currentScene = config.Scene.WIN;
+            }
         };
-        //private nextButtonClick(): void {
-        //    managers.Game.currentScene = config.Scene.OVER;
-        // }
-        // private backButtonClick(): void {
-        //     managers.Game.currentScene = config.Scene.START;
-        // }
         PlayScene3.prototype.Main = function () {
             var _this = this;
+            this.addChild(this.levelbackground);
             this.addChild(this.player);
             this.enemies.forEach(function (e) {
                 _this.addChild(e);

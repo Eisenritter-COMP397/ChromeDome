@@ -1,9 +1,7 @@
 module scenes {
     export class PlayScene2 extends objects.Scene {
         // Variables
-        //private playLabel: objects.Label;
-        //private nextButton: objects.Button;
-        //private backButton: objects.Button;
+        private levelbackground: objects.Background;
         private player: objects.Player;
         private enemies: objects.Enemy2[];
         private enemyNum: number;
@@ -20,6 +18,8 @@ module scenes {
         // Methods
         public Start(): void {
             // Initialize our variables
+            this.levelbackground = new objects.Background(this.assetManager, "level2");
+
             this.player = new objects.Player(this.assetManager, this);
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
@@ -68,8 +68,8 @@ module scenes {
                 });
             });
             
-            if(this.scoreBoard.HighScore=100){
-                managers.Game.currentScene = config.Scene.GAME3;
+            if(this.scoreBoard.Score>=100){
+                managers.Game.currentScene = config.Scene.TRANSITION2;
             }
         }
 
@@ -82,6 +82,8 @@ module scenes {
         // }
 
         public Main(): void {
+
+            this.addChild(this.levelbackground);
             this.addChild(this.player);
             this.enemies.forEach(e => {
                 this.addChild(e);

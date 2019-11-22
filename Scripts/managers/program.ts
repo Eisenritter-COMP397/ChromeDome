@@ -7,5 +7,7 @@ module managers{
         public static canavas: HTMLCanvasElement;
         public static currentSceneObject: objects.Scene;
         public static laserManager:managers.Laser;
+        public static laserManager2:managers.Laser2;
+        public static laserManager3:managers.Laser3;
     }
 }
