@@ -24,9 +24,14 @@ var scenes;
         // Methods
         PlayScene3.prototype.Start = function () {
             // Initialize our variables
+            this.levelbackground = new objects.Background(this.assetManager, "level3");
             this.player = new objects.Player(this.assetManager, this);
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
+            this.laserManager2 = new managers.Laser2();
+            managers.Game.laserManager2 = this.laserManager2;
+            this.laserManager3 = new managers.Laser3();
+            managers.Game.laserManager3 = this.laserManager3;
             this.enemies = new Array();
             this.enemyNum = 5;
             for (var i = 0; i < this.enemyNum; i++) {
@@ -35,7 +40,7 @@ var scenes;
             this.scoreBoard = new managers.Scoreboard;
             // Initialize Sound
             createjs.Sound.stop();
-            this.bgm = createjs.Sound.play("level1bgm");
+            this.bgm = createjs.Sound.play("level3bgm");
             this.bgm.loop = -1; // Loop forever
             this.bgm.volume = 1;
             this.Main();
@@ -47,7 +52,7 @@ var scenes;
             this.enemies.forEach(function (e) {
                 if (!e.isDead) {
                     e.Update();
-                    _this.player.isDead = managers.Collision.CheckAABB(_this.player, e);
+                    _this.player.isDead = managers.Collision.CheckAABB(_this.player, e, _this.scoreBoard);
                     if (_this.player.isDead) {
                         // Disable music
                         _this.bgm.stop();
@@ -58,23 +63,37 @@ var scenes;
             // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
             this.laserManager.Lasers.forEach(function (laser) {
                 _this.enemies.forEach(function (enemy) {
-                    managers.Collision.CheckAABB(laser, enemy);
+                    managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
+            this.laserManager2.Lasers.forEach(function (laser) {
+                _this.enemies.forEach(function (enemy) {
+                    managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
+                });
+            });
+            this.laserManager3.Lasers.forEach(function (laser) {
+                _this.enemies.forEach(function (enemy) {
+                    managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
+                });
+            });
+            if (this.scoreBoard.Score >= 100) {
+                managers.Game.currentScene = config.Scene.WIN;
+            }
         };
-        //private nextButtonClick(): void {
-        //    managers.Game.currentScene = config.Scene.OVER;
-        // }
-        // private backButtonClick(): void {
-        //     managers.Game.currentScene = config.Scene.START;
-        // }
         PlayScene3.prototype.Main = function () {
             var _this = this;
+            this.addChild(this.levelbackground);
             this.addChild(this.player);
             this.enemies.forEach(function (e) {
                 _this.addChild(e);
             });
             this.laserManager.Lasers.forEach(function (laser) {
+                _this.addChild(laser);
+            });
+            this.laserManager2.Lasers.forEach(function (laser) {
+                _this.addChild(laser);
+            });
+            this.laserManager3.Lasers.forEach(function (laser) {
                 _this.addChild(laser);
             });
             this.addChild(this.scoreBoard.scoreLabel);

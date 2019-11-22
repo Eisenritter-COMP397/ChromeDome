@@ -170,6 +170,7 @@ module objects {
     }
 
 
+
     // Enemy Game Object
     export class Enemy extends objects.GameObject {
         // Variables
@@ -187,15 +188,8 @@ module objects {
             this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
             this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
 
-        }
-        public Update():void {
-            this.Move();
-            this.CheckBounds();
-        }
-        public Reset():void {
-            this.isDead = false;
-            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
-            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
+
+
 
         }
         public Move():void {
@@ -208,3 +202,4 @@ module objects {
         }
     }
 }
+

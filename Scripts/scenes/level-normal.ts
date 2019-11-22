@@ -32,11 +32,13 @@ module scenes {
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
 
+
             this.laserManager2 = new managers.Laser2();
             managers.Game.laserManager2 = this.laserManager2;
 
             this.laserManager3 = new managers.Laser3();
             managers.Game.laserManager3 = this.laserManager3;
+
 
 
             this.enemies = new Array<objects.Enemy>();
@@ -67,7 +69,7 @@ module scenes {
                 if(!e.isDead) {
                     e.Update();
 
-                    this.player.isDead= managers.Collision.CheckAABB(this.player, e);
+                    this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
                     if (this.player.isDead) {
                         // Disable music
                         this.bgm.stop();
@@ -79,7 +81,7 @@ module scenes {
             // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
             this.laserManager.Lasers.forEach(laser => {
                 this.enemies.forEach(enemy => {
-                    managers.Collision.CheckAABB(laser, enemy)
+                    managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
 
                 });
             });
@@ -101,6 +103,7 @@ module scenes {
         }
 
 
+
         public Main(): void {
 
             this.addChild(this.levelbackground);
@@ -120,7 +123,7 @@ module scenes {
             });
 
             this.addChild(this.scoreBoard.scoreLabel);
-            this.addChild(this.scoreBoard.highScoreLabel)
+            this.addChild(this.scoreBoard.highScoreLabel);
         }
     }
 } 

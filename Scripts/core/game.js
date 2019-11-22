@@ -12,7 +12,10 @@
     assetManifest = [
         { id: "NewGameButton", src: "./Assets/newgame.png" },
         { id: "ExitGameButton", src: "./Assets/ExitGameButton.png" },
-        { id: "level1", src: "./Assets/chromedome_background.png" },
+        { id: "ReadyButton", src: "./Assets/ready_button.png" },
+        { id: "level3", src: "./Assets/background_grass.png" },
+        { id: "level2", src: "./Assets/chromedome_background.png" },
+        { id: "level1", src: "./Assets/background_desert.png" },
         { id: "Logo", src: "./Assets/logo.png" },
         { id: "UIBackground", src: "./Assets/ChromeDomeStartBG.png" },
         { id: "FlameEffect", src: "./Assets/FlameEffect.png" },
@@ -82,9 +85,19 @@
                 currentScene = new scenes.PlayScene(assetManager);
                 stage.addChild(currentScene);
                 break;
+            case config.Scene.TRANSITION:
+                stage.removeAllChildren();
+                currentScene = new scenes.Transition1(assetManager);
+                stage.addChild(currentScene);
+                break;
             case config.Scene.GAME2:
                 stage.removeAllChildren();
                 currentScene = new scenes.PlayScene2(assetManager);
+                stage.addChild(currentScene);
+                break;
+            case config.Scene.TRANSITION2:
+                stage.removeAllChildren();
+                currentScene = new scenes.Transition2(assetManager);
                 stage.addChild(currentScene);
                 break;
             case config.Scene.GAME3:
@@ -95,6 +108,11 @@
             case config.Scene.OVER:
                 stage.removeAllChildren();
                 currentScene = new scenes.GameOverScene(assetManager);
+                stage.addChild(currentScene);
+                break;
+            case config.Scene.WIN:
+                stage.removeAllChildren();
+                currentScene = new scenes.Win(assetManager);
                 stage.addChild(currentScene);
                 break;
         }
