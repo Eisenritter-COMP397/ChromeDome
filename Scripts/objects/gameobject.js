@@ -170,15 +170,6 @@ var objects;
             this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
             this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
         };
-        Enemy.prototype.Update = function () {
-            this.Move();
-            this.CheckBounds();
-        };
-        Enemy.prototype.Reset = function () {
-            this.isDead = false;
-            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
-            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
-        };
         Enemy.prototype.Move = function () {
             this.y += 2.5;
         };

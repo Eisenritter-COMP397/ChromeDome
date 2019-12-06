@@ -28,8 +28,8 @@ var scenes;
             this.player = new objects.Player(this.assetManager, this);
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
-            this.laserManager2 = new managers.Laser2();
-            managers.Game.laserManager2 = this.laserManager2;
+            this.enemies = new Array();
+            this.enemyNum = 5;
             this.enemy3 = new Array();
             this.enemyNum = 15;
             for (var i = 0; i < this.enemyNum; i++) {

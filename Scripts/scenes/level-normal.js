@@ -68,18 +68,19 @@ var scenes;
                     managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
-
             this.laserManager2.Lasers.forEach(function (laser) {
                 _this.enemies.forEach(function (enemy) {
-                    managers.Collision.CheckAABB(laser, enemy);
+                    managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
             this.laserManager3.Lasers.forEach(function (laser) {
                 _this.enemies.forEach(function (enemy) {
-                    managers.Collision.CheckAABB(laser, enemy);
+                    managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
-
+            if (this.scoreBoard.Score >= 100) {
+                managers.Game.currentScene = config.Scene.TRANSITION;
+            }
         };
         PlayScene.prototype.Main = function () {
             var _this = this;
