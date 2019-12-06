@@ -6,13 +6,14 @@ module objects {
         public transform: components.Transform;
 
         private _horizontalSpeed:number;
-        private _bulletSpawn: Utils.Vector2;
+       // private _bulletSpawn: Utils.Vector2;
         
 
         //Constructors
         constructor(assetManager: createjs.LoadQueue, scene: Scene) {
             super(assetManager, "bosstank");
             this._currentScene = scene;
+            // this._fireRate = 60;
             this.transform = new components.Transform(new math.Vector2(this.x, this.y));
             this.Start();
         }
@@ -23,10 +24,10 @@ module objects {
             super.Start();
             this.regX = this.halfW;
             this.regY = this.halfH;
-            this._bulletSpawn = new Utils.Vector2(0, 2 + this.halfW)
+           // this._bulletSpawn = new Utils.Vector2(0, 2 + this.halfW)
             this.x = Math.floor(Math.random()* (this._currentScene.sceneSize.y - this.halfW) + this.halfW);
             this.y = 75;
-            this.Reset();
+           // this.Reset();
         }
 
         public Update(): void {
@@ -42,7 +43,6 @@ module objects {
             if(this._horizontalSpeed == 0){
                 this._horizontalSpeed = Math.floor((Math.random()*4)-2); // speed from -2 to 2
             }
-
         }
 
         public CheckBound():void {
@@ -67,7 +67,6 @@ module objects {
             this.isColliding = false;
 
         }
-    
         
     }
 }

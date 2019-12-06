@@ -28,8 +28,8 @@ var scenes;
             this.player = new objects.Player(this.assetManager, this);
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
-            this.enemies = new Array();
-            this.enemyNum = 5;
+            this.laserManager2 = new managers.Laser2();
+            managers.Game.laserManager2 = this.laserManager2;
             this.enemy3 = new Array();
             this.enemyNum = 15;
             for (var i = 0; i < this.enemyNum; i++) {
@@ -57,6 +57,7 @@ var scenes;
             var _this = this;
             this.player.Update();
             this.laserManager.Update();
+            this.laserManager2.Update();
             this.enemies.forEach(function (e) {
                 if (!e.isDead) {
                     e.Update();

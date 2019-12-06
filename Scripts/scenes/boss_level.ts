@@ -1,14 +1,11 @@
 module scenes {
     export class PlayScene3 extends objects.Scene {
         // Variables
-        //private playLabel: objects.Label;
-        //private nextButton: objects.Button;
-        //private backButton: objects.Button;
         private levelbackground: objects.Background;
         private player: objects.Player;
         private boss: objects.Boss;
-        private easyenemies: objects.Enemy[];
-        private enemies: objects.Enemy2[];
+        private enemy1: objects.Enemy[];
+        private enemy2: objects.Enemy2[];
         private enemy3: objects.Enemy3[];
         private enemyNum: number;
         private scoreBoard: managers.Scoreboard;
@@ -44,23 +41,22 @@ module scenes {
             this.laserManager3 = new managers.Laser3();
             managers.Game.laserManager3 = this.laserManager3;
 
+            this.enemy1 = new Array<objects.Enemy>();
+            this.enemyNum = 10;
+            for (let i = 0; i < this.enemyNum; i++) {
+                this.enemy1[i] = new objects.Enemy(this.assetManager, this);
+            }
+
+            this.enemy2 = new Array<objects.Enemy2>();
+            this.enemyNum = 15;
+            for (let i = 0; i < this.enemyNum; i++) {
+                this.enemy2[i] = new objects.Enemy2(this.assetManager, this);
+            }
 
             this.enemy3 = new Array<objects.Enemy3>();
             this.enemyNum = 15;
             for (let i = 0; i < this.enemyNum; i++) {
                 this.enemy3[i] = new objects.Enemy3(this.assetManager, this);
-            }
-
-            this.enemies = new Array<objects.Enemy2>();
-            this.enemyNum = 15;
-            for (let i = 0; i < this.enemyNum; i++) {
-                this.enemies[i] = new objects.Enemy2(this.assetManager, this);
-            }
-
-            this.easyenemies = new Array<objects.Enemy>();
-            this.enemyNum = 10;
-            for (let i = 0; i < this.enemyNum; i++) {
-                this.easyenemies[i] = new objects.Enemy(this.assetManager, this);
             }
 
             this.scoreBoard = new managers.Scoreboard;
@@ -78,22 +74,11 @@ module scenes {
         public Update(): void {
             this.player.Update();
             this.laserManager.Update();
+            this.laserManager2.Update();
+            this.laserManager3.Update();
             this.boss.Update();
-            
-            this.enemies.forEach(e => {
-                if(!e.isDead) {
-                    e.Update();
 
-                    this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
-                    if (this.player.isDead) {
-                        // Disable music
-                        this.bgm.stop();
-                        managers.Game.currentScene = config.Scene.OVER;
-                    }
-                }
-            });
-
-            this.easyenemies.forEach(e => {
+            this.enemy1.forEach(e => {
                     if(!e.isDead) {
                         e.Update();
     
@@ -104,6 +89,19 @@ module scenes {
                             managers.Game.currentScene = config.Scene.OVER;
                         }
                     }
+            });
+
+            this.enemy2.forEach(e => {
+                if(!e.isDead) {
+                    e.Update();
+
+                    this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
+                    if (this.player.isDead) {
+                        // Disable music
+                        this.bgm.stop();
+                        managers.Game.currentScene = config.Scene.OVER;
+                    }
+                }
             });
 
             this.enemy3.forEach(e => {
@@ -120,43 +118,45 @@ module scenes {
         });
 
             // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
+            
             this.laserManager.Lasers.forEach(laser => {
-                this.enemies.forEach(enemy => {
+                this.enemy1.forEach(enemy => {
                     managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
 
                 });
             });
 
             this.laserManager2.Lasers.forEach(laser => {
-                this.enemies.forEach(enemy => {
+                this.enemy1.forEach(enemy => {
                     managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
 
                 });
             });
-
+            
             this.laserManager3.Lasers.forEach(laser => {
-                this.enemies.forEach(enemy => {
+                this.enemy1.forEach(enemy => {
                     managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
 
                 });
             });
 
+            
             this.laserManager.Lasers.forEach(laser => {
-                this.easyenemies.forEach(enemy => {
+                this.enemy2.forEach(enemy => {
                     managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
 
                 });
             });
 
             this.laserManager2.Lasers.forEach(laser => {
-                this.easyenemies.forEach(enemy => {
+                this.enemy2.forEach(enemy => {
                     managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
 
                 });
             });
 
             this.laserManager3.Lasers.forEach(laser => {
-                this.easyenemies.forEach(enemy => {
+                this.enemy2.forEach(enemy => {
                     managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
 
                 });
@@ -193,10 +193,10 @@ module scenes {
             this.addChild(this.levelbackground);
             this.addChild(this.player);
             this.addChild(this.boss);
-            this.easyenemies.forEach(e => {
+            this.enemy1.forEach(e => {
                 this.addChild(e);
             });
-            this.enemies.forEach(e => {
+            this.enemy2.forEach(e => {
                 this.addChild(e);
             });
             this.enemy3.forEach(e => {

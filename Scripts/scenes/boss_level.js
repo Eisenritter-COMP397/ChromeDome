@@ -33,20 +33,20 @@ var scenes;
             managers.Game.laserManager2 = this.laserManager2;
             this.laserManager3 = new managers.Laser3();
             managers.Game.laserManager3 = this.laserManager3;
+            this.enemy1 = new Array();
+            this.enemyNum = 10;
+            for (var i = 0; i < this.enemyNum; i++) {
+                this.enemy1[i] = new objects.Enemy(this.assetManager, this);
+            }
+            this.enemy2 = new Array();
+            this.enemyNum = 15;
+            for (var i = 0; i < this.enemyNum; i++) {
+                this.enemy2[i] = new objects.Enemy2(this.assetManager, this);
+            }
             this.enemy3 = new Array();
             this.enemyNum = 15;
             for (var i = 0; i < this.enemyNum; i++) {
                 this.enemy3[i] = new objects.Enemy3(this.assetManager, this);
-            }
-            this.enemies = new Array();
-            this.enemyNum = 15;
-            for (var i = 0; i < this.enemyNum; i++) {
-                this.enemies[i] = new objects.Enemy2(this.assetManager, this);
-            }
-            this.easyenemies = new Array();
-            this.enemyNum = 10;
-            for (var i = 0; i < this.enemyNum; i++) {
-                this.easyenemies[i] = new objects.Enemy(this.assetManager, this);
             }
             this.scoreBoard = new managers.Scoreboard;
             // Initialize Sound
@@ -60,8 +60,10 @@ var scenes;
             var _this = this;
             this.player.Update();
             this.laserManager.Update();
+            this.laserManager2.Update();
+            this.laserManager3.Update();
             this.boss.Update();
-            this.enemies.forEach(function (e) {
+            this.enemy1.forEach(function (e) {
                 if (!e.isDead) {
                     e.Update();
                     _this.player.isDead = managers.Collision.CheckAABB(_this.player, e, _this.scoreBoard);
@@ -72,7 +74,7 @@ var scenes;
                     }
                 }
             });
-            this.easyenemies.forEach(function (e) {
+            this.enemy2.forEach(function (e) {
                 if (!e.isDead) {
                     e.Update();
                     _this.player.isDead = managers.Collision.CheckAABB(_this.player, e, _this.scoreBoard);
@@ -96,32 +98,32 @@ var scenes;
             });
             // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
             this.laserManager.Lasers.forEach(function (laser) {
-                _this.enemies.forEach(function (enemy) {
+                _this.enemy1.forEach(function (enemy) {
                     managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
             this.laserManager2.Lasers.forEach(function (laser) {
-                _this.enemies.forEach(function (enemy) {
+                _this.enemy1.forEach(function (enemy) {
                     managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
             this.laserManager3.Lasers.forEach(function (laser) {
-                _this.enemies.forEach(function (enemy) {
+                _this.enemy1.forEach(function (enemy) {
                     managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
             this.laserManager.Lasers.forEach(function (laser) {
-                _this.easyenemies.forEach(function (enemy) {
+                _this.enemy2.forEach(function (enemy) {
                     managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
             this.laserManager2.Lasers.forEach(function (laser) {
-                _this.easyenemies.forEach(function (enemy) {
+                _this.enemy2.forEach(function (enemy) {
                     managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
             this.laserManager3.Lasers.forEach(function (laser) {
-                _this.easyenemies.forEach(function (enemy) {
+                _this.enemy2.forEach(function (enemy) {
                     managers.Collision.CheckAABB(laser, enemy, _this.scoreBoard);
                 });
             });
@@ -149,10 +151,10 @@ var scenes;
             this.addChild(this.levelbackground);
             this.addChild(this.player);
             this.addChild(this.boss);
-            this.easyenemies.forEach(function (e) {
+            this.enemy1.forEach(function (e) {
                 _this.addChild(e);
             });
-            this.enemies.forEach(function (e) {
+            this.enemy2.forEach(function (e) {
                 _this.addChild(e);
             });
             this.enemy3.forEach(function (e) {

@@ -16,12 +16,14 @@ var objects;
     // Enemy Game Object
     var Boss = /** @class */ (function (_super) {
         __extends(Boss, _super);
+        // private _bulletSpawn: Utils.Vector2;
         //Constructors
         function Boss(assetManager, scene) {
             var _this = _super.call(this, assetManager, "bosstank") || this;
             //Variables
             _this.isDead = false;
             _this._currentScene = scene;
+            // this._fireRate = 60;
             _this.transform = new components.Transform(new math.Vector2(_this.x, _this.y));
             _this.Start();
             return _this;
@@ -31,10 +33,10 @@ var objects;
             _super.prototype.Start.call(this);
             this.regX = this.halfW;
             this.regY = this.halfH;
-            this._bulletSpawn = new Utils.Vector2(0, 2 + this.halfW);
+            // this._bulletSpawn = new Utils.Vector2(0, 2 + this.halfW)
             this.x = Math.floor(Math.random() * (this._currentScene.sceneSize.y - this.halfW) + this.halfW);
             this.y = 75;
-            this.Reset();
+            // this.Reset();
         };
         Boss.prototype.Update = function () {
             this.Move();

@@ -10,6 +10,7 @@ module scenes {
         private scoreBoard: managers.Scoreboard;
         private laserManager: managers.Laser;
         private laserManager2: managers.Laser2;
+
         private bgm: createjs.AbstractSoundInstance;
 
         // Constructor
@@ -25,13 +26,11 @@ module scenes {
 
             this.player = new objects.Player(this.assetManager, this);
 
-
-
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
 
-            this.enemies = new Array<objects.Enemy>();
-            this.enemyNum = 5;
+            this.laserManager2 = new managers.Laser2();
+            managers.Game.laserManager2 = this.laserManager2;
 
             this.enemy3 = new Array<objects.Enemy3>();
             this.enemyNum = 15;
@@ -66,7 +65,7 @@ module scenes {
         public Update(): void {
             this.player.Update();
             this.laserManager.Update();
-            
+            this.laserManager2.Update();
 
             this.enemies.forEach(e => {
                 if(!e.isDead) {

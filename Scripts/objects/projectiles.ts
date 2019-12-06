@@ -1,6 +1,6 @@
 module objects {
     // Laser Projectiles
-    export class Laser extends objects.GameObject {
+    export class Laser1 extends objects.GameObject {
         // Variables
         // Constructor
         constructor(assetManager: createjs.LoadQueue) {

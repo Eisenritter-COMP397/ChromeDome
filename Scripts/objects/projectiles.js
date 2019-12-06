@@ -14,37 +14,37 @@ var __extends = (this && this.__extends) || (function () {
 var objects;
 (function (objects) {
     // Laser Projectiles
-    var Laser = /** @class */ (function (_super) {
-        __extends(Laser, _super);
+    var Laser1 = /** @class */ (function (_super) {
+        __extends(Laser1, _super);
         // Variables
         // Constructor
-        function Laser(assetManager) {
+        function Laser1(assetManager) {
             var _this = _super.call(this, assetManager, "laser1") || this;
             _this.Start();
             return _this;
         }
         // Methods
-        Laser.prototype.Start = function () {
+        Laser1.prototype.Start = function () {
             // We may have to scale the laser to an appropriate size
             this.speedX = 0;
             this.speedY = -10;
             this.Reset();
         };
-        Laser.prototype.Update = function () {
+        Laser1.prototype.Update = function () {
             this.Move();
         };
-        Laser.prototype.Reset = function () {
+        Laser1.prototype.Reset = function () {
             this.x = -5000;
             this.y = -5000;
         };
-        Laser.prototype.Move = function () {
+        Laser1.prototype.Move = function () {
             this.y += this.speedY;
         };
-        Laser.prototype.Main = function () { };
-        Laser.prototype.CheckBounds = function () { };
-        return Laser;
+        Laser1.prototype.Main = function () { };
+        Laser1.prototype.CheckBounds = function () { };
+        return Laser1;
     }(objects.GameObject));
-    objects.Laser = Laser;
+    objects.Laser1 = Laser1;
     // Laser Projectiles 2
     var Laser2 = /** @class */ (function (_super) {
         __extends(Laser2, _super);
