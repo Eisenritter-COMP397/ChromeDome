@@ -32,7 +32,7 @@ module objects {
             this.regX = this.halfW;
             this.regY = this.halfH;
 
-            this.isColliding =false;
+            this.isColliding = false;
         }
 
         public Start():void {}

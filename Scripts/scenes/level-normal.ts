@@ -73,8 +73,6 @@ module scenes {
                 });
             });
 
-            
-
             if(this.scoreBoard.Score>=100){
                 managers.Game.currentScene = config.Scene.TRANSITION;
             }

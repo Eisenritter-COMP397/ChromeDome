@@ -34,6 +34,7 @@
         { id: "laser1", src: "./Assets/bullet.png"},
         { id: "laser2", src: "./Assets/icebullet.png"},
         { id: "laser3", src: "./Assets/greenbullet.png"},
+        { id: "bosstank", src: "./Assets/bosstank.png"},
         { id: "InstructionsButton", src: "./Assets/instructions_chromedome.png"},
         { id: "BackButton", src: "./Assets/back_button.png"}
     ]

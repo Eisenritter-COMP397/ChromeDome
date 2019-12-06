@@ -90,5 +90,43 @@ var objects;
         return Enemy2;
     }(objects.GameObject));
     objects.Enemy2 = Enemy2;
+    var Enemy3 = /** @class */ (function (_super) {
+        __extends(Enemy3, _super);
+        // Constructor
+        function Enemy3(assetManager, scene) {
+            var _this = _super.call(this, assetManager, "Enemy") || this;
+            // Variables
+            _this.isDead = false;
+            _this._currentScene = scene;
+            _this.transform = new components.Transform(new math.Vector2(_this.x, _this.y));
+            _this.Start();
+            return _this;
+        }
+        // Methods
+        Enemy3.prototype.Start = function () {
+            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
+            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
+        };
+        Enemy3.prototype.Update = function () {
+            this.Move();
+            this.CheckBounds();
+        };
+        Enemy3.prototype.Reset = function () {
+            this.isDead = false;
+            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
+            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
+        };
+        Enemy3.prototype.Move = function () {
+            this.y -= 2.5;
+            this.x -= 2.5;
+        };
+        Enemy3.prototype.CheckBounds = function () {
+            if (this.y >= this._currentScene.sceneSize.y + this.halfH + 5) {
+                this.Reset();
+            }
+        };
+        return Enemy3;
+    }(objects.GameObject));
+    objects.Enemy3 = Enemy3;
 })(objects || (objects = {}));
 //# sourceMappingURL=enemy.js.map
