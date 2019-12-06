@@ -8,7 +8,7 @@ var managers;
         // Functions / Methods
         Laser.prototype.buildLaserPool = function () {
             for (var i = 0; i < this.laserCount; i++) {
-                this.Lasers[i] = new objects.Laser(managers.Game.assetManager);
+                this.Lasers[i] = new objects.Laser1(managers.Game.assetManager);
             }
         };
         Laser.prototype.Start = function () {

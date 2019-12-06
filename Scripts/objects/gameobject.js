@@ -152,5 +152,43 @@ var objects;
         return Player;
     }(objects.GameObject));
     objects.Player = Player;
+    // Enemy Game Object
+    var Enemy = /** @class */ (function (_super) {
+        __extends(Enemy, _super);
+        // Constructor
+        function Enemy(assetManager, scene) {
+            var _this = _super.call(this, assetManager, "Enemy") || this;
+            // Variables
+            _this.isDead = false;
+            _this._currentScene = scene;
+            _this.transform = new components.Transform(new math.Vector2(_this.x, _this.y));
+            _this.Start();
+            return _this;
+        }
+        // Methods
+        Enemy.prototype.Start = function () {
+            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
+            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
+        };
+        Enemy.prototype.Update = function () {
+            this.Move();
+            this.CheckBounds();
+        };
+        Enemy.prototype.Reset = function () {
+            this.isDead = false;
+            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
+            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
+        };
+        Enemy.prototype.Move = function () {
+            this.y += 2.5;
+        };
+        Enemy.prototype.CheckBounds = function () {
+            if (this.y >= this._currentScene.sceneSize.y + this.halfH + 5) {
+                this.Reset();
+            }
+        };
+        return Enemy;
+    }(objects.GameObject));
+    objects.Enemy = Enemy;
 })(objects || (objects = {}));
 //# sourceMappingURL=gameobject.js.map

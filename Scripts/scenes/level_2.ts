@@ -25,11 +25,13 @@ module scenes {
 
             this.player = new objects.Player(this.assetManager, this);
 
+
+
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
 
-            this.laserManager2 = new managers.Laser2();
-            managers.Game.laserManager2 = this.laserManager2;
+            this.enemies = new Array<objects.Enemy>();
+            this.enemyNum = 5;
 
             this.enemy3 = new Array<objects.Enemy3>();
             this.enemyNum = 15;
@@ -110,7 +112,9 @@ module scenes {
                 this.enemies.forEach(enemy => {
                     managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
 
-                });
+                }
+                
+                );
             });
 
             
@@ -157,14 +161,6 @@ module scenes {
         }
     
 
-        //private nextButtonClick(): void {
-        //    managers.Game.currentScene = config.Scene.OVER;
-        // }
-
-        // private backButtonClick(): void {
-        //     managers.Game.currentScene = config.Scene.START;
-        // }
-
         public Main(): void {
 
             this.addChild(this.levelbackground);
@@ -185,6 +181,7 @@ module scenes {
             this.laserManager2.Lasers.forEach(laser => {
                 this.addChild(laser);
             });
+            
 
             this.addChild(this.scoreBoard.scoreLabel);
             this.addChild(this.scoreBoard.highScoreLabel)

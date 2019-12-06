@@ -1,7 +1,7 @@
 module managers {
     export class Laser {
         // Variables
-        public Lasers:objects.Laser[]; // Hold a set of instantiated lasers
+        public Lasers:objects.Laser1[]; // Hold a set of instantiated lasers
         public CurrentLaser:number;
 
         private laserCount:number;
@@ -13,7 +13,7 @@ module managers {
         private buildLaserPool():void {
             for(let i = 0; i < this.laserCount; i++)
             {
-                this.Lasers[i] = new objects.Laser(managers.Game.assetManager);
+                this.Lasers[i] = new objects.Laser1(managers.Game.assetManager);
             }
         }
 
@@ -22,7 +22,7 @@ module managers {
             
             this.laserCount = 50;
             // Initialize my laser array
-            this.Lasers = new Array<objects.Laser>();
+            this.Lasers = new Array<objects.Laser1>();
             this.buildLaserPool();
             this.CurrentLaser = 0;
     
