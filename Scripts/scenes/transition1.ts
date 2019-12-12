@@ -11,12 +11,13 @@ module scenes{
         private bgm: createjs.AbstractSoundInstance;
         //Constructor
         constructor(assetManager: createjs.LoadQueue) {
-            super(assetManager);
+            super(assetManager, new math.Vector2(800, 640), 10, 10);
             this.Start();
         }
         //Start Override
         public Start(): void {
 
+            /*
             //Initialize objects
             this.background = new objects.Background(this.assetManager, "UIBackground");
             this.welcomeLabel = new objects.Label(
@@ -42,6 +43,7 @@ module scenes{
             this.bgm.volume = 1;
 
             this.Main();
+            */
         }
         public Update():void{
            
@@ -49,7 +51,7 @@ module scenes{
         //When New Game Button is Clicked
         private readyButtonClick():void{
             //Change game state from Start to Game
-            managers.Game.currentScene = config.Scene.GAME2;
+            //managers.Game.currentScene = config.Scene.GAME2;
         }
 
         //Main Override

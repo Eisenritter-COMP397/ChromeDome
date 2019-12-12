@@ -30,8 +30,12 @@ var managers;
         });
         Scoreboard.prototype.Init = function () {
             // Create our labels
-            this.scoreLabel = new objects.Label("Score: 0", "20px", "Metal Mania", "DarkRed", 640, 25, true);
-            this.highScoreLabel = new objects.Label("High score: 0", "20px", "Metal Mania", "crimson", 100, 25, true);
+            /*
+            this.scoreLabel = new objects.Label("Score: 0", "20px", "Metal Mania", "DarkRed",
+           640, 25, true);
+            this.highScoreLabel = new objects.Label("High score: 0", "20px", "Metal Mania", "crimson",
+           100, 25, true);
+           */
             // Set a default score 
             this.score = 0;
             this.highScore = 0;

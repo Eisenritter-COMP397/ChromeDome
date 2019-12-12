@@ -18,23 +18,20 @@ var objects;
         __extends(Boss, _super);
         // private _bulletSpawn: Utils.Vector2;
         //Constructors
-        function Boss(assetManager, scene) {
-            var _this = _super.call(this, assetManager, "bosstank") || this;
+        function Boss(assetManager) {
+            var _this = _super.call(this, "bosstank") || this;
             //Variables
             _this.isDead = false;
-            _this._currentScene = scene;
             // this._fireRate = 60;
-            _this.transform = new components.Transform(new math.Vector2(_this.x, _this.y));
+            //this.transform = new components.Transform(new math.Vector2(this.x, this.y));
             _this.Start();
             return _this;
         }
         //Methods
         Boss.prototype.Start = function () {
             _super.prototype.Start.call(this);
-            this.regX = this.halfW;
-            this.regY = this.halfH;
             // this._bulletSpawn = new Utils.Vector2(0, 2 + this.halfW)
-            this.x = Math.floor(Math.random() * (this._currentScene.sceneSize.y - this.halfW) + this.halfW);
+            //this.x = Math.floor(Math.random()* (this._currentScene.sceneSize.y - this.halfW) + this.halfW);
             this.y = 75;
             // this.Reset();
         };
@@ -50,21 +47,24 @@ var objects;
             }
         };
         Boss.prototype.CheckBound = function () {
-            // Right boundary
-            if (this.x >= this._currentScene.sceneSize.x - this.halfW) {
-                this.x = this._currentScene.sceneSize.x - this.halfW;
-                this.Reset();
-            }
-            // Left boundary
-            if (this.x <= this.halfW) {
-                this.x = this.halfW;
-                this.Reset();
-            }
+            /*
+             // Right boundary
+             if(this.x >= this._currentScene.sceneSize.x - this.halfW) {
+                 this.x = this._currentScene.sceneSize.x - this.halfW;
+                 this.Reset();
+             }
+ 
+             // Left boundary
+             if(this.x <= this.halfW) {
+                 this.x = this.halfW;
+                 this.Reset();
+             }
+             */
         };
         Boss.prototype.Reset = function () {
             _super.prototype.Reset.call(this);
             this._horizontalSpeed = Math.floor((Math.random() * 4) + 6);
-            this.isColliding = false;
+            // this.isColliding = false;
         };
         return Boss;
     }(objects.GameObject));

@@ -17,7 +17,7 @@ module scenes {
         private welcomeLabelTextGreen: number = 0;
         private welcomeLabelTextBlue: number = 0;
         private welcomeLabelTextAlpha: number = 1;
-        private ColorMaxReached: bool = false;
+        private ColorMaxReached: boolean = false;
 
         // Button
         private startLabel: objects.Label;
@@ -43,24 +43,24 @@ module scenes {
             //this.flameEffect = new objects.AnimatedBackground(this.assetManager);
 
             this.logo = new objects.Image(this.assetManager, "Logo",
-                this.sceneCenter, Anchors.TOPLEFT);
+                this.SceneCenter, Anchors.TOPLEFT);
             this.logo.scaleX = 0.1;
             this.logo.scaleY = 0.1;
 
             //Initialize Logo Element
             this.welcomeLabel = new objects.Label(
                 "Welcome to Chrome Dome!", "60px", "Metal Mania", new Color(128, 0, 0, 1),
-                this.position(this.sceneCenter, 0, 1), Anchors.CENTERCENTER);
+                this.position(this.SceneCenter, 0, 1), Anchors.CENTERCENTER);
 
             this.startLabel = new objects.Label(
                 "Start Game", "40px", "Metal Mania", new Color(0, 0, 0, 1),
-                this.position(this.sceneCenter, 0, -0.5), Anchors.CENTERCENTER,
+                this.position(this.SceneCenter, 0, -0.5), Anchors.CENTERCENTER,
                 true);
 
 
             this.instructionLabel = new objects.Label(
                 "Instructions", "40px", "Metal Mania", new Color(0, 0, 0, 1),
-                this.position(this.sceneCenter, 0, -1.5), Anchors.CENTERCENTER,
+                this.position(this.SceneCenter, 0, -1.5), Anchors.CENTERCENTER,
                 true);
 
             // Initialize Sound

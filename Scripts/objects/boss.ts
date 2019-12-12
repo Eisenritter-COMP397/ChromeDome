@@ -3,18 +3,17 @@ module objects {
     export class Boss extends objects.GameObject {
         //Variables
         public isDead: boolean = false;
-        public transform: components.Transform;
 
         private _horizontalSpeed:number;
        // private _bulletSpawn: Utils.Vector2;
         
 
         //Constructors
-        constructor(assetManager: createjs.LoadQueue, scene: Scene) {
-            super(assetManager, "bosstank");
-            this._currentScene = scene;
+        constructor(assetManager: createjs.LoadQueue) {
+            super("bosstank");
+            
             // this._fireRate = 60;
-            this.transform = new components.Transform(new math.Vector2(this.x, this.y));
+            //this.transform = new components.Transform(new math.Vector2(this.x, this.y));
             this.Start();
         }
 
@@ -22,10 +21,9 @@ module objects {
 
         public Start(): void{
             super.Start();
-            this.regX = this.halfW;
-            this.regY = this.halfH;
+
            // this._bulletSpawn = new Utils.Vector2(0, 2 + this.halfW)
-            this.x = Math.floor(Math.random()* (this._currentScene.sceneSize.y - this.halfW) + this.halfW);
+            //this.x = Math.floor(Math.random()* (this._currentScene.sceneSize.y - this.halfW) + this.halfW);
             this.y = 75;
            // this.Reset();
         }
@@ -47,6 +45,7 @@ module objects {
 
         public CheckBound():void {
 
+           /*
             // Right boundary
             if(this.x >= this._currentScene.sceneSize.x - this.halfW) {
                 this.x = this._currentScene.sceneSize.x - this.halfW;
@@ -58,13 +57,14 @@ module objects {
                 this.x = this.halfW;
                 this.Reset();
             }
+            */
 
         }
 
         public Reset():void {
             super.Reset();
             this._horizontalSpeed = Math.floor((Math.random()*4)+6);
-            this.isColliding = false;
+            // this.isColliding = false;
 
         }
         

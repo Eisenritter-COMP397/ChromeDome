@@ -4,15 +4,15 @@ module objects {
         // Variables
         // Constructor
         constructor(assetManager: createjs.LoadQueue) {
-            super(assetManager, "laser1");
+            super("laser1");
             this.Start();
         }
         // Methods
         public Start(): void {
             // We may have to scale the laser to an appropriate size
 
-            this.speedX = 0;
-            this.speedY = -10;
+            //this.speedX = 0;
+            //this.speedY = -10;
 
             this.Reset();
         }
@@ -24,7 +24,7 @@ module objects {
             this.y = -5000;
         }
         public Move(): void {
-            this.y += this.speedY;
+            //this.y += this.speedY;
         }
 
         public Main(): void { }
@@ -36,15 +36,15 @@ module objects {
         // Variables
         // Constructor
         constructor(assetManager: createjs.LoadQueue) {
-            super(assetManager, "laser2");
+            super("laser2");
             this.Start();
         }
         // Methods
         public Start(): void {
             // We may have to scale the laser to an appropriate size
 
-            this.speedX = 0;
-            this.speedY = -10;
+            //this.speedX = 0;
+            //this.speedY = -10;
 
             this.Reset();
         }
@@ -56,7 +56,7 @@ module objects {
             this.y = -5000;
         }
         public Move(): void {
-            this.y += this.speedY;
+            //this.y += this.speedY;
         }
 
         public Main(): void { }
@@ -67,15 +67,15 @@ module objects {
         // Variables
         // Constructor
         constructor(assetManager: createjs.LoadQueue) {
-            super(assetManager, "laser3");
+            super("laser3");
             this.Start();
         }
         // Methods
         public Start(): void {
             // We may have to scale the laser to an appropriate size
 
-            this.speedX = 0;
-            this.speedY = -10;
+            //this.speedX = 0;
+            //this.speedY = -10;
 
             this.Reset();
         }
@@ -87,7 +87,7 @@ module objects {
             this.y = -5000;
         }
         public Move(): void {
-            this.y += this.speedY;
+            //this.y += this.speedY;
         }
 
         public Main(): void { }

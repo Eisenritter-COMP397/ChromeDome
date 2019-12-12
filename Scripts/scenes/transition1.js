@@ -18,32 +18,46 @@ var scenes;
         __extends(Transition1, _super);
         //Constructor
         function Transition1(assetManager) {
-            var _this = _super.call(this, assetManager) || this;
+            var _this = _super.call(this, assetManager, new math.Vector2(800, 640), 10, 10) || this;
             _this.Start();
             return _this;
         }
         //Start Override
         Transition1.prototype.Start = function () {
+            /*
             //Initialize objects
             this.background = new objects.Background(this.assetManager, "UIBackground");
-            this.welcomeLabel = new objects.Label("Great Job!", "60px", "Metal Mania", "#800000", 400, 120, true);
-            this.move = new objects.Label("New bullet: press E to slow enemies", "30px", "Metal Mania", "#800000", 400, 320, true);
-            this.readyButton = new objects.Button(this.assetManager, "ReadyButton", 325, 425);
+            this.welcomeLabel = new objects.Label(
+
+                "Great Job!", "60px", "Metal Mania", "#800000",
+                400, 120, true);
+
+            this.move = new objects.Label(
+
+                 "New bullet: press E to slow enemies", "30px", "Metal Mania", "#800000",
+                 400, 320, true);
+ 
+
+            this.readyButton = new objects.Button(this.assetManager, "ReadyButton",
+            325, 425);
             this.readyButton.scaleX = 2;
             this.readyButton.scaleY = 2;
+            
             // Initialize Sound
             createjs.Sound.stop();
             this.bgm = createjs.Sound.play("startmusic");
             this.bgm.loop = -1; // Loop forever
             this.bgm.volume = 1;
+
             this.Main();
+            */
         };
         Transition1.prototype.Update = function () {
         };
         //When New Game Button is Clicked
         Transition1.prototype.readyButtonClick = function () {
             //Change game state from Start to Game
-            managers.Game.currentScene = config.Scene.GAME2;
+            //managers.Game.currentScene = config.Scene.GAME2;
         };
         //Main Override
         Transition1.prototype.Main = function () {

@@ -171,12 +171,13 @@
                 stage.removeAllChildren();
                 currentScene = new scenes.InstructionsScene(assetManager);
                 stage.addChild(currentScene);
-                break;
+                break;*/
             case config.Scene.GAME:
                 stage.removeAllChildren();
                 currentScene = new scenes.PlayScene(assetManager);
                 stage.addChild(currentScene);
                 break;
+                /*
             case config.Scene.TRANSITION:
                 stage.removeAllChildren();
                 currentScene = new scenes.Transition1(assetManager);

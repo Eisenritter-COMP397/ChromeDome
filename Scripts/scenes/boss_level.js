@@ -17,16 +17,16 @@ var scenes;
         __extends(PlayScene3, _super);
         // Constructor
         function PlayScene3(assetManager) {
-            var _this = _super.call(this, assetManager) || this;
+            var _this = _super.call(this, assetManager, new math.Vector2(800, 640), 10, 10) || this;
             _this.Start();
             return _this;
         }
         // Methods
         PlayScene3.prototype.Start = function () {
             // Initialize our variables
-            this.levelbackground = new objects.Background(this.assetManager, "level3");
-            this.player = new objects.Player(this.assetManager, this);
-            this.boss = new objects.Boss(this.assetManager, this);
+            //this.levelbackground = new objects.Background(this.assetManager, "level3");
+            //this.player = new objects.Player(this.assetManager, this);
+            //this.boss = new objects.Boss(this.assetManager, this);
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
             this.laserManager2 = new managers.Laser2();
@@ -66,34 +66,40 @@ var scenes;
             this.enemy1.forEach(function (e) {
                 if (!e.isDead) {
                     e.Update();
-                    _this.player.isDead = managers.Collision.CheckAABB(_this.player, e, _this.scoreBoard);
-                    if (_this.player.isDead) {
+                    //this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
+                    /*
+                    if (this.player.isDead) {
                         // Disable music
-                        _this.bgm.stop();
+                        this.bgm.stop();
                         managers.Game.currentScene = config.Scene.OVER;
                     }
+                    */
                 }
             });
             this.enemy2.forEach(function (e) {
                 if (!e.isDead) {
                     e.Update();
-                    _this.player.isDead = managers.Collision.CheckAABB(_this.player, e, _this.scoreBoard);
-                    if (_this.player.isDead) {
+                    //this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
+                    /*
+                    if (this.player.isDead) {
                         // Disable music
-                        _this.bgm.stop();
+                        this.bgm.stop();
                         managers.Game.currentScene = config.Scene.OVER;
                     }
+                    */
                 }
             });
             this.enemy3.forEach(function (e) {
                 if (!e.isDead) {
                     e.Update();
-                    _this.player.isDead = managers.Collision.CheckAABB(_this.player, e, _this.scoreBoard);
-                    if (_this.player.isDead) {
+                    /*
+                    this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
+                    if (this.player.isDead) {
                         // Disable music
-                        _this.bgm.stop();
+                        this.bgm.stop();
                         managers.Game.currentScene = config.Scene.OVER;
                     }
+                    */
                 }
             });
             // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
@@ -143,7 +149,7 @@ var scenes;
                 });
             });
             if (this.scoreBoard.Score >= 100) {
-                managers.Game.currentScene = config.Scene.WIN;
+                //managers.Game.currentScene = config.Scene.WIN;
             }
         };
         PlayScene3.prototype.Main = function () {

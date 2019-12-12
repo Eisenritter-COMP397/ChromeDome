@@ -2,6 +2,7 @@ module managers {
     export class Collision {
         public static CheckAABB(object1: objects.GameObject, object2: objects.GameObject, scoreboard: managers.Scoreboard) {
             // Check all bounds
+            /*
             if((object1.x + object1.halfW) > (object2.x - object2.halfW) &&
                 (object1.x - object1.halfW) < (object2.x + object2.halfW) &&
                 (object1.y  + object1.halfH) > (object2.y - object2.halfH) &&
@@ -18,10 +19,12 @@ module managers {
                     }
                     object2.isColliding = true;
                     return true;
+                    */
 
                 }
             }
-
+        
+            /*
         public static Check(object1: objects.GameObject, object2: objects.GameObject) {
             // Create 2 temp Vec2 objects used for collision detection
             let P1: math.Vector2 = new math.Vector2(object1.x, object1.y);
@@ -39,5 +42,5 @@ module managers {
                 object2.isColliding = false;
             }
         }
-    }
+    }*/
 } 

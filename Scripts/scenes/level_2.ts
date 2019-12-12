@@ -15,13 +15,14 @@ module scenes {
 
         // Constructor
         constructor(assetManager: createjs.LoadQueue) {
-            super(assetManager);
+            super(assetManager, new math.Vector2(800, 640), 10, 10);
             this.Start();
         }
 
         // Methods
         public Start(): void {
             // Initialize our variables
+            /*
             this.levelbackground = new objects.Background(this.assetManager, "level2");
 
             this.player = new objects.Player(this.assetManager, this);
@@ -52,7 +53,7 @@ module scenes {
 
             this.scoreBoard = new managers.Scoreboard;
 
-
+*/
             // Initialize Sound
             createjs.Sound.stop();
             this.bgm = createjs.Sound.play("level2bgm");
@@ -66,7 +67,7 @@ module scenes {
             this.player.Update();
             this.laserManager.Update();
             this.laserManager2.Update();
-
+/*
             this.enemies.forEach(e => {
                 if(!e.isDead) {
                     e.Update();
@@ -102,9 +103,14 @@ module scenes {
                         // Disable music
                         this.bgm.stop();
                         managers.Game.currentScene = config.Scene.OVER;
+                    
                     }
+                    
                 }
-        });
+                
+        }
+        
+       );
 
             // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
             this.laserManager.Lasers.forEach(laser => {
@@ -157,6 +163,7 @@ module scenes {
             if(this.scoreBoard.Score>=100){
                 managers.Game.currentScene = config.Scene.TRANSITION2;
             }
+            */
         }
     
 

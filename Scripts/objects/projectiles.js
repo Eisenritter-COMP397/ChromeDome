@@ -19,15 +19,15 @@ var objects;
         // Variables
         // Constructor
         function Laser1(assetManager) {
-            var _this = _super.call(this, assetManager, "laser1") || this;
+            var _this = _super.call(this, "laser1") || this;
             _this.Start();
             return _this;
         }
         // Methods
         Laser1.prototype.Start = function () {
             // We may have to scale the laser to an appropriate size
-            this.speedX = 0;
-            this.speedY = -10;
+            //this.speedX = 0;
+            //this.speedY = -10;
             this.Reset();
         };
         Laser1.prototype.Update = function () {
@@ -38,7 +38,7 @@ var objects;
             this.y = -5000;
         };
         Laser1.prototype.Move = function () {
-            this.y += this.speedY;
+            //this.y += this.speedY;
         };
         Laser1.prototype.Main = function () { };
         Laser1.prototype.CheckBounds = function () { };
@@ -51,15 +51,15 @@ var objects;
         // Variables
         // Constructor
         function Laser2(assetManager) {
-            var _this = _super.call(this, assetManager, "laser2") || this;
+            var _this = _super.call(this, "laser2") || this;
             _this.Start();
             return _this;
         }
         // Methods
         Laser2.prototype.Start = function () {
             // We may have to scale the laser to an appropriate size
-            this.speedX = 0;
-            this.speedY = -10;
+            //this.speedX = 0;
+            //this.speedY = -10;
             this.Reset();
         };
         Laser2.prototype.Update = function () {
@@ -70,7 +70,7 @@ var objects;
             this.y = -5000;
         };
         Laser2.prototype.Move = function () {
-            this.y += this.speedY;
+            //this.y += this.speedY;
         };
         Laser2.prototype.Main = function () { };
         Laser2.prototype.CheckBounds = function () { };
@@ -83,15 +83,15 @@ var objects;
         // Variables
         // Constructor
         function Laser3(assetManager) {
-            var _this = _super.call(this, assetManager, "laser3") || this;
+            var _this = _super.call(this, "laser3") || this;
             _this.Start();
             return _this;
         }
         // Methods
         Laser3.prototype.Start = function () {
             // We may have to scale the laser to an appropriate size
-            this.speedX = 0;
-            this.speedY = -10;
+            //this.speedX = 0;
+            //this.speedY = -10;
             this.Reset();
         };
         Laser3.prototype.Update = function () {
@@ -102,7 +102,7 @@ var objects;
             this.y = -5000;
         };
         Laser3.prototype.Move = function () {
-            this.y += this.speedY;
+            //this.y += this.speedY;
         };
         Laser3.prototype.Main = function () { };
         Laser3.prototype.CheckBounds = function () { };

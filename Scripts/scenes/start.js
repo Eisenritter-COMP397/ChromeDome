@@ -35,13 +35,13 @@ var scenes;
             this.background = new objects.Background(this.assetManager);
             //Remove this
             //this.flameEffect = new objects.AnimatedBackground(this.assetManager);
-            this.logo = new objects.Image(this.assetManager, "Logo", this.sceneCenter, Anchors.TOPLEFT);
+            this.logo = new objects.Image(this.assetManager, "Logo", this.SceneCenter, Anchors.TOPLEFT);
             this.logo.scaleX = 0.1;
             this.logo.scaleY = 0.1;
             //Initialize Logo Element
-            this.welcomeLabel = new objects.Label("Welcome to Chrome Dome!", "60px", "Metal Mania", new Color(128, 0, 0, 1), this.position(this.sceneCenter, 0, 1), Anchors.CENTERCENTER);
-            this.startLabel = new objects.Label("Start Game", "40px", "Metal Mania", new Color(0, 0, 0, 1), this.position(this.sceneCenter, 0, -0.5), Anchors.CENTERCENTER, true);
-            this.instructionLabel = new objects.Label("Instructions", "40px", "Metal Mania", new Color(0, 0, 0, 1), this.position(this.sceneCenter, 0, -1.5), Anchors.CENTERCENTER, true);
+            this.welcomeLabel = new objects.Label("Welcome to Chrome Dome!", "60px", "Metal Mania", new Color(128, 0, 0, 1), this.position(this.SceneCenter, 0, 1), Anchors.CENTERCENTER);
+            this.startLabel = new objects.Label("Start Game", "40px", "Metal Mania", new Color(0, 0, 0, 1), this.position(this.SceneCenter, 0, -0.5), Anchors.CENTERCENTER, true);
+            this.instructionLabel = new objects.Label("Instructions", "40px", "Metal Mania", new Color(0, 0, 0, 1), this.position(this.SceneCenter, 0, -1.5), Anchors.CENTERCENTER, true);
             // Initialize Sound
             createjs.Sound.stop();
             this.bgm = createjs.Sound.play("startmusic");

@@ -17,16 +17,15 @@ var scenes;
         __extends(GameOverScene, _super);
         // Constructor
         function GameOverScene(assetManager) {
-            var _this = _super.call(this, assetManager) || this;
+            var _this = _super.call(this, assetManager, new math.Vector2(800, 640), 10, 10) || this;
             _this.Start();
             return _this;
         }
         //Method
         GameOverScene.prototype.Start = function () {
-            this.background = new objects.Background(this.assetManager, "UIBackground");
-            this.flameEffect = new objects.AnimatedBackground(this.assetManager);
-            this.gameOverLabel = new objects.Label("Game Over!", "60px", "Metal Mania", "#000000", 400, 320, true);
-            this.backButton = new objects.Button(this.assetManager, "NewGameButton", 320, 400);
+            //this.background = new objects.Background(this.assetManager, "UIBackground");
+            // this.gameOverLabel = new objects.Label(                "Game Over!", "60px", "Metal Mania", "#000000", 400, 320, true);
+            //this.backButton = new objects.Button(this.assetManager, "NewGameButton",  320, 400);
             this.backButton.scaleX = 2;
             this.backButton.scaleY = 2;
             // Initialize Sound
@@ -37,14 +36,12 @@ var scenes;
             this.Main();
         };
         GameOverScene.prototype.Update = function () {
-            this.flameEffect.Update();
         };
         GameOverScene.prototype.backButtonClick = function () {
             managers.Game.currentScene = config.Scene.START;
         };
         GameOverScene.prototype.Main = function () {
             this.addChild(this.background);
-            this.addChild(this.flameEffect);
             this.addChild(this.gameOverLabel);
             this.addChild(this.backButton);
             this.backButton.on("click", this.backButtonClick);

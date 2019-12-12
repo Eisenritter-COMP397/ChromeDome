@@ -19,7 +19,7 @@ module scenes {
 
         // Constructor
         constructor(assetManager: createjs.LoadQueue) {
-            super(assetManager);
+            super(assetManager, new math.Vector2(800, 640), 10, 10);
 
             this.Start();
         }
@@ -27,10 +27,10 @@ module scenes {
         // Methods
         public Start(): void {
             // Initialize our variables
-            this.levelbackground = new objects.Background(this.assetManager, "level3");
+            //this.levelbackground = new objects.Background(this.assetManager, "level3");
 
-            this.player = new objects.Player(this.assetManager, this);
-            this.boss = new objects.Boss(this.assetManager, this);
+            //this.player = new objects.Player(this.assetManager, this);
+            //this.boss = new objects.Boss(this.assetManager, this);
 
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
@@ -82,12 +82,14 @@ module scenes {
                     if(!e.isDead) {
                         e.Update();
     
-                        this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
+                        //this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
+                        /*
                         if (this.player.isDead) {
                             // Disable music
                             this.bgm.stop();
                             managers.Game.currentScene = config.Scene.OVER;
                         }
+                        */
                     }
             });
 
@@ -95,12 +97,14 @@ module scenes {
                 if(!e.isDead) {
                     e.Update();
 
-                    this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
+                    //this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
+                    /*
                     if (this.player.isDead) {
                         // Disable music
                         this.bgm.stop();
                         managers.Game.currentScene = config.Scene.OVER;
                     }
+                    */
                 }
             });
 
@@ -108,12 +112,14 @@ module scenes {
                 if(!e.isDead) {
                     e.Update();
 
+                    /*
                     this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
                     if (this.player.isDead) {
                         // Disable music
                         this.bgm.stop();
                         managers.Game.currentScene = config.Scene.OVER;
                     }
+                    */
                 }
         });
 
@@ -184,7 +190,7 @@ module scenes {
             });
 
             if(this.scoreBoard.Score>=100){
-                managers.Game.currentScene = config.Scene.WIN;
+                //managers.Game.currentScene = config.Scene.WIN;
             }
 
         }

@@ -13,14 +13,15 @@ module scenes{
         private bgm: createjs.AbstractSoundInstance;
         //Constructor
         constructor(assetManager: createjs.LoadQueue) {
-            super(assetManager);
+            super(assetManager, new math.Vector2(800, 640), 10, 10);
             this.Start();
         }
         //Start Override
         public Start(): void {
 
             //Initialize objects
-            this.background = new objects.Background(this.assetManager, "UIBackground");
+            //this.background = new objects.Background(this.assetManager, "UIBackground");
+            /*
             this.welcomeLabel = new objects.Label(
 
                 "Instructions", "60px", "Metal Mania", "#800000", 
@@ -50,6 +51,7 @@ module scenes{
             350, 425);
             this.backButton.scaleX = 2;
             this.backButton.scaleY = 2;
+            */
             
             // Initialize Sound
             createjs.Sound.stop();

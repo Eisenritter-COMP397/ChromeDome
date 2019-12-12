@@ -104,7 +104,7 @@ module components {
     }
 
     //Grid Component
-    export class Grid extends components.Component {
+    export abstract class Grid extends components.Component {
         private gSize: math.Vector2;
         private igxSize: number;
         private igySize: number;

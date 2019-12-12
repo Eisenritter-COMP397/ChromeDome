@@ -18,22 +18,45 @@ var scenes;
         __extends(InstructionsScene, _super);
         //Constructor
         function InstructionsScene(assetManager) {
-            var _this = _super.call(this, assetManager) || this;
+            var _this = _super.call(this, assetManager, new math.Vector2(800, 640), 10, 10) || this;
             _this.Start();
             return _this;
         }
         //Start Override
         InstructionsScene.prototype.Start = function () {
             //Initialize objects
-            this.background = new objects.Background(this.assetManager, "UIBackground");
-            this.welcomeLabel = new objects.Label("Instructions", "60px", "Metal Mania", "#800000", 400, 120, true);
-            this.move = new objects.Label("Move: WASD keys", "30px", "Metal Mania", "#800000", 300, 180, true);
-            this.shoot = new objects.Label("Shoot: Space Bar", "30px", "Metal Mania", "#800000", 300, 220, true);
-            this.objective = new objects.Label("Objective: Shoot and kill enemies,", "30px", "Metal Mania", "#800000", 390, 260, true);
-            this.objective2 = new objects.Label("avoid being shot/touched by enemies", "30px", "Metal Mania", "#800000", 410, 300, true);
-            this.backButton = new objects.Button(this.assetManager, "BackButton", 350, 425);
+            //this.background = new objects.Background(this.assetManager, "UIBackground");
+            /*
+            this.welcomeLabel = new objects.Label(
+
+                "Instructions", "60px", "Metal Mania", "#800000",
+                400, 120, true);
+
+            this.move = new objects.Label(
+
+                 "Move: WASD keys", "30px", "Metal Mania", "#800000",
+                 300, 180, true);
+
+            this.shoot = new objects.Label(
+
+                "Shoot: Space Bar", "30px", "Metal Mania", "#800000",
+                300, 220, true);
+
+            this.objective = new objects.Label(
+
+                "Objective: Shoot and kill enemies,", "30px", "Metal Mania", "#800000",
+                390, 260, true);
+            this.objective2 = new objects.Label(
+
+                 "avoid being shot/touched by enemies", "30px", "Metal Mania", "#800000",
+                 410, 300, true);
+
+
+            this.backButton = new objects.Button(this.assetManager, "BackButton",
+            350, 425);
             this.backButton.scaleX = 2;
             this.backButton.scaleY = 2;
+            */
             // Initialize Sound
             createjs.Sound.stop();
             this.bgm = createjs.Sound.play("startmusic");

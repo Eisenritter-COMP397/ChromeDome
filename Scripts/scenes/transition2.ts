@@ -11,12 +11,12 @@ module scenes{
         private bgm: createjs.AbstractSoundInstance;
         //Constructor
         constructor(assetManager: createjs.LoadQueue) {
-            super(assetManager);
+            super(assetManager, new math.Vector2(800, 640), 10, 10);
             this.Start();
         }
         //Start Override
         public Start(): void {
-
+/*
             //Initialize objects
             this.background = new objects.Background(this.assetManager, "UIBackground");
             this.welcomeLabel = new objects.Label(
@@ -61,7 +61,10 @@ module scenes{
             this.addChild(this.shoot);
             this.addChild(this.readyButton);
             this.readyButton.on("click", this.readyButtonClick)
+          */
         }
+  
     }
+    
 
 }
