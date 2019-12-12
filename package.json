@@ -1,0 +1,39 @@
+{
+  "name": "chromedome",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "EisenritterX",
+  "license": "ISC",
+  "dependencies": {
+    "createjs": "^1.0.1",
+    "easeljs": "^1.0.2",
+    "preloadjs": "^1.0.1",
+    "soundjs": "^1.0.1",
+    "tweenjs": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/createjs": "0.0.29",
+    "@types/easeljs": "^1.0.0",
+    "@types/preloadjs": "^0.6.32",
+    "@types/soundjs": "^0.6.27",
+    "@types/tweenjs": "^1.0.0"
+  },
+  "description": "This is the Chrome Dome Game",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eisenritter-COMP397/ChromeDome.git"
+  },
+  "keywords": [
+    "Chrome",
+    "Dome",
+    "Final",
+    "Project"
+  ],
+  "bugs": {
+    "url": "https://github.com/Eisenritter-COMP397/ChromeDome/issues"
+  },
+  "homepage": "https://github.com/Eisenritter-COMP397/ChromeDome#readme"
+}

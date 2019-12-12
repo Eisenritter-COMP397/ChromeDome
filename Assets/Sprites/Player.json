@@ -1,0 +1,49 @@
+{
+
+"images": [
+    "Player.png"
+],
+
+"framerate": 20,
+"frames": [
+    [1, 1, 166, 250, 0, 83, 124],
+    [169, 1, 82, 185, 0, 41, 112],
+    [169, 188, 79, 188, 0, 39, 126],
+    [1, 253, 152, 256, 0, 76, 128],
+    [155, 378, 94, 227, 0, 47, 120],
+    [1, 511, 150, 237, 0, 75, 117],
+    [153, 607, 88, 208, 0, 44, 128],
+    [1, 750, 128, 254, 0, 64, 126],
+    [131, 817, 120, 204, 0, 60, 102],
+    [1, 1006, 128, 236, 0, 64, 118],
+    [131, 1023, 116, 194, 0, 58, 82],
+    [131, 1219, 76, 186, 0, 38, 123],
+    [1, 1244, 128, 229, 0, 64, 106],
+    [131, 1407, 73, 176, 0, 37, 111],
+    [1, 1475, 88, 146, 0, 44, 79]
+],
+
+"animations": {
+    "Hull_01": { "frames": [0] },
+    "Gun_04": { "frames": [1] },
+    "Gun_01": { "frames": [2] },
+    "Hull_06": { "frames": [3] },
+    "Gun_02": { "frames": [4] },
+    "Hull_02": { "frames": [5] },
+    "Gun_07": { "frames": [6] },
+    "Hull_07": { "frames": [7] },
+    "Hull_08": { "frames": [8] },
+    "Hull_03": { "frames": [9] },
+    "Hull_04": { "frames": [10] },
+    "Gun_05": { "frames": [11] },
+    "Hull_05": { "frames": [12] },
+    "Gun_03": { "frames": [13] },
+    "Gun_06": { "frames": [14] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:ebce50af6a27e21d6253961536aeecaa:31cee5e742093b8c3a83e40f38707e2a:67f262b79b5ce427cc4bd691e0602633$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}
