@@ -23,11 +23,12 @@ var components;
     components.Component = Component;
     // Transform Component
     var Transform = /** @class */ (function () {
-        function Transform(size, position, rotation, scale) {
+        function Transform(size, position, rotation, scale, anchor) {
             if (size === void 0) { size = math.Vector2.Zero(); }
             if (position === void 0) { position = math.Vector2.Zero(); }
             if (rotation === void 0) { rotation = 0; }
             if (scale === void 0) { scale = math.Vector2.Zero(); }
+            if (anchor === void 0) { anchor = Utils.Anchors.CENTERCENTER; }
             this._size = new math.Vector2(0, 0);
             this._position = new math.Vector2(0, 0);
             this._rotation = 0;
@@ -37,9 +38,9 @@ var components;
             this._size = size;
             this._position = position;
             this._rotation = rotation;
-            this._pivot = math.Vector2.Divide(size, 2);
             this._halfSize = math.Vector2.Divide(size, 2);
             this._scale = scale;
+            this.SetPivot(anchor);
         }
         Object.defineProperty(Transform.prototype, "Size", {
             // Size Property
@@ -96,47 +97,50 @@ var components;
             configurable: true
         });
         Object.defineProperty(Transform.prototype, "Pivot", {
-            // Pivot Property
-            set: function (anchors) {
-                switch (anchors) {
-                    case Anchors.TOPLEFT:
-                        this._pivot = math.Vector2.Zero();
-                        break;
-                    case Anchors.TOPCENTER:
-                        this._pivot.x = this._size.x * 0.5;
-                        this._pivot.y = 0;
-                        break;
-                    case Anchors.TOPRIGHT:
-                        this._pivot.x = this._size.x;
-                        this._pivot.y = 0;
-                        break;
-                    case Anchors.CENTERLEFT:
-                        this._pivot.x = 0;
-                        this._pivot.y = this._size.y * 0.5;
-                    case Anchors.CENTERCENTER:
-                        this._pivot = math.Vector2.Divide(this.Size, 2);
-                        break;
-                    case Anchors.CENTERLEFT:
-                        this._pivot.x = this._size.x;
-                        this._pivot.y = this._size.y * 0.5;
-                    case Anchors.BOTTOMLEFT:
-                        this._pivot.x = 0;
-                        this._pivot.y = this._size.y;
-                        ;
-                        break;
-                    case Anchors.BOTTOMCENTER:
-                        this._pivot.x = this._size.x * 0.5;
-                        this._pivot.y = this._size.y;
-                        break;
-                    case Anchors.BOTTOMRIGHT:
-                        this._pivot.x = this._size.x;
-                        this._pivot.y = this._size.y;
-                        break;
-                }
+            get: function () {
+                return this._pivot;
             },
             enumerable: true,
             configurable: true
         });
+        // Pivot Property
+        Transform.prototype.SetPivot = function (anchors) {
+            switch (anchors) {
+                case Anchors.TOPLEFT:
+                    this._pivot = math.Vector2.Zero();
+                    break;
+                case Anchors.TOPCENTER:
+                    this._pivot.x = this._size.x * 0.5;
+                    this._pivot.y = 0;
+                    break;
+                case Anchors.TOPRIGHT:
+                    this._pivot.x = this._size.x;
+                    this._pivot.y = 0;
+                    break;
+                case Anchors.CENTERLEFT:
+                    this._pivot.x = 0;
+                    this._pivot.y = this._size.y * 0.5;
+                case Anchors.CENTERCENTER:
+                    this._pivot = math.Vector2.Divide(this.Size, 2);
+                    break;
+                case Anchors.CENTERLEFT:
+                    this._pivot.x = this._size.x;
+                    this._pivot.y = this._size.y * 0.5;
+                case Anchors.BOTTOMLEFT:
+                    this._pivot.x = 0;
+                    this._pivot.y = this._size.y;
+                    ;
+                    break;
+                case Anchors.BOTTOMCENTER:
+                    this._pivot.x = this._size.x * 0.5;
+                    this._pivot.y = this._size.y;
+                    break;
+                case Anchors.BOTTOMRIGHT:
+                    this._pivot.x = this._size.x;
+                    this._pivot.y = this._size.y;
+                    break;
+            }
+        };
         return Transform;
     }());
     components.Transform = Transform;

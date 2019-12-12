@@ -9,7 +9,7 @@ module objects {
 
         // Constructor
         constructor(assetManager: createjs.LoadQueue) {
-            super("Player");
+            super("Player",Utils.Anchors.CENTERCENTER);
             this.Start();
         }
         // Methods
@@ -21,7 +21,7 @@ module objects {
             this.scaleX = 0.25;
             this.scaleY = 0.25;
             //this.isDead = false;
-
+            console.log("this sprite's pivot is: ", this.Transform.Pivot);
             // Initialize Attached GameObjects
             this.turret = new objects.PlayerTurret(managers.Game.assetManager,this);
             this.Main();

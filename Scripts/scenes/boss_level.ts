@@ -3,7 +3,7 @@ module scenes {
         // Variables
         private levelbackground: objects.Background;
         private player: objects.Player;
-        private boss: objects.Boss;
+        //private boss: objects.Boss;
         private enemy1: objects.Enemy[];
         private enemy2: objects.Enemy2[];
         private enemy3: objects.Enemy3[];
@@ -76,7 +76,7 @@ module scenes {
             this.laserManager.Update();
             this.laserManager2.Update();
             this.laserManager3.Update();
-            this.boss.Update();
+            //this.boss.Update();
 
             this.enemy1.forEach(e => {
                     if(!e.isDead) {
@@ -198,7 +198,7 @@ module scenes {
         public Main(): void {
             this.addChild(this.levelbackground);
             this.addChild(this.player);
-            this.addChild(this.boss);
+            //this.addChild(this.boss);
             this.enemy1.forEach(e => {
                 this.addChild(e);
             });

@@ -14,6 +14,7 @@ module objects{
             public Start():void {
                 this.x = this.parent.regX;
                 this.y = this.parent.regY;
+                console.log(this.regX);
                 //this.isDead = false;
             }
     

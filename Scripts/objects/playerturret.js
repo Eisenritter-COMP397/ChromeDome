@@ -30,6 +30,7 @@ var objects;
         PlayerTurret.prototype.Start = function () {
             this.x = this.parent.regX;
             this.y = this.parent.regY;
+            console.log(this.regX);
             //this.isDead = false;
         };
         PlayerTurret.prototype.Update = function () {

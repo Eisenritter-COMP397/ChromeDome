@@ -16,7 +16,7 @@ var objects;
     // Game Object Super Class
     var GameObject = /** @class */ (function (_super) {
         __extends(GameObject, _super);
-        function GameObject(imageString, size, position, rotation, anchor) {
+        function GameObject(imageString, anchor, position, rotation) {
             var _this = _super.call(this) || this;
             // Variables
             _this.transform = new components.Transform;
@@ -26,10 +26,11 @@ var objects;
             _this.sprite = new createjs.Sprite(managers.Game.textureAtlas, imageString);
             _this.transform.Size.x = _this.sprite.getBounds().width;
             _this.transform.Size.y = _this.sprite.getBounds().height;
+            _this.transform.HalfSize = math.Vector2.Divide(_this.transform.Size, 2);
+            _this.transform.SetPivot(anchor);
             _this.transform.Position.x = _this.sprite.x;
             _this.transform.Position.y = _this.sprite.y;
             _this.transform.Rotation = _this.sprite.rotation;
-            _this.transform.HalfSize = math.Vector2.Divide(_this.transform.Size, 2);
             _this.Init();
             return _this;
         }
@@ -126,7 +127,8 @@ var objects;
 
             this.isColliding = false;*/
         };
-        GameObject.prototype.Start = function () { };
+        GameObject.prototype.Start = function () {
+        };
         GameObject.prototype.Update = function () { };
         GameObject.prototype.Reset = function () { };
         GameObject.prototype.Move = function () { };

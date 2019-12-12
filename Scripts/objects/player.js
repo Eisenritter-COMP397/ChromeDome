@@ -20,7 +20,7 @@ var objects;
         //public isDead:boolean;
         // Constructor
         function Player(assetManager) {
-            var _this = _super.call(this, "Player") || this;
+            var _this = _super.call(this, "Player", Utils.Anchors.CENTERCENTER) || this;
             _this.Start();
             return _this;
         }
@@ -33,6 +33,7 @@ var objects;
             this.scaleX = 0.25;
             this.scaleY = 0.25;
             //this.isDead = false;
+            console.log("this sprite's pivot is: ", this.Transform.Pivot);
             // Initialize Attached GameObjects
             this.turret = new objects.PlayerTurret(managers.Game.assetManager, this);
             this.Main();

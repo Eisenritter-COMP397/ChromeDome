@@ -48,21 +48,26 @@ module objects {
             this.tag= tag;
         }
 
-        constructor(imageString:string,size?:math.Vector2, position?:math.Vector2, rotation?:number,
-            anchor?:Utils.Anchors ){
+        constructor(imageString:string,anchor?:Utils.Anchors,
+             position?:math.Vector2, rotation?:number,
+             ){
             super();
             this.anchor = anchor;
             this.sprite = new createjs.Sprite(managers.Game.textureAtlas,imageString);
             this.transform.Size.x = this.sprite.getBounds().width;
             this.transform.Size.y = this.sprite.getBounds().height;
+            this.transform.HalfSize = math.Vector2.Divide(this.transform.Size,2);
+            this.transform.SetPivot(anchor);
+            
             this.transform.Position.x = this.sprite.x;
             this.transform.Position.y = this.sprite.y;
+
             this.transform.Rotation = this.sprite.rotation;
-            this.transform.HalfSize = math.Vector2.Divide(this.transform.Size,2);
             this.Init();
         }
 
         public AddComponent(component:components.Component){
+
             this._components.push(component);
         }
 
@@ -95,6 +100,7 @@ module objects {
         // Methods 
         private Init():void {
             this.addChild(this.sprite);
+
             // Initialize all the properties of my object
             /*
             this.width = this.getBounds().width;
@@ -109,7 +115,9 @@ module objects {
             this.isColliding = false;*/
         }
 
-        public Start():void {}
+        public Start():void {
+
+        }
         public Update():void {}
         public Reset():void {}
         public Move():void {}

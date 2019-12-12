@@ -1,4 +1,5 @@
 module objects {
+    /*
     // Enemy Game Object
     export class Boss extends objects.GameObject {
         //Variables
@@ -57,7 +58,7 @@ module objects {
                 this.x = this.halfW;
                 this.Reset();
             }
-            */
+            
 
         }
 
@@ -68,5 +69,5 @@ module objects {
 
         }
         
-    }
+    }*/
 }

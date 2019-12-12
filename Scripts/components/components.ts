@@ -20,13 +20,13 @@ module components {
         private _scale: math.Vector2 = new math.Vector2(0,0);
 
         constructor(size: math.Vector2= math.Vector2.Zero(), position: math.Vector2 = math.Vector2.Zero(),
-         rotation: number=0,scale: math.Vector2 = math.Vector2.Zero()) {
+         rotation: number=0,scale: math.Vector2 = math.Vector2.Zero(),anchor:Utils.Anchors = Utils.Anchors.CENTERCENTER) {
             this._size = size;
             this._position = position;
             this._rotation = rotation;
-            this._pivot = math.Vector2.Divide(size,2);
             this._halfSize = math.Vector2.Divide(size,2);
             this._scale = scale;
+            this.SetPivot(anchor)
         }
 
         // Size Property
@@ -59,8 +59,6 @@ module components {
         set Scale(scale:math.Vector2){
             this._scale = scale;
         }
-
-
         // Halfsize Property
         get HalfSize():math.Vector2{
             return this._halfSize;
@@ -69,8 +67,12 @@ module components {
             this._halfSize = math.Vector2.Divide(this.Size,2);
         }
 
+        get Pivot():math.Vector2{
+            return this._pivot;
+        }
+
         // Pivot Property
-        set Pivot(anchors:Utils.Anchors){
+        public SetPivot(anchors:Utils.Anchors){
             switch (anchors) {
                 case Anchors.TOPLEFT:
                     this._pivot = math.Vector2.Zero();

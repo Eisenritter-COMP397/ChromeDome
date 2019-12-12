@@ -62,7 +62,7 @@ var scenes;
             this.laserManager.Update();
             this.laserManager2.Update();
             this.laserManager3.Update();
-            this.boss.Update();
+            //this.boss.Update();
             this.enemy1.forEach(function (e) {
                 if (!e.isDead) {
                     e.Update();
@@ -156,7 +156,7 @@ var scenes;
             var _this = this;
             this.addChild(this.levelbackground);
             this.addChild(this.player);
-            this.addChild(this.boss);
+            //this.addChild(this.boss);
             this.enemy1.forEach(function (e) {
                 _this.addChild(e);
             });
