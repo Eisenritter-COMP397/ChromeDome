@@ -25,6 +25,11 @@ module Utils{
         BOTTOMCENTER,
         BOTTOMRIGHT,
     }
+
+    export enum Tag{
+        PLAYER,
+        ENEMY
+    }
     
     export class Color{
         protected red:number;

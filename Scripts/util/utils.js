@@ -23,6 +23,11 @@ var Utils;
         Anchors[Anchors["BOTTOMCENTER"] = 7] = "BOTTOMCENTER";
         Anchors[Anchors["BOTTOMRIGHT"] = 8] = "BOTTOMRIGHT";
     })(Anchors = Utils.Anchors || (Utils.Anchors = {}));
+    var Tag;
+    (function (Tag) {
+        Tag[Tag["PLAYER"] = 0] = "PLAYER";
+        Tag[Tag["ENEMY"] = 1] = "ENEMY";
+    })(Tag = Utils.Tag || (Utils.Tag = {}));
     var Color = /** @class */ (function () {
         function Color(red, green, blue, alpha) {
             if (red === void 0) { red = 0; }

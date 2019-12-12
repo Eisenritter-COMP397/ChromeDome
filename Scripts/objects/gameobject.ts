@@ -1,6 +1,9 @@
 module objects {
     // Game Object Super Class
     export abstract class GameObject extends createjs.Container {
+        // Properties
+
+        private tag: Utils.Tag;
         // Variables
         private transform: components.Transform =  new components.Transform;
         public position: math.Vector2;
@@ -13,6 +16,10 @@ module objects {
         protected image?: createjs.Bitmap;
 
         protected collider: components.Collider2D;
+
+        get Tag():Utils.Tag{
+            return this.tag;
+        }
 
         get Anchor(): Utils.Anchors{
             return this.Anchor;
@@ -38,10 +45,13 @@ module objects {
             this._currentScene =managers.Game.currentScene;
         }
 
+        set Tag(tag:Utils.Tag){
+            this.tag= tag;
+        }
+
         constructor(imageString:string,size?:math.Vector2, position?:math.Vector2, rotation?:number,
             anchor?:Utils.Anchors ){
             super();
-
             this.anchor = anchor;
             this.sprite = new createjs.Sprite(managers.Game.textureAtlas,imageString);
             this.transform.Size.x = this.sprite.getBounds().width;
@@ -49,6 +59,7 @@ module objects {
             this.transform.Position.x = this.sprite.x;
             this.transform.Position.y = this.sprite.y;
             this.transform.Rotation = this.sprite.rotation;
+            this.transform.HalfSize = math.Vector2.Divide(this.transform.Size,2);
             this.Init();
         }
 

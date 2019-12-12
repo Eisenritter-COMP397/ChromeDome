@@ -17,7 +17,7 @@ var scenes;
         __extends(PlayScene, _super);
         // Constructor
         function PlayScene(assetManager) {
-            var _this = _super.call(this, assetManager, new math.Vector2(400, 800), 10, 10) || this;
+            var _this = _super.call(this, assetManager, new math.Vector2(800, 640), 10, 10) || this;
             _this.Start();
             return _this;
         }
@@ -42,8 +42,6 @@ var scenes;
             this.Main();
         };
         PlayScene.prototype.Update = function () {
-            //console.log(this.player.Transform.Position);
-            console.log(this.player.x, this.player.y);
             this.player.Update();
             this.laserManager.Update();
             /*this.enemies.forEach(e => {

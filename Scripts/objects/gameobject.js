@@ -29,9 +29,20 @@ var objects;
             _this.transform.Position.x = _this.sprite.x;
             _this.transform.Position.y = _this.sprite.y;
             _this.transform.Rotation = _this.sprite.rotation;
+            _this.transform.HalfSize = math.Vector2.Divide(_this.transform.Size, 2);
             _this.Init();
             return _this;
         }
+        Object.defineProperty(GameObject.prototype, "Tag", {
+            get: function () {
+                return this.tag;
+            },
+            set: function (tag) {
+                this.tag = tag;
+            },
+            enumerable: true,
+            configurable: true
+        });
         Object.defineProperty(GameObject.prototype, "Anchor", {
             get: function () {
                 return this.Anchor;

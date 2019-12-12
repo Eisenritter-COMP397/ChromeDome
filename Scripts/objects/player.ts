@@ -28,9 +28,7 @@ module objects{
                 this.LaserFire3();
                 */
             }
-    
             public Reset():void {}
-    
             public Move():void {
                 if(managers.Game.keyboardManager.moveLeft)
                 {
@@ -55,30 +53,29 @@ module objects{
                     this.y += Math.sin(-phi);
                 }
             }
-    
-    
             public CheckBound():void {
-                /*
+                
+                console.log(this.Transform.HalfSize.y*this.scaleY);
                 // Right boundary
-                if(this.x >= this._currentScene.sceneSize.x - this.halfW) {
-                    this.x = this._currentScene.sceneSize.x - this.halfW;
+                if(this.x >= managers.Game.currentSceneObject.SceneSize.x - this.Transform.HalfSize.x*this.scaleX) {
+                    this.x = managers.Game.currentSceneObject.SceneSize.x - this.Transform.HalfSize.x*this.scaleX;
                 }
     
                 // Left boundary
-                if(this.x <= this.halfW) {
-                    this.x = this.halfW;
+                if(this.x <= this.Transform.HalfSize.x*this.scaleX) {
+                    this.x = this.Transform.HalfSize.x*this.scaleX;
                 }
     
                 // Bottom boundary
-                if(this.y >= this._currentScene.sceneSize.y - this.halfH) {
-                    this.y = this._currentScene.sceneSize.y - this.halfH;
+                if(this.y >= managers.Game.currentSceneObject.SceneSize.y - this.Transform.HalfSize.y*this.scaleY) {
+                    this.y = managers.Game.currentSceneObject.SceneSize.y - this.Transform.HalfSize.y*this.scaleY;
                 }
     
                 // Top boundary
-                if(this.y <= this.halfH) {
-                    this.y = this.halfH;
+                if(this.y <= this.Transform.HalfSize.y*this.scaleX) {
+                    this.y = this.Transform.HalfSize.y*this.scaleX;
                 }
-                */
+                
             }
     /*
             public LaserFire2():void {

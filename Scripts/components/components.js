@@ -23,20 +23,26 @@ var components;
     components.Component = Component;
     // Transform Component
     var Transform = /** @class */ (function () {
-        function Transform(size, position, rotation) {
+        function Transform(size, position, rotation, scale) {
             if (size === void 0) { size = math.Vector2.Zero(); }
             if (position === void 0) { position = math.Vector2.Zero(); }
             if (rotation === void 0) { rotation = 0; }
+            if (scale === void 0) { scale = math.Vector2.Zero(); }
             this._size = new math.Vector2(0, 0);
             this._position = new math.Vector2(0, 0);
             this._rotation = 0;
             this._pivot = new math.Vector2(0, 0);
+            this._halfSize = new math.Vector2(0, 0);
+            this._scale = new math.Vector2(0, 0);
             this._size = size;
             this._position = position;
             this._rotation = rotation;
             this._pivot = math.Vector2.Divide(size, 2);
+            this._halfSize = math.Vector2.Divide(size, 2);
+            this._scale = scale;
         }
         Object.defineProperty(Transform.prototype, "Size", {
+            // Size Property
             get: function () {
                 return this._size;
             },
@@ -47,6 +53,7 @@ var components;
             configurable: true
         });
         Object.defineProperty(Transform.prototype, "Position", {
+            // Position Property
             get: function () {
                 return this._position;
             },
@@ -57,6 +64,7 @@ var components;
             configurable: true
         });
         Object.defineProperty(Transform.prototype, "Rotation", {
+            // Rotation Property
             get: function () {
                 return this._rotation;
             },
@@ -66,7 +74,29 @@ var components;
             enumerable: true,
             configurable: true
         });
+        Object.defineProperty(Transform.prototype, "Scale", {
+            get: function () {
+                return this._scale;
+            },
+            set: function (scale) {
+                this._scale = scale;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(Transform.prototype, "HalfSize", {
+            // Halfsize Property
+            get: function () {
+                return this._halfSize;
+            },
+            set: function (size) {
+                this._halfSize = math.Vector2.Divide(this.Size, 2);
+            },
+            enumerable: true,
+            configurable: true
+        });
         Object.defineProperty(Transform.prototype, "Pivot", {
+            // Pivot Property
             set: function (anchors) {
                 switch (anchors) {
                     case Anchors.TOPLEFT:

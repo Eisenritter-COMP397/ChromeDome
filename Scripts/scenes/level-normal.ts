@@ -16,7 +16,7 @@ module scenes {
 
         // Constructor
         constructor(assetManager: createjs.LoadQueue) {
-            super(assetManager, new math.Vector2(400,800),10,10);
+            super(assetManager, new math.Vector2(800,640),10,10);
 
             this.Start();
         }
@@ -49,8 +49,6 @@ module scenes {
         }
 
         public Update(): void {
-            //console.log(this.player.Transform.Position);
-            console.log(this.player.x,this.player.y);
             this.player.Update();
             this.laserManager.Update();
 

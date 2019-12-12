@@ -16,32 +16,60 @@ module components {
         private _position: math.Vector2= new math.Vector2(0,0);
         private _rotation: number = 0;
         private _pivot: math.Vector2= new math.Vector2(0,0);
+        private _halfSize: math.Vector2 = new math.Vector2(0,0);
+        private _scale: math.Vector2 = new math.Vector2(0,0);
 
-        constructor(size: math.Vector2 = math.Vector2.Zero(), position: math.Vector2 = math.Vector2.Zero(),
-         rotation: number=0) {
+        constructor(size: math.Vector2= math.Vector2.Zero(), position: math.Vector2 = math.Vector2.Zero(),
+         rotation: number=0,scale: math.Vector2 = math.Vector2.Zero()) {
             this._size = size;
             this._position = position;
             this._rotation = rotation;
             this._pivot = math.Vector2.Divide(size,2);
+            this._halfSize = math.Vector2.Divide(size,2);
+            this._scale = scale;
         }
+
+        // Size Property
         get Size():math.Vector2{
             return this._size;
-        }
-        get Position(): math.Vector2 {
-            return this._position;
-        }
-        get Rotation(): number {
-            return this._rotation;
         }
         set Size(size:math.Vector2){
             this._size = size;
         }
+
+        // Position Property
+        get Position(): math.Vector2 {
+            return this._position;
+        }
         set Position(position:math.Vector2){
             this._position = position;
+        }
+
+        // Rotation Property
+        get Rotation(): number {
+            return this._rotation;
         }
         set Rotation(rotation:number){
             this._rotation = rotation;
         }
+
+        get Scale():math.Vector2{
+            return this._scale;
+        }
+        set Scale(scale:math.Vector2){
+            this._scale = scale;
+        }
+
+
+        // Halfsize Property
+        get HalfSize():math.Vector2{
+            return this._halfSize;
+        }
+        set HalfSize(size:math.Vector2){
+            this._halfSize = math.Vector2.Divide(this.Size,2);
+        }
+
+        // Pivot Property
         set Pivot(anchors:Utils.Anchors){
             switch (anchors) {
                 case Anchors.TOPLEFT:
