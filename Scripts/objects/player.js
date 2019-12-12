@@ -16,7 +16,6 @@ var objects;
     // Player Game Objects
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
-        // Variables
         //private laserSpawn:math.Vector2;
         //public isDead:boolean;
         // Constructor
@@ -27,12 +26,16 @@ var objects;
         }
         // Methods
         Player.prototype.Start = function () {
+            // Save current data
             this.Transform.Position = managers.Game.currentSceneObject.SceneCenter;
             this.x = this.Transform.Position.x;
             this.y = this.Transform.Position.y;
             this.scaleX = 0.25;
             this.scaleY = 0.25;
             //this.isDead = false;
+            // Initialize Attached GameObjects
+            this.turret = new objects.PlayerTurret(managers.Game.assetManager, this);
+            this.Main();
         };
         Player.prototype.Update = function () {
             this.Move();
@@ -46,9 +49,11 @@ var objects;
         Player.prototype.Reset = function () { };
         Player.prototype.Move = function () {
             if (managers.Game.keyboardManager.moveLeft) {
+                this.turret.rotation -= 5;
                 this.rotation -= 1;
             }
             if (managers.Game.keyboardManager.moveRight) {
+                this.turret.rotation += 5;
                 this.rotation += 1;
             }
             if (managers.Game.keyboardManager.moveUp) {
@@ -82,6 +87,9 @@ var objects;
             if (this.y <= this.Transform.HalfSize.y * this.scaleX) {
                 this.y = this.Transform.HalfSize.y * this.scaleX;
             }
+        };
+        Player.prototype.Main = function () {
+            this.addChild(this.turret);
         };
         return Player;
     }(objects.GameObject));

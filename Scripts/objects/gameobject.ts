@@ -2,7 +2,6 @@ module objects {
     // Game Object Super Class
     export abstract class GameObject extends createjs.Container {
         // Properties
-
         private tag: Utils.Tag;
         // Variables
         private transform: components.Transform =  new components.Transform;

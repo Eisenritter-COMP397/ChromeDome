@@ -24,7 +24,7 @@ module scenes {
         // Methods
         public Start(): void {
             // Initialize our variables
-            this.levelbackground = new objects.Background(this.assetManager);
+            this.levelbackground = new objects.Background(managers.Game.assetManager);
 
             this.player = new objects.Player(this.assetManager);
             this.laserManager = new managers.Laser();
@@ -85,9 +85,10 @@ module scenes {
 
             this.addChild(this.levelbackground);
             this.addChild(this.player);
+            /*
             this.enemies.forEach(e => {
                 this.addChild(e);
-            });
+            });*/
             
             this.laserManager.Lasers.forEach(laser => {
                 this.addChild(laser);

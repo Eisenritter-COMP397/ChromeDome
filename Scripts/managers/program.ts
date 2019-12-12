@@ -7,6 +7,7 @@ module managers{
         // Stage & Scene Data
         public static canvas: HTMLCanvasElement;
         public static stage: createjs.Stage;
+        
         public static currentScene: number;
         public static currentSceneObject: objects.Scene;
 

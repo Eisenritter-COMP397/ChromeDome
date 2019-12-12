@@ -24,7 +24,7 @@ var scenes;
         // Methods
         PlayScene.prototype.Start = function () {
             // Initialize our variables
-            this.levelbackground = new objects.Background(this.assetManager);
+            this.levelbackground = new objects.Background(managers.Game.assetManager);
             this.player = new objects.Player(this.assetManager);
             this.laserManager = new managers.Laser();
             managers.Game.laserManager = this.laserManager;
@@ -73,9 +73,10 @@ var scenes;
             var _this = this;
             this.addChild(this.levelbackground);
             this.addChild(this.player);
-            this.enemies.forEach(function (e) {
-                _this.addChild(e);
-            });
+            /*
+            this.enemies.forEach(e => {
+                this.addChild(e);
+            });*/
             this.laserManager.Lasers.forEach(function (laser) {
                 _this.addChild(laser);
             });

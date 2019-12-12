@@ -41,7 +41,7 @@
         "animations": {
             "Player": { "frames": [0] },
             "Gun_04": { "frames": [1] },
-            "Gun_01": { "frames": [2] },
+            "PlayerTurret": { "frames": [2] },
             "Hull_06": { "frames": [3] },
             "Gun_02": { "frames": [4] },
             "Hull_02": { "frames": [5] },
@@ -183,6 +183,7 @@
             break;
             */
         }
+        managers.Game.assetManager = assetManager;
         currentState = managers.Game.currentScene;
         managers.Game.currentSceneObject = currentScene;
         stage.addChild(currentScene);
