@@ -166,6 +166,7 @@
                 currentScene = new scenes.StartScene(assetManager);
                 stage.addChild(currentScene);
                 break;
+           /*
             case config.Scene.INSTRUCTIONS:
                 stage.removeAllChildren();
                 currentScene = new scenes.InstructionsScene(assetManager);
@@ -206,6 +207,7 @@
                 currentScene = new scenes.Win(assetManager);
                 stage.addChild(currentScene);
                 break;
+                */
         }
         currentState = managers.Game.currentScene;
         managers.Game.currentSceneObject = currentScene;

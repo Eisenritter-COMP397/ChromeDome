@@ -139,46 +139,48 @@
                 currentScene = new scenes.StartScene(assetManager);
                 stage.addChild(currentScene);
                 break;
-            case config.Scene.INSTRUCTIONS:
-                stage.removeAllChildren();
-                currentScene = new scenes.InstructionsScene(assetManager);
-                stage.addChild(currentScene);
-                break;
-            case config.Scene.GAME:
-                stage.removeAllChildren();
-                currentScene = new scenes.PlayScene(assetManager);
-                stage.addChild(currentScene);
-                break;
-            case config.Scene.TRANSITION:
-                stage.removeAllChildren();
-                currentScene = new scenes.Transition1(assetManager);
-                stage.addChild(currentScene);
-                break;
-            case config.Scene.GAME2:
-                stage.removeAllChildren();
-                currentScene = new scenes.PlayScene2(assetManager);
-                stage.addChild(currentScene);
-                break;
-            case config.Scene.TRANSITION2:
-                stage.removeAllChildren();
-                currentScene = new scenes.Transition2(assetManager);
-                stage.addChild(currentScene);
-                break;
-            case config.Scene.GAME3:
-                stage.removeAllChildren();
-                currentScene = new scenes.PlayScene3(assetManager);
-                stage.addChild(currentScene);
-                break;
-            case config.Scene.OVER:
-                stage.removeAllChildren();
-                currentScene = new scenes.GameOverScene(assetManager);
-                stage.addChild(currentScene);
-                break;
-            case config.Scene.WIN:
-                stage.removeAllChildren();
-                currentScene = new scenes.Win(assetManager);
-                stage.addChild(currentScene);
-                break;
+            /*
+             case config.Scene.INSTRUCTIONS:
+                 stage.removeAllChildren();
+                 currentScene = new scenes.InstructionsScene(assetManager);
+                 stage.addChild(currentScene);
+                 break;
+             case config.Scene.GAME:
+                 stage.removeAllChildren();
+                 currentScene = new scenes.PlayScene(assetManager);
+                 stage.addChild(currentScene);
+                 break;
+             case config.Scene.TRANSITION:
+                 stage.removeAllChildren();
+                 currentScene = new scenes.Transition1(assetManager);
+                 stage.addChild(currentScene);
+                 break;
+             case config.Scene.GAME2:
+                 stage.removeAllChildren();
+                 currentScene = new scenes.PlayScene2(assetManager);
+                 stage.addChild(currentScene);
+                 break;
+             case config.Scene.TRANSITION2:
+                 stage.removeAllChildren();
+                 currentScene = new scenes.Transition2(assetManager);
+                 stage.addChild(currentScene);
+                 break;
+             case config.Scene.GAME3:
+                 stage.removeAllChildren();
+                 currentScene = new scenes.PlayScene3(assetManager);
+                 stage.addChild(currentScene);
+                 break;
+             case config.Scene.OVER:
+                 stage.removeAllChildren();
+                 currentScene = new scenes.GameOverScene(assetManager);
+                 stage.addChild(currentScene);
+                 break;
+             case config.Scene.WIN:
+                 stage.removeAllChildren();
+                 currentScene = new scenes.Win(assetManager);
+                 stage.addChild(currentScene);
+                 break;
+                 */
         }
         currentState = managers.Game.currentScene;
         managers.Game.currentSceneObject = currentScene;

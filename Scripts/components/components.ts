@@ -17,8 +17,8 @@ module components {
         private _rotation: number = 0;
         private _pivot: math.Vector2= new math.Vector2(0,0);
 
-        constructor(size: math.Vector2 = math.Vector2.Zero(), position?: math.Vector2 = math.Vector2.Zero(),
-         rotation?: number=0) {
+        constructor(size: math.Vector2 = math.Vector2.Zero(), position: math.Vector2 = math.Vector2.Zero(),
+         rotation: number=0) {
             this._size = size;
             this._position = position;
             this._rotation = rotation;
