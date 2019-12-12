@@ -16,16 +16,20 @@ var managers;
                     this.moveUp = true;
                     break;
                 case config.Keys.A:
+                    this.turretRotateLeft = true;
+                    break;
                 case config.Keys.LEFT_ARROW:
-                    this.moveLeft = true;
+                    this.hullRotateLeft = true;
                     break;
                 case config.Keys.S:
                 case config.Keys.DOWN_ARROW:
                     this.moveDown = true;
                     break;
                 case config.Keys.D:
+                    this.turretRotateRight = true;
+                    break;
                 case config.Keys.RIGHT_ARROW:
-                    this.moveRight = true;
+                    this.hullRotateRight = true;
                     break;
                 case config.Keys.SPACE:
                     console.log("pew pew");
@@ -47,16 +51,20 @@ var managers;
                     this.moveUp = false;
                     break;
                 case config.Keys.A:
+                    this.turretRotateLeft = false;
+                    break;
                 case config.Keys.LEFT_ARROW:
-                    this.moveLeft = false;
+                    this.hullRotateLeft = false;
                     break;
                 case config.Keys.S:
                 case config.Keys.DOWN_ARROW:
                     this.moveDown = false;
                     break;
                 case config.Keys.D:
+                    this.turretRotateRight = false;
+                    break;
                 case config.Keys.RIGHT_ARROW:
-                    this.moveRight = false;
+                    this.hullRotateRight = false;
                     break;
                 case config.Keys.SPACE:
                     console.log("pew pew off");

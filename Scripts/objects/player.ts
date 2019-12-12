@@ -38,12 +38,16 @@ module objects {
         }
         public Reset(): void { }
         public Move(): void {
-            if (managers.Game.keyboardManager.moveLeft) {
+            if (managers.Game.keyboardManager.turretRotateLeft) {
                 this.turret.rotation-=5;
+            }
+            if (managers.Game.keyboardManager.turretRotateRight) {
+                this.turret.rotation+=5;
+            }
+            if (managers.Game.keyboardManager.hullRotateLeft) {
                 this.rotation -= 1;
             }
-            if (managers.Game.keyboardManager.moveRight) {
-                this.turret.rotation+=5;
+            if (managers.Game.keyboardManager.hullRotateRight) {
                 this.rotation += 1;
             }
             if (managers.Game.keyboardManager.moveUp) {

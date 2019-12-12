@@ -3,8 +3,10 @@ module managers {
         // Variables
         public moveUp: boolean;
         public moveDown: boolean;
-        public moveLeft: boolean;
-        public moveRight: boolean;
+        public hullRotateLeft: boolean;
+        public hullRotateRight: boolean;
+        public turretRotateLeft: boolean;
+        public turretRotateRight: boolean;
         public shoot1: boolean;
         public shoot2: boolean;
         public shoot3: boolean;
@@ -18,66 +20,74 @@ module managers {
             document.addEventListener("keyup", this.onKeyUp.bind(this), false);
         }
         // Methods 
-        public onKeyDown(event:KeyboardEvent):void {
-            switch(event.keyCode) {
+        public onKeyDown(event: KeyboardEvent): void {
+            switch (event.keyCode) {
                 case config.Keys.W:
                 case config.Keys.UP_ARROW:
                     this.moveUp = true;
-                break;
+                    break;
                 case config.Keys.A:
+                    this.turretRotateLeft = true;
+                    break;
                 case config.Keys.LEFT_ARROW:
-                    this.moveLeft = true;
-                break;
+                    this.hullRotateLeft = true;
+                    break;
                 case config.Keys.S:
                 case config.Keys.DOWN_ARROW:
                     this.moveDown = true;
-                break;
+                    break;
                 case config.Keys.D:
+                    this.turretRotateRight = true;
+                    break;
                 case config.Keys.RIGHT_ARROW:
-                    this.moveRight = true;
-                break;
+                    this.hullRotateRight = true;
+                    break;
                 case config.Keys.SPACE:
                     console.log("pew pew");
-                    this.shoot1=true;
-                break;
+                    this.shoot1 = true;
+                    break;
                 case config.Keys.Q:
                     console.log("new laser pew");
-                    this.shoot2=true;
-                break;
+                    this.shoot2 = true;
+                    break;
                 case config.Keys.E:
                     console.log("3rd laser pew");
-                    this.shoot3=true;
+                    this.shoot3 = true;
             }
         }
-        public onKeyUp(event:KeyboardEvent):void {
-            switch(event.keyCode) {
+        public onKeyUp(event: KeyboardEvent): void {
+            switch (event.keyCode) {
                 case config.Keys.W:
                 case config.Keys.UP_ARROW:
                     this.moveUp = false;
-                break;
+                    break;
                 case config.Keys.A:
+                    this.turretRotateLeft = false;
+                    break;
                 case config.Keys.LEFT_ARROW:
-                    this.moveLeft = false;
-                break;
+                    this.hullRotateLeft = false;
+                    break;
                 case config.Keys.S:
                 case config.Keys.DOWN_ARROW:
                     this.moveDown = false;
-                break;
+                    break;
                 case config.Keys.D:
+                    this.turretRotateRight = false;
+                    break;
                 case config.Keys.RIGHT_ARROW:
-                    this.moveRight = false;
-                break;
+                    this.hullRotateRight = false;
+                    break;
                 case config.Keys.SPACE:
                     console.log("pew pew off");
-                    this.shoot1 =false;
-                break;
+                    this.shoot1 = false;
+                    break;
                 case config.Keys.Q:
                     console.log("new laser pew");
-                    this.shoot2=false;
-                break;
+                    this.shoot2 = false;
+                    break;
                 case config.Keys.E:
                     console.log("3rd laser pew");
-                    this.shoot3=false;
+                    this.shoot3 = false;
             }
         }
     }
