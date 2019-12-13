@@ -34,6 +34,8 @@ var objects;
             //this.isDead = false;
             // Initialize Attached GameObjects
             this.turret = new objects.PlayerTurret(managers.Game.assetManager, this);
+            this.turret.Start();
+            console.log(this.turret.getBounds().width, this.turret.getBounds().height);
             this.Main();
         };
         Player.prototype.Update = function () {
@@ -102,8 +104,9 @@ var objects;
                     var shell = managers.Game.shellManager.Shell[managers.Game.shellManager.CurrentShell];
                     console.log(shell.x, shell.y);
                     shell.rotation = this.turret.rotation + this.rotation;
-                    shell.x = this.x;
-                    shell.y = this.y;
+                    shell.x = this.x - this.turret.getBounds().height / 4 * Math.cos((this.rotation + this.turret.rotation + 90) * (Math.PI / 180));
+                    shell.y = this.y - this.turret.getBounds().height / 4 * Math.sin((this.rotation + this.turret.rotation + 90) * (Math.PI / 180));
+                    console.log(shell.x, shell.y);
                     shell.direction = new math.Vector2(Math.cos((this.rotation + this.turret.rotation + 90) * (Math.PI / 180)), Math.sin((this.rotation + this.turret.rotation + 90) * (Math.PI / 180)));
                     managers.Game.shellManager.CurrentShell++;
                     //shell.x = 

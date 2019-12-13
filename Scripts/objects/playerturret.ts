@@ -1,8 +1,7 @@
 module objects{
         // Player Game Objects
         export class PlayerTurret extends objects.GameObject {
-            // Variables
-            //private laserSpawn:math.Vector2;
+
             //public isDead:boolean;
             // Constructor
             constructor(assetManager:createjs.LoadQueue,parent:GameObject) {
@@ -12,40 +11,17 @@ module objects{
             }
             // Methods
             public Start():void {
-                this.x = this.parent.regX;
-                this.y = this.parent.regY;
-                console.log(this.regX);
+
                 //this.isDead = false;
             }
-    
+            
             public Update():void {
                 this.Move();
-                this.CheckBound();
-                /*
-                this.LaserFire1();
-                this.LaserFire2();
-                this.LaserFire3();
-                */
             }
             public Reset():void {}
             public Move():void {
-                this.x = this.parent.regX;
-                this.y = this.parent.regY;
-                if(managers.Game.keyboardManager.moveUp)
-                {
-                    // Formula retrived from https://stackoverflow.com/questions/39927418/move-object-based-on-its-angle
-                    const phi = (this.rotation+90)*(Math.PI/180);
-                    this.x -= Math.cos(-phi);
-                    this.y += Math.sin(-phi);
-                }
-                if(managers.Game.keyboardManager.moveDown)
-                {
-                    // Formula retrived from https://stackoverflow.com/questions/39927418/move-object-based-on-its-angle
-                    const phi = (this.rotation-90)*(Math.PI/180);
-                    this.x -= Math.cos(-phi);
-                    this.y += Math.sin(-phi);
-                }
             }
+
             public CheckBound():void {
 
                 
