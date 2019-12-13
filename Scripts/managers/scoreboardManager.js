@@ -28,17 +28,23 @@ var managers;
             enumerable: true,
             configurable: true
         });
+        Object.defineProperty(Scoreboard.prototype, "DestroyCounter", {
+            get: function () {
+                return this.enemyDestroyedCounter;
+            },
+            set: function (counter) {
+                this.enemyDestroyedCounter = counter;
+            },
+            enumerable: true,
+            configurable: true
+        });
         Scoreboard.prototype.Init = function () {
-            // Create our labels
-            /*
-            this.scoreLabel = new objects.Label("Score: 0", "20px", "Metal Mania", "DarkRed",
-           640, 25, true);
-            this.highScoreLabel = new objects.Label("High score: 0", "20px", "Metal Mania", "crimson",
-           100, 25, true);
-           */
             // Set a default score 
             this.score = 0;
             this.highScore = 0;
+            // Create our labels
+            this.scoreLabel = new objects.Label("Score: " + this.Score.toString(), "20px", "Metal Mania", new Utils.Color(220, 0, 0, 1), managers.Game.currentSceneObject.position(managers.Game.currentSceneObject.SceneTopCenter, 4, -0.25), Utils.Anchors.CENTERCENTER);
+            this.highScoreLabel = new objects.Label("High Score: " + this.HighScore.toString(), "20px", "Metal Mania", new Utils.Color(220, 0, 0, 1), managers.Game.currentSceneObject.position(managers.Game.currentSceneObject.SceneTopCenter, -4, -0.25), Utils.Anchors.CENTERCENTER);
         };
         return Scoreboard;
     }());

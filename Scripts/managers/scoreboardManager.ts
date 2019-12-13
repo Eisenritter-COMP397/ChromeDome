@@ -6,6 +6,7 @@ module managers {
 
         private score: number;
         private highScore: number;
+        public enemyDestroyedCounter:number;
 
         public scene: objects.Scene= managers.Game.currentSceneObject;
 
@@ -21,24 +22,34 @@ module managers {
         }
         set HighScore(newHighScore:number) {
             this.highScore = newHighScore;
-            this.highScoreLabel.text = "High Score: " + this.highScore;
+            this.highScoreLabel.text = "High Score: " +this.highScore;
         }
+
+        get DestroyCounter():number {
+            return this.enemyDestroyedCounter;
+        }
+        set DestroyCounter(counter:number) {
+            this.enemyDestroyedCounter = counter;
+        }
+
         // Constructor
         constructor() {
             this.Init();
         }
         private Init():void {
-            // Create our labels
-            /*
-            this.scoreLabel = new objects.Label("Score: 0", "20px", "Metal Mania", "DarkRed", 
-           640, 25, true);
-            this.highScoreLabel = new objects.Label("High score: 0", "20px", "Metal Mania", "crimson", 
-           100, 25, true);
-           */
 
             // Set a default score 
             this.score = 0;
             this.highScore = 0;
+
+            // Create our labels
+            
+            this.scoreLabel = new objects.Label("Score: "+this.Score.toString(), "20px", "Metal Mania", new Utils.Color(220,0,0,1), 
+            managers.Game.currentSceneObject.position(managers.Game.currentSceneObject.SceneTopCenter,4,-0.25),
+            Utils.Anchors.CENTERCENTER);
+            this.highScoreLabel= new objects.Label("High Score: "+this.HighScore.toString(), "20px", "Metal Mania", new Utils.Color(220,0,0,1), 
+            managers.Game.currentSceneObject.position(managers.Game.currentSceneObject.SceneTopCenter,-4,-0.25),
+            Utils.Anchors.CENTERCENTER); 
         }
     }
 } 

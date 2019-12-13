@@ -36,7 +36,7 @@ module scenes {
                 this.enemies[i] = new objects.Enemy(this.assetManager, this.position(this.SceneTopCenter, i-2, -1));
             }
 
-            this.scoreBoard = new managers.Scoreboard;
+            this.scoreBoard = new managers.Scoreboard();
 
             // Initialize Sound
             createjs.Sound.stop();
@@ -67,16 +67,19 @@ module scenes {
             // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
             this.shellManager.Shell.forEach(shell => {
                 this.enemies.forEach(enemy => {
-                    managers.Collision.CheckAABB(shell, enemy)
+                    let collide = managers.Collision.CheckAABB(shell, enemy);
+                    if(collide){
+                            shell.Reset();
+                            enemy.Reset();
+                            this.scoreBoard.Score=25;
+                    }
                 });
             });
 
-            /*
+            console.log(this.scoreBoard.Score);
             if (this.scoreBoard.Score >= 100) {
                 //managers.Game.currentScene = config.Scene.TRANSITION;
             }
-            */
-
         }
 
 

@@ -33,7 +33,7 @@ var scenes;
             for (var i = 0; i < this.enemyNum; i++) {
                 this.enemies[i] = new objects.Enemy(this.assetManager, this.position(this.SceneTopCenter, i - 2, -1));
             }
-            this.scoreBoard = new managers.Scoreboard;
+            this.scoreBoard = new managers.Scoreboard();
             // Initialize Sound
             createjs.Sound.stop();
             this.bgm = createjs.Sound.play("level1bgm");
@@ -60,14 +60,18 @@ var scenes;
             // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
             this.shellManager.Shell.forEach(function (shell) {
                 _this.enemies.forEach(function (enemy) {
-                    managers.Collision.CheckAABB(shell, enemy);
+                    var collide = managers.Collision.CheckAABB(shell, enemy);
+                    if (collide) {
+                        shell.Reset();
+                        enemy.Reset();
+                        _this.scoreBoard.Score = 25;
+                    }
                 });
             });
-            /*
+            console.log(this.scoreBoard.Score);
             if (this.scoreBoard.Score >= 100) {
                 //managers.Game.currentScene = config.Scene.TRANSITION;
             }
-            */
         };
         PlayScene.prototype.Main = function () {
             var _this = this;

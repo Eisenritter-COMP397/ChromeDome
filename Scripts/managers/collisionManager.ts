@@ -10,17 +10,6 @@ module managers {
                 (object1.y  + object1.Transform.HalfSize.y) > (object2.y - object2.Transform.HalfSize.y) &&
                 (object1.y - object1.Transform.HalfSize.y) < (object2.y + object2.Transform.HalfSize.y)) {
 
-                    switch(object2.name) 
-                    {
-                        
-                        case "DummyEnemy":
-                            //managers.Game.currentSceneObject.removeChild(object1);
-                            object1.Reset();
-                            object2.Reset();
-                            //scoreboard.Score+=50;
-                        break;
-                    }
-                   
                     //object2.isColliding = true;
                     return true;
                 }

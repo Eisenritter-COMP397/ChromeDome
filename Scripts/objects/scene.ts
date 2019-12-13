@@ -79,7 +79,7 @@ module objects {
             this.layoutSpacing =  new math.Vector2(size.x/Columns,size.y/Rows);
         }
 
-        protected position(refPostion:math.Vector2,x:number, y:number): math.Vector2{
+        public position(refPostion:math.Vector2,x:number, y:number): math.Vector2{
 
             return new math.Vector2(refPostion.x-x*this.layoutSpacing.x,refPostion.y-y*this.layoutSpacing.y);            
         }
