@@ -25,7 +25,7 @@ module objects {
             // Initialize Attached GameObjects
             this.turret = new objects.PlayerTurret(managers.Game.assetManager, this);
             this.turret.Start();
-            console.log(this.turret.getBounds().width, this.turret.getBounds().height);
+            // console.log(this.turret.getBounds().width, this.turret.getBounds().height);
             this.Main();
         }
 
@@ -39,7 +39,9 @@ module objects {
             this.LaserFire3();
             */
         }
-        public Reset(): void { }
+        public Reset(): void { 
+            this.isDead=false
+        }
         public Move(): void {
             if (managers.Game.keyboardManager.turretRotateLeft) {
                 this.turret.rotation -= 5;

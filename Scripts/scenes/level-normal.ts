@@ -16,7 +16,7 @@ module scenes {
 
         // Constructor
         constructor(assetManager: createjs.LoadQueue) {
-            super(assetManager, new math.Vector2(800,640),10,10);
+            super(assetManager, new math.Vector2(800, 640), 10, 10);
 
             this.Start();
         }
@@ -33,7 +33,7 @@ module scenes {
             this.enemies = new Array<objects.Enemy>();
             this.enemyNum = 5;
             for (let i = 0; i < this.enemyNum; i++) {
-                this.enemies[i] = new objects.Enemy(this.assetManager, this);
+                this.enemies[i] = new objects.Enemy(this.assetManager, this.position(this.SceneTopCenter, i-2, -1));
             }
 
             this.scoreBoard = new managers.Scoreboard;
@@ -74,22 +74,21 @@ module scenes {
             });
             */
 
-            if(this.scoreBoard.Score>=100){
+            if (this.scoreBoard.Score >= 100) {
                 //managers.Game.currentScene = config.Scene.TRANSITION;
             }
 
         }
-    
+
 
         public Main(): void {
 
             this.addChild(this.levelbackground);
             this.addChild(this.player);
-            /*
             this.enemies.forEach(e => {
                 this.addChild(e);
-            });*/
-            
+            });
+
             this.shellManager.Shell.forEach(shell => {
                 this.addChild(shell);
             });

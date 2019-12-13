@@ -2,15 +2,23 @@ module objects {
     // Enemy Game Object
     export class Enemy extends objects.GameObject {
         // Variables
+        private turret: objects.GameObject;
         public isDead: boolean = false;
+
         // Constructor
-        constructor(assetManager: createjs.LoadQueue, scene: Scene) {
-            super("Enemy");
+        constructor(assetManager: createjs.LoadQueue, position: math.Vector2) {
+            super("DummyEnemy");
+            this.scaleX = 0.5;
+            this.scaleY=0.5;
+            this.x = position.x;
+            this.y = position.y;
             //this.transform = new components.Transform(new math.Vector2(this.x, this.y));
             this.Start();
         }
         // Methods
         public Start(): void {
+            this.turret = new objects.PlayerTurret(managers.Game.assetManager, this);
+            this.turret.Start();
             /*
             this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
             this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
@@ -27,10 +35,8 @@ module objects {
             this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
             this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
             */
-
         }
         public Move(): void {
-            this.y += 2.5;
         }
         public CheckBounds(): void {
             /*

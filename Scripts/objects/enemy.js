@@ -17,16 +17,21 @@ var objects;
     var Enemy = /** @class */ (function (_super) {
         __extends(Enemy, _super);
         // Constructor
-        function Enemy(assetManager, scene) {
-            var _this = _super.call(this, "Enemy") || this;
-            // Variables
+        function Enemy(assetManager, position) {
+            var _this = _super.call(this, "DummyEnemy") || this;
             _this.isDead = false;
+            _this.scaleX = 0.5;
+            _this.scaleY = 0.5;
+            _this.x = position.x;
+            _this.y = position.y;
             //this.transform = new components.Transform(new math.Vector2(this.x, this.y));
             _this.Start();
             return _this;
         }
         // Methods
         Enemy.prototype.Start = function () {
+            this.turret = new objects.PlayerTurret(managers.Game.assetManager, this);
+            this.turret.Start();
             /*
             this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
             this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
@@ -44,7 +49,6 @@ var objects;
             */
         };
         Enemy.prototype.Move = function () {
-            this.y += 2.5;
         };
         Enemy.prototype.CheckBounds = function () {
             /*

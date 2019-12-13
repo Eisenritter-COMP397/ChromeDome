@@ -64,7 +64,8 @@
             [772, 1, 194, 198, 0, -31, -29],
             [889, 201, 116, 194, 0, -70, -46],
             [889, 397, 56, 34, 0, -36, -47],
-            [897, 433, 75, 70, 0, 0, 0],
+            // DummyEnemy
+            [897, 433, 75, 70, 0, 37.5, 35],
             [968, 1, 164, 186, 0, -46, -35],
             [974, 397, 98, 98, 0, 39, 126],
             // Player Turret
@@ -123,7 +124,7 @@
             "tankBeige": { "frames": [28] },
             "Tank1Hull_d": { "frames": [30] },
             "Shotgun_Shells": { "frames": [31] },
-            "tankBlack": { "frames": [32] },
+            "DummyEnemy": { "frames": [32] },
             "PlayerTurret": { "frames": [35] },
             "Tank1Gun_e": { "frames": [37] },
             "Tank1Gun_d": { "frames": [38] },
@@ -136,7 +137,7 @@
             "Flash_B": { "frames": [47, 60, 55, 48, 59] },
             "Heavy_Shell": { "frames": [49] },
             "barrelBeige": { "frames": [51] },
-            "barrelBlack": { "frames": [52] },
+            "DummyEnemyBarrel": { "frames": [52] },
             "Sniper_Shell": { "frames": [54] },
             "barrelBlue": { "frames": [56] },
             "barrelGreen": { "frames": [57] },

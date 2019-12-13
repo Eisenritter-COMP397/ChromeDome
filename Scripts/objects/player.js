@@ -35,7 +35,7 @@ var objects;
             // Initialize Attached GameObjects
             this.turret = new objects.PlayerTurret(managers.Game.assetManager, this);
             this.turret.Start();
-            console.log(this.turret.getBounds().width, this.turret.getBounds().height);
+            // console.log(this.turret.getBounds().width, this.turret.getBounds().height);
             this.Main();
         };
         Player.prototype.Update = function () {
@@ -48,7 +48,9 @@ var objects;
             this.LaserFire3();
             */
         };
-        Player.prototype.Reset = function () { };
+        Player.prototype.Reset = function () {
+            this.isDead = false;
+        };
         Player.prototype.Move = function () {
             if (managers.Game.keyboardManager.turretRotateLeft) {
                 this.turret.rotation -= 5;

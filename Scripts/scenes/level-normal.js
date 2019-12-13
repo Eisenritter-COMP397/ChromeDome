@@ -31,7 +31,7 @@ var scenes;
             this.enemies = new Array();
             this.enemyNum = 5;
             for (var i = 0; i < this.enemyNum; i++) {
-                this.enemies[i] = new objects.Enemy(this.assetManager, this);
+                this.enemies[i] = new objects.Enemy(this.assetManager, this.position(this.SceneTopCenter, i - 2, -1));
             }
             this.scoreBoard = new managers.Scoreboard;
             // Initialize Sound
@@ -73,10 +73,9 @@ var scenes;
             var _this = this;
             this.addChild(this.levelbackground);
             this.addChild(this.player);
-            /*
-            this.enemies.forEach(e => {
-                this.addChild(e);
-            });*/
+            this.enemies.forEach(function (e) {
+                _this.addChild(e);
+            });
             this.shellManager.Shell.forEach(function (shell) {
                 _this.addChild(shell);
             });
