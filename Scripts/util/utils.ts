@@ -26,6 +26,13 @@ module Utils{
         BOTTOMRIGHT,
     }
 
+    export enum GunType{
+        LightShell,
+        MediumShell,
+        HeavyShell,
+        SniperShell
+    }
+
     export enum Tag{
         PLAYER,
         ENEMY

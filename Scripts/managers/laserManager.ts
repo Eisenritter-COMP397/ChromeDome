@@ -18,8 +18,6 @@ module managers {
         }
 
         public Start():void {
-
-            
             this.laserCount = 50;
             // Initialize my laser array
             this.Lasers = new Array<objects.Laser1>();

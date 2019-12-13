@@ -22,11 +22,14 @@ module managers{
         // Game Objects
         public static player: objects.Player;
 
-        // Game Settings
 
+
+        // Game Settings
         public static laserManager:managers.Laser;
         public static laserManager2:managers.Laser2;
         public static laserManager3:managers.Laser3;
+
+        public static shellManager: managers.Shell;
 
     }
 }

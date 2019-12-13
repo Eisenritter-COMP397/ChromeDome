@@ -26,8 +26,8 @@ var scenes;
             // Initialize our variables
             this.levelbackground = new objects.Background(managers.Game.assetManager);
             this.player = new objects.Player(this.assetManager);
-            this.laserManager = new managers.Laser();
-            managers.Game.laserManager = this.laserManager;
+            this.shellManager = new managers.Shell();
+            managers.Game.shellManager = this.shellManager;
             this.enemies = new Array();
             this.enemyNum = 5;
             for (var i = 0; i < this.enemyNum; i++) {
@@ -43,7 +43,7 @@ var scenes;
         };
         PlayScene.prototype.Update = function () {
             this.player.Update();
-            this.laserManager.Update();
+            this.shellManager.Update();
             /*this.enemies.forEach(e => {
                 if(!e.isDead) {
                     e.Update();
@@ -77,8 +77,8 @@ var scenes;
             this.enemies.forEach(e => {
                 this.addChild(e);
             });*/
-            this.laserManager.Lasers.forEach(function (laser) {
-                _this.addChild(laser);
+            this.shellManager.Shell.forEach(function (shell) {
+                _this.addChild(shell);
             });
             this.addChild(this.scoreBoard.scoreLabel);
             this.addChild(this.scoreBoard.highScoreLabel);

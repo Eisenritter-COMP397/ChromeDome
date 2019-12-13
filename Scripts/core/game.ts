@@ -48,8 +48,9 @@
             [545, 478, 12, 26, 0, 0, 0],
             [549, 235, 128, 229, 0, -64, -22],
             [559, 466, 22, 42, 0, -53, -43],
-            [583, 466, 42, 40, 0, -107, -108],
-            [627, 466, 18, 40, 0, -55, -44],
+            [583, 466, 42, 40, 0, 21, 20],
+            //MediumShell
+            [627, 466, 18, 40, 0, 9, 20],
             [647, 466, 44, 38, 0, -42, -45],
             [678, 1, 92, 224, 0, 0, 0],
             [679, 227, 86, 207, 0, 0, 0],
@@ -112,8 +113,8 @@
             "bulletYellow": { "frames": [14] },
             "Tank1Hull_e": { "frames": [15] },
             "Granade_Shell": { "frames": [16] },
-            "Medium_Shell": { "frames": [18] },
-            "Flash_A": { "frames": [46, 53, 34, 19, 24] },
+            "MediumShell": { "frames": [18] },
+            "FlashA": { "frames": [46, 53, 34, 19, 24] },
             "Tank1Gun_b": { "frames": [20] },
             "Tank1Gun_g": { "frames": [21] },
             "Tank1Hull_h": { "frames": [25] },
@@ -159,6 +160,7 @@
 
         // SFX
         { id: "ButtonSelected", src: "./Assets/SFX/ButtonSound.mp3" },
+        {id:"MainGunFire", src:"./Assets/SFX/MainGunFire.mp3"},
 
         { id: "NewGameButton", src: "./Assets/newgame.png" },
         { id: "ExitGameButton", src: "./Assets/ExitGameButton.png" },

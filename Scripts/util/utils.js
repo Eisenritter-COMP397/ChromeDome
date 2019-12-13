@@ -23,6 +23,13 @@ var Utils;
         Anchors[Anchors["BOTTOMCENTER"] = 7] = "BOTTOMCENTER";
         Anchors[Anchors["BOTTOMRIGHT"] = 8] = "BOTTOMRIGHT";
     })(Anchors = Utils.Anchors || (Utils.Anchors = {}));
+    var GunType;
+    (function (GunType) {
+        GunType[GunType["LightShell"] = 0] = "LightShell";
+        GunType[GunType["MediumShell"] = 1] = "MediumShell";
+        GunType[GunType["HeavyShell"] = 2] = "HeavyShell";
+        GunType[GunType["SniperShell"] = 3] = "SniperShell";
+    })(GunType = Utils.GunType || (Utils.GunType = {}));
     var Tag;
     (function (Tag) {
         Tag[Tag["PLAYER"] = 0] = "PLAYER";

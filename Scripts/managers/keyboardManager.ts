@@ -7,7 +7,7 @@ module managers {
         public hullRotateRight: boolean;
         public turretRotateLeft: boolean;
         public turretRotateRight: boolean;
-        public shoot1: boolean;
+        public fireMainGun: boolean;
         public shoot2: boolean;
         public shoot3: boolean;
         public enabled: boolean;    // Enable / disable my whole keyboard
@@ -43,8 +43,7 @@ module managers {
                     this.hullRotateRight = true;
                     break;
                 case config.Keys.SPACE:
-                    console.log("pew pew");
-                    this.shoot1 = true;
+                    this.fireMainGun = true;
                     break;
                 case config.Keys.Q:
                     console.log("new laser pew");
@@ -78,8 +77,7 @@ module managers {
                     this.hullRotateRight = false;
                     break;
                 case config.Keys.SPACE:
-                    console.log("pew pew off");
-                    this.shoot1 = false;
+                    this.fireMainGun = false;
                     break;
                 case config.Keys.Q:
                     console.log("new laser pew");

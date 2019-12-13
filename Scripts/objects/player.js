@@ -17,7 +17,6 @@ var objects;
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
         //private laserSpawn:math.Vector2;
-        //public isDead:boolean;
         // Constructor
         function Player(assetManager) {
             var _this = _super.call(this, "Player", Utils.Anchors.CENTERCENTER) || this;
@@ -33,7 +32,6 @@ var objects;
             this.scaleX = 0.25;
             this.scaleY = 0.25;
             //this.isDead = false;
-            console.log("this sprite's pivot is: ", this.Transform.Pivot);
             // Initialize Attached GameObjects
             this.turret = new objects.PlayerTurret(managers.Game.assetManager, this);
             this.Main();
@@ -41,6 +39,7 @@ var objects;
         Player.prototype.Update = function () {
             this.Move();
             this.CheckBound();
+            this.FireGun();
             /*
             this.LaserFire1();
             this.LaserFire2();
@@ -75,7 +74,6 @@ var objects;
             }
         };
         Player.prototype.CheckBound = function () {
-            console.log(this.Transform.HalfSize.y * this.scaleY);
             // Right boundary
             if (this.x >= managers.Game.currentSceneObject.SceneSize.x - this.Transform.HalfSize.x * this.scaleX) {
                 this.x = managers.Game.currentSceneObject.SceneSize.x - this.Transform.HalfSize.x * this.scaleX;
@@ -95,6 +93,26 @@ var objects;
         };
         Player.prototype.Main = function () {
             this.addChild(this.turret);
+        };
+        Player.prototype.FireGun = function () {
+            if (!this.isDead) {
+                var ticker = createjs.Ticker.getTicks();
+                if ((managers.Game.keyboardManager.fireMainGun) && (ticker % 10 == 0)) {
+                    //this.effect = new objects.Effect("FlashA", this.turret.Transform.Position);
+                    var shell = managers.Game.shellManager.Shell[managers.Game.shellManager.CurrentShell];
+                    console.log(shell.x, shell.y);
+                    shell.rotation = this.turret.rotation + this.rotation;
+                    shell.x = this.x;
+                    shell.y = this.y;
+                    shell.direction = new math.Vector2(Math.cos((this.rotation + this.turret.rotation + 90) * (Math.PI / 180)), Math.sin((this.rotation + this.turret.rotation + 90) * (Math.PI / 180)));
+                    managers.Game.shellManager.CurrentShell++;
+                    //shell.x = 
+                    //shell.y = 
+                    var gunfireSFX = createjs.Sound.play("MainGunFire");
+                    gunfireSFX.volume = 1;
+                    managers.Game.currentSceneObject.addChild(this.effect);
+                }
+            }
         };
         return Player;
     }(objects.GameObject));

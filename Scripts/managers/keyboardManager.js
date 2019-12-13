@@ -32,8 +32,7 @@ var managers;
                     this.hullRotateRight = true;
                     break;
                 case config.Keys.SPACE:
-                    console.log("pew pew");
-                    this.shoot1 = true;
+                    this.fireMainGun = true;
                     break;
                 case config.Keys.Q:
                     console.log("new laser pew");
@@ -67,8 +66,7 @@ var managers;
                     this.hullRotateRight = false;
                     break;
                 case config.Keys.SPACE:
-                    console.log("pew pew off");
-                    this.shoot1 = false;
+                    this.fireMainGun = false;
                     break;
                 case config.Keys.Q:
                     console.log("new laser pew");

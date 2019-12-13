@@ -1,15 +1,16 @@
 module objects {
     // Player Game Objects
     export class Player extends objects.GameObject {
+
         private turret: objects.GameObject;
+        public isDead: boolean;
 
-
+        private effect: objects.Effect;
         //private laserSpawn:math.Vector2;
-        //public isDead:boolean;
 
         // Constructor
         constructor(assetManager: createjs.LoadQueue) {
-            super("Player",Utils.Anchors.CENTERCENTER);
+            super("Player", Utils.Anchors.CENTERCENTER);
             this.Start();
         }
         // Methods
@@ -21,15 +22,15 @@ module objects {
             this.scaleX = 0.25;
             this.scaleY = 0.25;
             //this.isDead = false;
-            console.log("this sprite's pivot is: ", this.Transform.Pivot);
             // Initialize Attached GameObjects
-            this.turret = new objects.PlayerTurret(managers.Game.assetManager,this);
+            this.turret = new objects.PlayerTurret(managers.Game.assetManager, this);
             this.Main();
         }
 
         public Update(): void {
             this.Move();
             this.CheckBound();
+            this.FireGun();
             /*
             this.LaserFire1();
             this.LaserFire2();
@@ -39,10 +40,10 @@ module objects {
         public Reset(): void { }
         public Move(): void {
             if (managers.Game.keyboardManager.turretRotateLeft) {
-                this.turret.rotation-=5;
+                this.turret.rotation -= 5;
             }
             if (managers.Game.keyboardManager.turretRotateRight) {
-                this.turret.rotation+=5;
+                this.turret.rotation += 5;
             }
             if (managers.Game.keyboardManager.hullRotateLeft) {
                 this.rotation -= 1;
@@ -64,8 +65,6 @@ module objects {
             }
         }
         public CheckBound(): void {
-
-            console.log(this.Transform.HalfSize.y * this.scaleY);
             // Right boundary
             if (this.x >= managers.Game.currentSceneObject.SceneSize.x - this.Transform.HalfSize.x * this.scaleX) {
                 this.x = managers.Game.currentSceneObject.SceneSize.x - this.Transform.HalfSize.x * this.scaleX;
@@ -87,13 +86,42 @@ module objects {
             }
         }
 
-        public Main():void{
+        public Main(): void {
             this.addChild(this.turret);
+        }
+
+        public FireGun(): void {
+            if (!this.isDead) {
+                let ticker: number = createjs.Ticker.getTicks();
+                if ((managers.Game.keyboardManager.fireMainGun) && (ticker % 10 == 0)) {
+                    //this.effect = new objects.Effect("FlashA", this.turret.Transform.Position);
+                    let shell = managers.Game.shellManager.Shell[managers.Game.shellManager.CurrentShell];
+                    console.log(shell.x,shell.y);
+
+                    shell.rotation = this.turret.rotation+this.rotation;
+                    shell.x = this.x;
+                    shell.y = this.y;
+
+                    shell.direction= new math.Vector2( 
+                        Math.cos((this.rotation+this.turret.rotation+90)* (Math.PI / 180)),
+                        Math.sin((this.rotation+this.turret.rotation+90)* (Math.PI / 180))
+                        );
+
+                    managers.Game.shellManager.CurrentShell++;
+                    //shell.x = 
+                    //shell.y = 
+
+                    let gunfireSFX = createjs.Sound.play("MainGunFire");
+                    gunfireSFX.volume = 1;
+                    managers.Game.currentSceneObject.addChild(this.effect);
+                }
+            }
+
         }
         /*
                 public LaserFire2():void {
                     if(!this.isDead) {
-                        let ticker:number = createjs.Ticker.getTicks();
+
         
                         if((managers.Game.keyboardManager.shoot2) && (ticker % 10 == 0)) {
                             this.laserSpawn = new math.Vector2(this.x, this.y - this.halfH);

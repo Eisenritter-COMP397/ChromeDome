@@ -9,7 +9,7 @@ module scenes {
         private enemies: objects.Enemy[];
         private enemyNum: number;
         private scoreBoard: managers.Scoreboard;
-        private laserManager: managers.Laser;
+        private shellManager: managers.Shell;
 
         private bgm: createjs.AbstractSoundInstance;
 
@@ -27,8 +27,8 @@ module scenes {
             this.levelbackground = new objects.Background(managers.Game.assetManager);
 
             this.player = new objects.Player(this.assetManager);
-            this.laserManager = new managers.Laser();
-            managers.Game.laserManager = this.laserManager;
+            this.shellManager = new managers.Shell();
+            managers.Game.shellManager = this.shellManager;
 
             this.enemies = new Array<objects.Enemy>();
             this.enemyNum = 5;
@@ -50,7 +50,7 @@ module scenes {
 
         public Update(): void {
             this.player.Update();
-            this.laserManager.Update();
+            this.shellManager.Update();
 
             /*this.enemies.forEach(e => {
                 if(!e.isDead) {
@@ -90,8 +90,8 @@ module scenes {
                 this.addChild(e);
             });*/
             
-            this.laserManager.Lasers.forEach(laser => {
-                this.addChild(laser);
+            this.shellManager.Shell.forEach(shell => {
+                this.addChild(shell);
             });
 
             this.addChild(this.scoreBoard.scoreLabel);
