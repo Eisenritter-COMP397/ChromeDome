@@ -38,7 +38,6 @@ module scenes {
 
             this.scoreBoard = new managers.Scoreboard;
 
-
             // Initialize Sound
             createjs.Sound.stop();
             this.bgm = createjs.Sound.play("level1bgm");
@@ -52,11 +51,11 @@ module scenes {
             this.player.Update();
             this.shellManager.Update();
 
-            /*this.enemies.forEach(e => {
+            this.enemies.forEach(e => {
                 if(!e.isDead) {
                     e.Update();
-
-                    this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
+                    //console.log(e.name);
+                    this.player.isDead= managers.Collision.CheckAABB(this.player, e);
                     if (this.player.isDead) {
                         // Disable music
                         this.bgm.stop();
@@ -66,17 +65,17 @@ module scenes {
             });
 
             // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
-            this.laserManager.Lasers.forEach(laser => {
+            this.shellManager.Shell.forEach(shell => {
                 this.enemies.forEach(enemy => {
-                    managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
-
+                    managers.Collision.CheckAABB(shell, enemy)
                 });
             });
-            */
 
+            /*
             if (this.scoreBoard.Score >= 100) {
                 //managers.Game.currentScene = config.Scene.TRANSITION;
             }
+            */
 
         }
 

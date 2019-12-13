@@ -35,7 +35,6 @@ var objects;
         });
         //Methods
         Shell.prototype.Start = function () {
-            this.addChild();
             this.scaleY = 0.25;
             this.scaleX = 0.25;
             this.Reset();

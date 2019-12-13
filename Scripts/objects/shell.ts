@@ -4,8 +4,6 @@ module objects{
         private speed;
         public direction:math.Vector2 = math.Vector2.Zero();
         
-
-        
         get Speed(): number{
             return this.speed;
         }
@@ -22,7 +20,6 @@ module objects{
 
         //Methods
         public Start():void{
-            this.addChild()
             this.scaleY = 0.25;
             this.scaleX =0.25;
             this.Reset();

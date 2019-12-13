@@ -8,6 +8,7 @@ module objects {
         // Constructor
         constructor(assetManager: createjs.LoadQueue, position: math.Vector2) {
             super("DummyEnemy");
+            this.name = "DummyEnemy"
             this.scaleX = 0.5;
             this.scaleY=0.5;
             this.x = position.x;
@@ -31,10 +32,8 @@ module objects {
         }
         public Reset(): void {
             this.isDead = false;
-            /*
-            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
-            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
-            */
+            this.x = -5000;
+            this.y = -5000;
         }
         public Move(): void {
         }
@@ -59,7 +58,7 @@ module objects {
         }
         // Methods
         public Start(): void {
-           /*
+           /*ssss
             this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
             this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
             */
@@ -71,10 +70,8 @@ module objects {
         }
         public Reset(): void {
             this.isDead = false;
-            /*
-            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
-            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
-            */
+            this.x = -5000;
+            this.y = -5000;
 
         }
         public Move(): void {

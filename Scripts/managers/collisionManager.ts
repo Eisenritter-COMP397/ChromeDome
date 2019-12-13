@@ -1,26 +1,28 @@
 module managers {
     export class Collision {
-        public static CheckAABB(object1: objects.GameObject, object2: objects.GameObject, scoreboard: managers.Scoreboard) {
+        public static CheckAABB(object1: objects.GameObject, object2: objects.GameObject) {
+           // console.log("Object1: "+object1.Transform.HalfSize);
+            //console.log("Object2: "+object2.Transform.HalfSize);
+
             // Check all bounds
-            /*
-            if((object1.x + object1.halfW) > (object2.x - object2.halfW) &&
-                (object1.x - object1.halfW) < (object2.x + object2.halfW) &&
-                (object1.y  + object1.halfH) > (object2.y - object2.halfH) &&
-                (object1.y - object1.halfH) < (object2.y + object2.halfH)) {
+            if((object1.x + object1.Transform.HalfSize.x) > (object2.x - object2.Transform.HalfSize.x) &&
+                (object1.x - object1.Transform.HalfSize.x) < (object2.x + object2.Transform.HalfSize.x) &&
+                (object1.y  + object1.Transform.HalfSize.y) > (object2.y - object2.Transform.HalfSize.y) &&
+                (object1.y - object1.Transform.HalfSize.y) < (object2.y + object2.Transform.HalfSize.y)) {
 
                     switch(object2.name) 
                     {
-                        case "Enemy":
-                            managers.Game.currentSceneObject.removeChild(object1);
+                        
+                        case "DummyEnemy":
+                            //managers.Game.currentSceneObject.removeChild(object1);
                             object1.Reset();
                             object2.Reset();
-                            scoreboard.Score+=50;
+                            //scoreboard.Score+=50;
                         break;
                     }
-                    object2.isColliding = true;
+                   
+                    //object2.isColliding = true;
                     return true;
-                    */
-
                 }
             }
         
@@ -41,6 +43,6 @@ module managers {
             {
                 object2.isColliding = false;
             }
-        }
-    }*/
+        }*/
+    }
 } 

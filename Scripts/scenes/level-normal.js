@@ -42,32 +42,32 @@ var scenes;
             this.Main();
         };
         PlayScene.prototype.Update = function () {
+            var _this = this;
             this.player.Update();
             this.shellManager.Update();
-            /*this.enemies.forEach(e => {
-                if(!e.isDead) {
+            this.enemies.forEach(function (e) {
+                if (!e.isDead) {
                     e.Update();
-
-                    this.player.isDead= managers.Collision.CheckAABB(this.player, e,this.scoreBoard);
-                    if (this.player.isDead) {
+                    //console.log(e.name);
+                    _this.player.isDead = managers.Collision.CheckAABB(_this.player, e);
+                    if (_this.player.isDead) {
                         // Disable music
-                        this.bgm.stop();
+                        _this.bgm.stop();
                         //managers.Game.currentScene = config.Scene.OVER;
                     }
                 }
             });
-
             // SUPER INEFFICIENT. WE WILL FIX THIS LATER AS WELL
-            this.laserManager.Lasers.forEach(laser => {
-                this.enemies.forEach(enemy => {
-                    managers.Collision.CheckAABB(laser, enemy,this.scoreBoard)
-
+            this.shellManager.Shell.forEach(function (shell) {
+                _this.enemies.forEach(function (enemy) {
+                    managers.Collision.CheckAABB(shell, enemy);
                 });
             });
-            */
+            /*
             if (this.scoreBoard.Score >= 100) {
                 //managers.Game.currentScene = config.Scene.TRANSITION;
             }
+            */
         };
         PlayScene.prototype.Main = function () {
             var _this = this;

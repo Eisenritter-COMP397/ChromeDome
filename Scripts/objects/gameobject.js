@@ -24,8 +24,8 @@ var objects;
             _this._components = new Array();
             _this.anchor = anchor;
             _this.sprite = new createjs.Sprite(managers.Game.textureAtlas, imageString);
-            _this.transform.Size.x = _this.sprite.getBounds().width;
-            _this.transform.Size.y = _this.sprite.getBounds().height;
+            _this.transform.Size.x = _this.sprite.getBounds().width * _this.scaleX;
+            _this.transform.Size.y = _this.sprite.getBounds().height * _this.scaleY;
             _this.transform.HalfSize = math.Vector2.Divide(_this.transform.Size, 2);
             _this.transform.SetPivot(anchor);
             _this.transform.Position.x = _this.sprite.x;
@@ -129,7 +129,9 @@ var objects;
         };
         GameObject.prototype.Start = function () {
         };
-        GameObject.prototype.Update = function () { };
+        GameObject.prototype.Update = function () {
+            this.addChild(this.sprite);
+        };
         GameObject.prototype.Reset = function () { };
         GameObject.prototype.Move = function () { };
         GameObject.prototype.CheckBound = function () { };

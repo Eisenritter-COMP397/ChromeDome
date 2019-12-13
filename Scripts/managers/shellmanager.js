@@ -8,11 +8,10 @@ var managers;
         // Methods
         Shell.prototype.buildShellPool = function () {
             for (var i = 0; i < this.shellCount; i++) {
-                this.Shell[i] = new objects.Shell("MediumShell", 1);
+                this.Shell[i] = new objects.Shell("MediumShell", 5);
             }
         };
         Shell.prototype.GetShell = function () {
-            console.log(this.CurrentShell);
             var shell = this.Shell[this.CurrentShell];
             this.CurrentShell++;
             if (managers.Game.shellManager.CurrentShell > this.shellCount - 1) {
@@ -21,12 +20,15 @@ var managers;
             }
         };
         Shell.prototype.Start = function () {
-            this.shellCount = 100;
+            this.shellCount = 10;
             this.Shell = new Array();
             this.buildShellPool();
             this.CurrentShell = 0;
         };
         Shell.prototype.Update = function () {
+            if (managers.Game.shellManager.CurrentShell > this.shellCount - 1) {
+                managers.Game.shellManager.CurrentShell = 0;
+            }
             this.Shell.forEach(function (shell) {
                 shell.Update();
             });

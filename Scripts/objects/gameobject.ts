@@ -3,6 +3,7 @@ module objects {
     export abstract class GameObject extends createjs.Container {
         // Properties
         private tag: Utils.Tag;
+        public isColliding:boolean;
         // Variables
         private transform: components.Transform =  new components.Transform;
         public position: math.Vector2;
@@ -54,8 +55,8 @@ module objects {
             super();
             this.anchor = anchor;
             this.sprite = new createjs.Sprite(managers.Game.textureAtlas,imageString);
-            this.transform.Size.x = this.sprite.getBounds().width;
-            this.transform.Size.y = this.sprite.getBounds().height;
+            this.transform.Size.x = this.sprite.getBounds().width*this.scaleX;
+            this.transform.Size.y = this.sprite.getBounds().height*this.scaleY;
             this.transform.HalfSize = math.Vector2.Divide(this.transform.Size,2);
             this.transform.SetPivot(anchor);
             
@@ -118,7 +119,9 @@ module objects {
         public Start():void {
 
         }
-        public Update():void {}
+        public Update():void {
+            this.addChild(this.sprite);
+        }
         public Reset():void {}
         public Move():void {}
         public CheckBound():void {}

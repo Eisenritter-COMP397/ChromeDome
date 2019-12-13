@@ -20,6 +20,7 @@ var objects;
         function Enemy(assetManager, position) {
             var _this = _super.call(this, "DummyEnemy") || this;
             _this.isDead = false;
+            _this.name = "DummyEnemy";
             _this.scaleX = 0.5;
             _this.scaleY = 0.5;
             _this.x = position.x;
@@ -43,10 +44,8 @@ var objects;
         };
         Enemy.prototype.Reset = function () {
             this.isDead = false;
-            /*
-            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
-            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
-            */
+            this.x = -5000;
+            this.y = -5000;
         };
         Enemy.prototype.Move = function () {
         };
@@ -75,7 +74,7 @@ var objects;
         }
         // Methods
         Enemy2.prototype.Start = function () {
-            /*
+            /*ssss
              this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
              this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
              */
@@ -86,10 +85,8 @@ var objects;
         };
         Enemy2.prototype.Reset = function () {
             this.isDead = false;
-            /*
-            this.x = Math.floor(Math.random() * this._currentScene.sceneSize.x);
-            this.y = Math.floor(Math.random() * -this._currentScene.sceneSize.y);
-            */
+            this.x = -5000;
+            this.y = -5000;
         };
         Enemy2.prototype.Move = function () {
             this.y += 2.5;

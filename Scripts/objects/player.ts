@@ -8,6 +8,7 @@ module objects {
         private effect: objects.Effect;
         //private laserSpawn:math.Vector2;
 
+
         // Constructor
         constructor(assetManager: createjs.LoadQueue) {
             super("Player", Utils.Anchors.CENTERCENTER);
@@ -44,10 +45,10 @@ module objects {
         }
         public Move(): void {
             if (managers.Game.keyboardManager.turretRotateLeft) {
-                this.turret.rotation -= 5;
+                this.turret.rotation -= 0.5;
             }
             if (managers.Game.keyboardManager.turretRotateRight) {
-                this.turret.rotation += 5;
+                this.turret.rotation += 0.5;
             }
             if (managers.Game.keyboardManager.hullRotateLeft) {
                 this.rotation -= 1;
@@ -97,23 +98,24 @@ module objects {
         public FireGun(): void {
             if (!this.isDead) {
                 let ticker: number = createjs.Ticker.getTicks();
-                if ((managers.Game.keyboardManager.fireMainGun) && (ticker % 10 == 0)) {
+                if ((managers.Game.keyboardManager.fireMainGun) && (ticker % 30 == 0)) {
                     //this.effect = new objects.Effect("FlashA", this.turret.Transform.Position);
                     let shell = managers.Game.shellManager.Shell[managers.Game.shellManager.CurrentShell];
-                    console.log(shell.x,shell.y);
-
+                    
                     shell.rotation = this.turret.rotation+this.rotation;
 
-                    shell.x = this.x-this.turret.getBounds().height/4*Math.cos((this.rotation+this.turret.rotation+90)* (Math.PI / 180));
-                    shell.y = this.y-this.turret.getBounds().height/4*Math.sin((this.rotation+this.turret.rotation+90)* (Math.PI / 180));
-                    console.log(shell.x,shell.y);
+                    shell.x = this.x-this.turret.Transform.Size.y/4*Math.cos((this.rotation+this.turret.rotation+90)* (Math.PI / 180));
+                    shell.y = this.y-this.turret.Transform.Size.y/4*Math.sin((this.rotation+this.turret.rotation+90)* (Math.PI / 180));
+ 
 
                     shell.direction= new math.Vector2( 
                         Math.cos((this.rotation+this.turret.rotation+90)* (Math.PI / 180)),
                         Math.sin((this.rotation+this.turret.rotation+90)* (Math.PI / 180))
                         );
-
+                    
+                    console.log(managers.Game.shellManager.CurrentShell);    
                     managers.Game.shellManager.CurrentShell++;
+                    
                     //shell.x = 
                     //shell.y = 
 
